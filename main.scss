@@ -1,11 +1,15 @@
 @import './reset.css';
 
+$primary: #9e166e;
+$accent: #ffddc9;
+$light: #fceef8;
+
 body {
   font-family: sans-serif;
-  background: #fceef8;
+  background: $light;
 
-  border-top: 8px solid #9e166e;
-  border-left: 8px solid #9e166e;
+  border-top: 8px solid $primary;
+  border-left: 8px solid $primary;
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -13,7 +17,7 @@ body {
 h1 {
   font-size: 54px;
   font-weight: bold;
-  color: #9e166e;
+  color: $primary;
 }
 
 .paragraphs {
@@ -26,7 +30,7 @@ h1 {
 .paragraphs p {
   padding-right: 20px;
   line-height: 1.5;
-  color: #9e166e;
+  color: $primary;
   width: 50%;
 }
 
@@ -36,7 +40,7 @@ h1 {
   display: inline-block;
   color: white;
   text-decoration: none;
-  background: #9e166e;
+  background: $primary;
   margin-top: 40px;
   border-radius: 4px;
   margin-left: 24px;
@@ -69,7 +73,7 @@ ul li {
 }
 
 ul li a {
-  color: #9e166e;
+  color: $primary;
   text-decoration: none;
   font-size: 20px;
   padding: 8px 0;
@@ -85,7 +89,7 @@ ul li a::after {
   height: 50%;
   content: '';
   display: block;
-  background: #ffddc9;
+  background: $accent;
   z-index: -1;
   opacity: 0;
   transition: 0.1s;
