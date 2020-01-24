@@ -58,7 +58,7 @@ module.exports = {
         {}
       ),
     reset: join(__dirname, 'reset.css'),
-    home: join(__dirname, 'style.css'),
+    home: join(__dirname, 'main.scss'),
   },
   output: {
     path: join(__dirname, 'dist'),
@@ -69,7 +69,7 @@ module.exports = {
     ...pages.map(
       page =>
         new HtmlWebpackPlugin({
-          chunks: ['reset', page.slug],
+          chunks: [page.slug],
           filename: page.slug + '/index.html',
           template: page.html,
           alwaysWriteToDisk: true,
@@ -81,7 +81,7 @@ module.exports = {
       inject: true,
       pages,
       categories,
-      chunks: ['reset', 'home'],
+      chunks: ['home'],
       alwaysWriteToDisk: true,
     }),
     new HtmlWebpackHarddiskPlugin(),

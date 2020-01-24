@@ -1,3 +1,5 @@
+@import './reset.css';
+
 body {
   font-family: sans-serif;
   background: #fffafc;
@@ -22,13 +24,19 @@ h2 {
 ul {
   margin-top: 8px;
   margin-bottom: 20px;
+  padding-left: 32px;
+}
+
+ul li {
+  list-style-type: disc;
+  padding-left: 8px;
 }
 
 ul li a {
   color: #9e166e;
   text-decoration: none;
   font-size: 20px;
-  padding: 5px 0;
+  padding: 8px 0;
   display: block;
 }
 
