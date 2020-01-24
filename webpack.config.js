@@ -61,6 +61,7 @@ module.exports = {
     home: join(__dirname, 'main.scss'),
   },
   output: {
+    publicPath: '/',
     path: join(__dirname, 'dist'),
     filename: '[name].js',
   },
@@ -106,6 +107,21 @@ module.exports = {
         test: /\.(sc|c)ss$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '/',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.glsl$/,
+        loader: 'webpack-glsl-loader',
       },
     ],
   },

@@ -1,4 +1,4 @@
-import './style.css';
+import './main.scss';
 
 const W = window.innerWidth;
 const H = window.innerHeight;
