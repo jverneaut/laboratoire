@@ -16,9 +16,35 @@ h1 {
   color: #9e166e;
 }
 
+.paragraphs {
+  margin-top: 40px;
+  display: flex;
+  max-width: 680px;
+  margin-left: 24px;
+}
+
+.paragraphs p {
+  padding-right: 20px;
+  line-height: 1.5;
+  color: #9e166e;
+  width: 50%;
+}
+
+.btn {
+  padding: 14px 16px;
+  font-size: 14px;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  background: #9e166e;
+  margin-top: 40px;
+  border-radius: 4px;
+  margin-left: 24px;
+}
+
 .categories {
-  margin-top: 54px;
-  margin-left: 32px;
+  margin-top: 76px;
+  margin-left: 24px;
 }
 
 .category {
