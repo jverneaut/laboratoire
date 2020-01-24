@@ -3,6 +3,11 @@
 body {
   font-family: sans-serif;
   background: #fceef8;
+
+  border-top: 8px solid #9e166e;
+  border-left: 8px solid #9e166e;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -11,8 +16,13 @@ h1 {
   color: #9e166e;
 }
 
+.categories {
+  margin-top: 54px;
+  margin-left: 32px;
+}
+
 .category {
-  margin-top: 40px;
+  margin-top: 32px;
 }
 
 h2 {
