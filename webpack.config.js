@@ -13,7 +13,7 @@ const getDirectories = source =>
 
 const pageDirectories = getDirectories(__dirname).filter(
   dirpath =>
-    !['dist', 'node_modules', '.vscode'].includes(
+    !['dist', 'node_modules', '.vscode', '.git'].includes(
       dirpath.split('/').reverse()[0]
     )
 );
@@ -50,7 +50,7 @@ module.exports = {
   },
   output: {
     path: join(__dirname, 'dist'),
-    filename: 'dist/[name]/bundle.js',
+    filename: '[name].js',
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -58,14 +58,14 @@ module.exports = {
       page =>
         new HtmlWebpackPlugin({
           chunks: [page.slug, 'reset'],
-          filename: 'dist/' + page.slug + '/index.html',
+          filename: page.slug + '/index.html',
           template: page.html,
           alwaysWriteToDisk: true,
         })
     ),
     new HtmlWebpackPlugin({
       template: join(__dirname, 'index.html'),
-      filename: 'dist/index.html',
+      filename: 'index.html',
       inject: true,
       pages,
       chunks: ['reset'],

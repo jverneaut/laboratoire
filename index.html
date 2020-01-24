@@ -6,5 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <ul>
+      <% htmlWebpackPlugin.options.pages.forEach(page => { %>
+      <li>
+        <a href="/<%= page.slug%>"><%= page.name %></a>
+      </li>
+      <%}) %>
+    </ul>
+  </body>
 </html>
