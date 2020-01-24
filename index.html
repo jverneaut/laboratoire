@@ -7,12 +7,16 @@
     <title>Document</title>
   </head>
   <body>
+    <% htmlWebpackPlugin.options.categories.forEach(category => { %>
+    <h2><%= category %></h2>
     <ul>
-      <% htmlWebpackPlugin.options.pages.forEach(page => { %>
+      <% htmlWebpackPlugin.options.pages.filter(page => page.category ===
+      category).forEach(page => { %>
       <li>
         <a href="/<%= page.slug%>"><%= page.name %></a>
       </li>
       <%}) %>
     </ul>
+    <%}) %>
   </body>
 </html>

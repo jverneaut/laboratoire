@@ -26,12 +26,23 @@ const getPageTitle = path => {
     .replace('</title>', '');
 };
 
+const getPageCategory = path => {
+  const html = readFileSync(path, 'utf8');
+  return html
+    .match(/<meta name="category">(.*?)<\/meta>/g)[0]
+    .replace('<meta name="category">', '')
+    .replace('</meta>', '');
+};
+
 const pages = pageDirectories.map(pageDirectory => ({
   slug: pageDirectory.split('/').reverse()[0],
   html: join(pageDirectory, 'index.html'),
   js: join(pageDirectory, 'index.js'),
   name: getPageTitle(join(pageDirectory, 'index.html')),
+  category: getPageCategory(join(pageDirectory, 'index.html')),
 }));
+
+const categories = Array.from(new Set(pages.map(page => page.category))).sort();
 
 module.exports = {
   entry: {
@@ -68,6 +79,7 @@ module.exports = {
       filename: 'index.html',
       inject: true,
       pages,
+      categories,
       chunks: ['reset'],
       alwaysWriteToDisk: true,
     }),
