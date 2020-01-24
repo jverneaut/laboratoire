@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  box-sizing: border-box;
+  position: fixed;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+section h2 {
+  font-size: 400px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+section h2 span {
+  margin-left: -20px;
+  color: black;
+  font-size: 40px;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: hsla(350, 100%, 50%, 1);
+}

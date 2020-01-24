@@ -29,9 +29,9 @@ const getPageTitle = path => {
 const getPageCategory = path => {
   const html = readFileSync(path, 'utf8');
   return html
-    .match(/<meta name="category">(.*?)<\/meta>/g)[0]
-    .replace('<meta name="category">', '')
-    .replace('</meta>', '');
+    .match(/<meta name="category" content="(.*?)" \/>/g)[0]
+    .replace('<meta name="category" content="', '')
+    .replace('" />', '');
 };
 
 const pages = pageDirectories.map(pageDirectory => ({
@@ -58,6 +58,7 @@ module.exports = {
         {}
       ),
     reset: join(__dirname, 'reset.css'),
+    home: join(__dirname, 'style.css'),
   },
   output: {
     path: join(__dirname, 'dist'),
@@ -68,7 +69,7 @@ module.exports = {
     ...pages.map(
       page =>
         new HtmlWebpackPlugin({
-          chunks: [page.slug, 'reset'],
+          chunks: ['reset', page.slug],
           filename: page.slug + '/index.html',
           template: page.html,
           alwaysWriteToDisk: true,
@@ -80,7 +81,7 @@ module.exports = {
       inject: true,
       pages,
       categories,
-      chunks: ['reset'],
+      chunks: ['reset', 'home'],
       alwaysWriteToDisk: true,
     }),
     new HtmlWebpackHarddiskPlugin(),

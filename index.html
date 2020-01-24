@@ -4,19 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Laboratoire</title>
   </head>
   <body>
-    <% htmlWebpackPlugin.options.categories.forEach(category => { %>
-    <h2><%= category %></h2>
-    <ul>
-      <% htmlWebpackPlugin.options.pages.filter(page => page.category ===
-      category).forEach(page => { %>
-      <li>
-        <a href="/<%= page.slug%>"><%= page.name %></a>
-      </li>
-      <%}) %>
-    </ul>
-    <%}) %>
+    <div class="container">
+      <h1>Le laboratoire</h1>
+
+      <div class="category">
+        <% htmlWebpackPlugin.options.categories.forEach(category => { %>
+        <h2><%= category %></h2>
+        <ul>
+          <% htmlWebpackPlugin.options.pages.filter(page => page.category ===
+          category).forEach(page => { %>
+          <li>
+            <a href="/<%= page.slug%>"><%= page.name %></a>
+          </li>
+          <%}) %>
+        </ul>
+        <%}) %>
+      </div>
+    </div>
   </body>
 </html>

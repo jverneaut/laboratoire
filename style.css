@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+  background: #fffafc;
+}
+
+h1 {
+  font-size: 54px;
+  font-weight: bold;
+  color: #9e166e;
+}
+
+.category {
+  margin-top: 40px;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+}
+
+ul {
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+ul li a {
+  color: #9e166e;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 5px 0;
+  display: block;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 80px auto;
+  padding: 0 80px;
+}
