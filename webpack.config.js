@@ -4,6 +4,7 @@ const { join, resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const isDirectory = source => lstatSync(source).isDirectory();
 const getDirectories = source =>
@@ -86,6 +87,7 @@ module.exports = {
       alwaysWriteToDisk: true,
     }),
     new HtmlWebpackHarddiskPlugin(),
+    new FaviconsWebpackPlugin('./favicon.svg'),
   ],
   devServer: {
     contentBase: resolve(__dirname, 'dist'),
