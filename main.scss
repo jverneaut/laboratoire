@@ -47,7 +47,26 @@ ul li a {
   text-decoration: none;
   font-size: 20px;
   padding: 8px 0;
+  display: inline-block;
+  position: relative;
+}
+
+ul li a::after {
+  position: absolute;
+  top: 40%;
+  left: 10px;
+  width: 100%;
+  height: 50%;
+  content: '';
   display: block;
+  background: #ffddc9;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.1s;
+}
+
+ul li a:hover::after {
+  opacity: 1;
 }
 
 .container {
