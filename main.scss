@@ -23,6 +23,7 @@ h1 {
 .paragraphs {
   margin-top: 40px;
   display: flex;
+  flex-direction: column;
   max-width: 680px;
   margin-left: 24px;
 }
@@ -32,6 +33,15 @@ h1 {
   line-height: 1.5;
   color: $primary;
   width: 50%;
+}
+
+.paragraphs p + p {
+  margin-top: 16px;
+}
+
+.paragraphs p a {
+  font-weight: bold;
+  color: $primary;
 }
 
 .btn {
