@@ -1,0 +1,15 @@
+body {
+  overflow: hidden;
+}
+
+video {
+  display: none;
+}
+
+canvas {
+  position: fixed;
+  width: 800px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
