@@ -11,7 +11,7 @@ void main() {
   float texcoordY = v_texcoord.y;
 
   vec4 color;
-  vec4 white = vec4(1.0, 1.0, 1.0, 1.0);
+  vec4 white = vec4(1.0, 1.0, 1.0, 0.0);
 
   float parallax = 0.05;
   float offsetY = -v_position.y * parallax;
@@ -30,12 +30,12 @@ void main() {
   }
 
   // Barre verticale 1
-  if (texcoordX > 0.33 && texcoordX < 0.34) {
+  if (texcoordX > 0.32 && texcoordX < 0.34) {
     color = white;
   }
 
   // Barre verticale 2
-  if (texcoordX > 0.66 && texcoordX < 0.67) {
+  if (texcoordX > 0.65 && texcoordX < 0.67) {
     color = white;
   }
 
