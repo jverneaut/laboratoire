@@ -1,0 +1,32 @@
+h1 {
+  font-size: 8vw;
+  font-family: sans-serif;
+  position: fixed;
+  top: 30vh;
+  left: 20vw;
+  font-weight: 800;
+  line-height: 1;
+  transform: rotate(-4deg);
+  transform-origin: top left;
+}
+
+h1 strong {
+  position: relative;
+}
+
+h1 strong::after {
+  z-index: -1;
+  position: absolute;
+  display: block;
+  height: 5vw;
+  background: red;
+  content: '';
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+h1 span {
+  font-size: 16px;
+}

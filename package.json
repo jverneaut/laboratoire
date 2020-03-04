@@ -23,6 +23,7 @@
     "html-webpack-plugin": "^4.0.0-beta.11",
     "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
+    "randexp": "^0.5.3",
     "rxjs": "^6.5.4",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
