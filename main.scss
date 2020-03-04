@@ -33,6 +33,10 @@ h1 {
   line-height: 1.5;
   color: $primary;
   width: 50%;
+
+  @media screen and (max-width: 980px) {
+    width: 100%;
+  }
 }
 
 .paragraphs p + p {
@@ -59,27 +63,36 @@ h1 {
 .categories {
   margin-top: 64px;
   margin-left: 24px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .category {
   margin-top: 32px;
+  width: 33%;
+
+  @media screen and (max-width: 980px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
+  }
 }
 
 h2 {
   font-size: 14px;
   font-weight: 600;
-  color: black;
+  color: #800053;
 }
 
 ul {
   margin-top: 8px;
   margin-bottom: 20px;
-  padding-left: 32px;
 }
 
 ul li {
-  list-style-type: disc;
-  padding-left: 8px;
+  list-style-type: none;
 }
 
 ul li a {
