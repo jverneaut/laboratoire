@@ -60,6 +60,7 @@ module.exports = {
       ),
     reset: join(__dirname, 'reset.css'),
     home: join(__dirname, 'main.scss'),
+    global: join(__dirname, 'global.js'),
   },
   output: {
     publicPath: '/',
@@ -71,7 +72,7 @@ module.exports = {
     ...pages.map(
       page =>
         new HtmlWebpackPlugin({
-          chunks: [page.slug],
+          chunks: [page.slug, 'global'],
           filename: page.slug + '/index.html',
           template: page.html,
           alwaysWriteToDisk: true,
