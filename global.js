@@ -42,7 +42,7 @@ if (window.location.pathname !== '/') {
     </style>
 
     <a href="${window.location.origin}" target="_parent">
-      <svg fill="#373279" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
+      <svg fill="black" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
         <rect width="24" height="2"></rect>
         <rect width="24" height="2" y="7"></rect>
         <rect width="24" height="2" y="14"></rect>

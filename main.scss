@@ -1,8 +1,8 @@
 @import './reset.css';
 
 $primary: #41ecff;
-$accent: #3f5f9c;
-$dark: #373279;
+$accent: #315b92;
+$dark: #263973;
 
 body {
   font-family: sans-serif;
@@ -83,11 +83,11 @@ h1 {
 h2 {
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: $accent;
 }
 
 ul {
-  margin-top: 8px;
+  margin-top: 4px;
   margin-bottom: 20px;
 }
 
@@ -98,7 +98,7 @@ ul li {
 ul li a {
   color: $primary;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   padding: 8px 0;
   display: inline-block;
   position: relative;
