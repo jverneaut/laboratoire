@@ -15,7 +15,7 @@ void main() {
 
   float parallax = 0.05;
   float offsetY = -v_position.y * parallax;
-  float zoom = 0.15 * (-max(0.0, (-v_scroll)));
+  float zoom = -0.2 * (1.0 - cos(-max(0.0, (-v_scroll + 0.75))));
 
   color = texture2D(u_texture, vec2((texcoordX - 0.5) * (1.0 - parallax * 2.0 + zoom) + 0.5, (texcoordY - 0.5) * (1.0 - parallax * 2.0 + zoom) + 0.5 + offsetY));
 
