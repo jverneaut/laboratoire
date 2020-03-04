@@ -1,0 +1,26 @@
+@import '../reset.css';
+
+body {
+  padding: 20vw;
+}
+
+img {
+  display: block;
+}
+
+img:nth-of-type(1) {
+  width: 30vw;
+}
+
+img:nth-of-type(2) {
+  width: 100%;
+}
+
+img:nth-of-type(3) {
+  width: 30vw;
+  margin-left: auto;
+}
+
+img + img {
+  margin-top: 20vw;
+}
