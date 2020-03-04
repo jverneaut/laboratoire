@@ -178,6 +178,14 @@ const init = () => {
         0
       );
 
+      const scrollAttributeLocation = gl.getAttribLocation(program, 'a_scroll');
+      const scroll = new Array(segments.length).fill(corners.top);
+      const scrollBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, scrollBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(scroll), gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(scrollAttributeLocation);
+      gl.vertexAttribPointer(scrollAttributeLocation, 1, gl.FLOAT, false, 0, 0);
+
       gl.bindTexture(gl.TEXTURE_2D, textures[index]);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, segments.length / 2);
     });

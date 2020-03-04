@@ -2,6 +2,7 @@ precision mediump float;
 
 varying vec2 v_texcoord;
 varying vec2 v_position;
+varying float v_scroll;
 
 uniform sampler2D u_texture;
 
@@ -14,7 +15,9 @@ void main() {
 
   float parallax = 0.05;
   float offsetY = -v_position.y * parallax;
-  color = texture2D(u_texture, vec2((texcoordX - 0.5) * (1.0 - parallax * 2.0) + 0.5, (texcoordY - 0.5) * (1.0 - parallax * 2.0) + 0.5 + offsetY));
+  float zoom = 0.15 * (-max(0.0, (-v_scroll)));
+
+  color = texture2D(u_texture, vec2((texcoordX - 0.5) * (1.0 - parallax * 2.0 + zoom) + 0.5, (texcoordY - 0.5) * (1.0 - parallax * 2.0 + zoom) + 0.5 + offsetY));
 
   // Paddings
   if (
