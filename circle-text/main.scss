@@ -1,0 +1,42 @@
+@import '../reset.css';
+
+body {
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  cursor: crosshair;
+}
+
+h1 {
+  color: black;
+  font-family: monospace;
+}
+
+span {
+  font-family: system-ui;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+div {
+  pointer-events: none;
+  transform-origin: 0 0;
+  animation: 6s rotate linear infinite;
+}
+
+img {
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
