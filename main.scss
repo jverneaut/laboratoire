@@ -1,12 +1,12 @@
 @import './reset.css';
 
-$primary: #9e166e;
-$accent: #ffddc9;
-$light: #fceef8;
+$primary: #41ecff;
+$accent: #3f5f9c;
+$dark: #373279;
 
 body {
   font-family: sans-serif;
-  background: $light;
+  background: $dark;
 
   border-top: 8px solid $primary;
   border-left: 8px solid $primary;
@@ -31,7 +31,7 @@ h1 {
 .paragraphs p {
   padding-right: 20px;
   line-height: 1.5;
-  color: $primary;
+  color: white;
   width: 50%;
 
   @media screen and (max-width: 980px) {
@@ -52,7 +52,7 @@ h1 {
   padding: 14px 16px;
   font-size: 14px;
   display: inline-block;
-  color: white;
+  color: $dark;
   text-decoration: none;
   background: $primary;
   margin-top: 40px;
@@ -83,7 +83,7 @@ h1 {
 h2 {
   font-size: 14px;
   font-weight: 600;
-  color: #800053;
+  color: white;
 }
 
 ul {
