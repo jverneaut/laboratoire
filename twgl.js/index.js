@@ -1,3 +1,13 @@
+// Some links to learn from
+
+// http://twgljs.org/examples/gpgpu-particles.html
+// http://twgljs.org/examples/twgl-cube.html
+// https://webglsamples.org/field/field.html
+// http://www-evasion.imag.fr/Membres/Fabrice.Neyret/demos/Shadertoy/indexImages.html
+// https://mattdesl.svbtle.com/glslify
+// https://www.youtube.com/watch?v=XaiYKkxvrFM&feature=youtu.be
+// https://www.interactiveshaderformat.com/sketches/871
+
 import * as twgl from 'twgl.js';
 
 import vShaderSource from './shaders/vertex.glsl';
