@@ -1,0 +1,55 @@
+body {
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  display: block;
+  font-size: 15vw;
+  line-height: 0.9;
+  height: 100vh;
+  width: 100vw;
+  white-space: nowrap;
+  display: flex;
+  overflow: hidden;
+  background: linear-gradient(to right, red 0px, red 33vw, white 33vw);
+  padding-left: 33vw;
+}
+
+@keyframes anim {
+  from {
+    text-indent: 100vw;
+  }
+  to {
+    text-indent: -100%;
+  }
+}
+
+.background {
+  background: linear-gradient(
+    to right,
+    white 0%,
+    white 33vw,
+    black 33vw,
+    black 100%
+  );
+  margin-top: auto;
+  height: 30vw;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: anim 20s linear infinite;
+  font-size: 24vw;
+}
+
+h3 {
+  position: absolute;
+  color: white;
+  left: 33vw;
+  top: 7.5vw;
+  font-size: 1vw;
+  height: 1vw;
+  transform: translateX(calc(-50% - 24px)) rotate(-90deg);
+}
