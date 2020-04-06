@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+h1 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: monospace;
+  letter-spacing: -1px;
+  font-size: 20px;
+}
