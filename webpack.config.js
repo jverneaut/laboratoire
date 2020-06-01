@@ -20,7 +20,7 @@ const pageDirectories = getDirectories(__dirname).filter(
 );
 
 console.log(join(__dirname, 'index.html'));
-console.log(getDirectories());
+console.log(getDirectories(__dirname));
 
 const getPageTitle = path => {
   const html = readFileSync(path, 'utf8');
