@@ -1,0 +1,45 @@
+@import 'common/reset';
+@import 'common/typography';
+
+body {
+  background: antiquewhite;
+}
+
+header,
+main {
+  padding: 5vw;
+  padding: 5vw;
+}
+
+main {
+  padding-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+img {
+  width: calc(33.33% - 1.25vw);
+  margin-bottom: 2.5vw;
+
+  &:nth-of-type(3n) {
+    transform: translateY(-5vw);
+  }
+
+  &:nth-of-type(3n + 2) {
+    transform: translateY(5vw);
+  }
+}
+
+h1 {
+  font-size: 20px;
+  letter-spacing: 4px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  color: white;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+}
