@@ -14,13 +14,12 @@ const getDirectories = source =>
 
 const pageDirectories = getDirectories(__dirname).filter(
   dirpath =>
-    !['dist', 'node_modules', '.vscode', '.git'].includes(
-      dirpath.split('/').reverse()[0]
+    // Filter these directories
+    !['dist', 'node_modules', '.vscode', '.git', '.netlify'].reduce(
+      (acc, curr) => (acc === false ? dirpath.includes(curr) : true),
+      false
     )
 );
-
-console.log(join(__dirname, 'index.html'));
-console.log(getDirectories(__dirname));
 
 const getPageTitle = path => {
   const html = readFileSync(path, 'utf8');
