@@ -1,6 +1,7 @@
 const { lstatSync, readdirSync, readFileSync } = require('fs');
 const { join, resolve } = require('path');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -67,7 +68,7 @@ module.exports = {
   output: {
     publicPath: '/',
     path: join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: '[name]/[name].js',
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -90,7 +91,12 @@ module.exports = {
       alwaysWriteToDisk: true,
     }),
     new HtmlWebpackHarddiskPlugin(),
-    new FaviconsWebpackPlugin('./favicon.svg'),
+    new MiniCssExtractPlugin({
+      filename: '[name]/[name].css',
+    }),
+    new FaviconsWebpackPlugin({
+      logo: resolve(__dirname, './favicon.svg'),
+    }),
   ],
   devServer: {
     contentBase: resolve(__dirname, 'dist'),
@@ -112,7 +118,12 @@ module.exports = {
       {
         test: /\.(sc|c)ss$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.(png|svg|jpe?g|gif|mp4)$/,
@@ -121,6 +132,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               publicPath: '/',
+              name: '[path][name].[ext]',
             },
           },
         ],

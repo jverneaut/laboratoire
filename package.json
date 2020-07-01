@@ -24,6 +24,7 @@
     "html-webpack-harddisk-plugin": "^1.0.1",
     "html-webpack-plugin": "^4.0.0-beta.11",
     "locomotive-scroll": "^3.5.4",
+    "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
     "randexp": "^0.5.3",
