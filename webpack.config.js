@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
 
 const isDirectory = source => lstatSync(source).isDirectory();
 const getDirectories = source =>
@@ -133,6 +135,19 @@ module.exports = {
             options: {
               publicPath: '/',
               name: '[path][name].[ext]',
+            },
+          },
+          {
+            loader: 'img-loader',
+            options: {
+              plugins: [
+                imageminMozjpeg({
+                  quality: 90,
+                }),
+                imageminPngquant({
+                  quality: [0.3, 0.6],
+                }),
+              ],
             },
           },
         ],
