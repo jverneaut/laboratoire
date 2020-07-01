@@ -1,0 +1,19 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  color: $dark;
+  background: $light;
+}
+
+main {
+  padding: 120px;
+  transition: 0.6s;
+
+  &.loading {
+    opacity: 0;
+  }
+}
