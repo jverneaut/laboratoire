@@ -1,8 +1,8 @@
 @import './reset.css';
 
-$primary: #41ecff;
-$accent: #315b92;
-$dark: #263973;
+$primary: #343a40;
+$accent: #f03e3e;
+$dark: #f1f3f5;
 
 body {
   font-family: sans-serif;
@@ -31,7 +31,7 @@ h1 {
 .paragraphs p {
   padding-right: 20px;
   line-height: 1.5;
-  color: white;
+  color: #868e96;
   width: 50%;
 
   @media screen and (max-width: 980px) {
@@ -54,7 +54,7 @@ h1 {
   display: inline-block;
   color: $dark;
   text-decoration: none;
-  background: $primary;
+  background: #15aabf;
   margin-top: 40px;
   border-radius: 4px;
   margin-left: 24px;
@@ -83,7 +83,7 @@ h1 {
 h2 {
   font-size: 14px;
   font-weight: 600;
-  color: #adc8db;
+  color: #15aabf;
 }
 
 ul {
@@ -112,7 +112,7 @@ ul li a::after {
   height: 50%;
   content: '';
   display: block;
-  background: $accent;
+  background: #66d9e8;
   z-index: -1;
   opacity: 0;
   transition: 0.1s;
