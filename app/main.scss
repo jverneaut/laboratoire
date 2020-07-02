@@ -33,7 +33,7 @@ body {
   transition: 0.2s;
 
   &:hover {
-    filter: invert(1);
+    filter: invert(1) saturate(0) brightness(1.1) contrast(1.1);
   }
 
   @media screen and (max-width: 1200px) {
