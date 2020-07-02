@@ -84,11 +84,11 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: 0.2s;
+  transition: 0.6s;
 }
 
 .experiment:hover .experiment__img img {
-  transform: scale(1.01) rotate(1deg);
+  transform: scale(1.02) rotate(1deg);
 }
 
 h1 {
