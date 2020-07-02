@@ -57,7 +57,7 @@ if (window.location.pathname !== '/') {
       </svg>
     </a>
 
-    <a class="github" href="https://github.com/jverneaut/laboratoire/tree/master${window.location.pathname}" target="_parent">
+    <a class="github" href="https://github.com/jverneaut/laboratoire/tree/master/src${window.location.pathname}" target="_parent">
       <svg width="20" height="20" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <g id="GitHub-Mark" transform="translate(-136.000000, -331.000000)" fill="#ffffff">
