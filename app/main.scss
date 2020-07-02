@@ -7,7 +7,7 @@ $dark: #f1f3f5;
 body {
   font-family: sans-serif;
   background: white;
-  padding: 120px;
+  padding: 80px 120px;
 
   min-height: 100vh;
   box-sizing: border-box;
@@ -16,7 +16,7 @@ body {
 .experiments {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 56px;
   margin-left: -16px;
   margin-right: -16px;
 }
