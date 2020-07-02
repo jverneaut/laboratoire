@@ -25,7 +25,7 @@ export default ({ pages, categories }) => {
           ...page,
           screenshot: require(`../src/${page.screenshot
             .replace('../src/', '')
-            .replace('/screenshot.png', '')}/screenshot.png?size=500`),
+            .replace('/screenshot.png', '')}/screenshot.png?size=400`),
         }
       : page
   );
