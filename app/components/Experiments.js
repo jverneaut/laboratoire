@@ -7,7 +7,9 @@ const Experiments = ({ pages }) => {
       {pages.map(page => (
         <a href={page.slug} key={page.slug} className="experiment">
           <div className="experiment__img">
-            {page.screenshot && <img src={page.screenshot.src} />}
+            {page.screenshot && (
+              <img src={page.screenshot.src} loading="lazy" />
+            )}
           </div>
           <div className="experiment__info">
             <h2 className="experiment__title">{page.name}</h2>
