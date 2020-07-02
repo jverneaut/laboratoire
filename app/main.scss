@@ -6,8 +6,8 @@ $dark: #f1f3f5;
 
 body {
   font-family: sans-serif;
-  background: $dark;
-  padding: 80px;
+  background: white;
+  padding: 120px;
 
   min-height: 100vh;
   box-sizing: border-box;
@@ -27,7 +27,6 @@ body {
   border-radius: 8px;
   margin: 0 16px;
   margin-bottom: 16px;
-  box-shadow: 0px 10px 24px -16px rgba(0, 0, 0, 0.12);
   text-decoration: none;
   margin-bottom: 40px;
   overflow: hidden;
