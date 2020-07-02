@@ -30,6 +30,11 @@ body {
   text-decoration: none;
   margin-bottom: 40px;
   overflow: hidden;
+  transition: 0.1s;
+
+  &:hover {
+    filter: invert(1);
+  }
 
   @media screen and (max-width: 1200px) {
     width: calc(33.33% - 16px);
