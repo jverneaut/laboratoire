@@ -22,13 +22,15 @@ body {
 }
 
 .experiment {
-  width: calc(25% - 16px);
+  width: calc(25% - 32px);
   background: white;
-  border-radius: 4px;
-  margin: 0 8px;
+  border-radius: 8px;
+  margin: 0 16px;
   margin-bottom: 16px;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 10px 24px -16px rgba(0, 0, 0, 0.12);
   text-decoration: none;
+  margin-bottom: 40px;
+  overflow: hidden;
 
   @media screen and (max-width: 1200px) {
     width: calc(33.33% - 16px);
@@ -42,19 +44,19 @@ body {
 }
 
 .experiment__info {
-  padding: 16px;
+  padding: 16px 20px;
 }
 
 .experiment__title {
   color: #343a40;
   font-weight: bold;
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 4px;
 }
 
 .experiment__date {
   color: #adb5bd;
-  font-weight: 300;
+  font-size: 14px;
 }
 
 .experiment__img {
