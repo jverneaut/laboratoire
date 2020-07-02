@@ -5,10 +5,17 @@ import App from './components/App';
 import './main.scss';
 
 if (document.querySelector('#root').childElementCount) {
-  ReactDOM.render(
-    <App pages={window.pages} categories={window.categories} />,
-    document.querySelector('#root')
-  );
+  if (process.env.production) {
+    ReactDOM.hydrate(
+      <App pages={window.pages} categories={window.categories} />,
+      document.querySelector('#root')
+    );
+  } else {
+    ReactDOM.render(
+      <App pages={window.pages} categories={window.categories} />,
+      document.querySelector('#root')
+    );
+  }
 }
 
 export default ({ pages, categories }) => {
