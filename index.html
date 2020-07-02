@@ -17,41 +17,8 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <h1>Le<br />laboratoire</h1>
-
-      <div class="paragraphs">
-        <p>
-          Ce site rassemble mes expérimentations frontend. Il contient des
-          essais d'animations, des expériences avec WebGL, des essais d'api et
-          bien d'autres choses.
-        </p>
-
-        <p>
-          La version précédente est disponible
-          <a href="https://fervent-allen-3654dd.netlify.com/">à cette url</a>.
-        </p>
-      </div>
-
-      <a class="btn" href="https://github.com/jverneaut/laboratoire">
-        Code Source
-      </a>
-
-      <div class="categories">
-        <% htmlWebpackPlugin.options.categories.forEach(category => { %>
-        <div class="category">
-          <h2><%= category %></h2>
-          <ul>
-            <% htmlWebpackPlugin.options.pages.filter(page => page.category ===
-            category).forEach(page => { %>
-            <li>
-              <a href="/<%= page.slug%>"><%= page.name %></a>
-            </li>
-            <%}) %>
-          </ul>
-        </div>
-        <%}) %>
-      </div>
+    <div id="root">
+      {{prerender:home.js}}
     </div>
   </body>
 </html>

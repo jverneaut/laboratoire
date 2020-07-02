@@ -1,5 +1,6 @@
 const { lstatSync, readdirSync, readFileSync } = require('fs');
 const { join, resolve } = require('path');
+const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -65,6 +66,7 @@ module.exports = {
       ),
     reset: join(__dirname, 'reset.css'),
     home: join(__dirname, 'main.scss'),
+    home_js: join(__dirname, 'home.js'),
     global: join(__dirname, 'global.js'),
   },
   output: {
@@ -73,7 +75,20 @@ module.exports = {
     filename: '[name]/[name].js',
   },
   plugins: [
+    new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template:
+        '!!prerender-loader?' +
+        JSON.stringify({ string: true, params: { pages, categories } }) +
+        '!index.html',
+      filename: 'index.html',
+      inject: true,
+      chunks: ['home', 'home_js'],
+      pages,
+      categories,
+      alwaysWriteToDisk: true,
+    }),
     ...pages.map(
       page =>
         new HtmlWebpackPlugin({
@@ -83,15 +98,6 @@ module.exports = {
           alwaysWriteToDisk: true,
         })
     ),
-    new HtmlWebpackPlugin({
-      template: join(__dirname, 'index.html'),
-      filename: 'index.html',
-      inject: true,
-      pages,
-      categories,
-      chunks: ['home'],
-      alwaysWriteToDisk: true,
-    }),
     new HtmlWebpackHarddiskPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name]/[name].css',
