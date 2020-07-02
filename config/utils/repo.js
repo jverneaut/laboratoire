@@ -14,7 +14,7 @@ const getFirstCommitDateForFile = async filePath => {
       return walker.fileHistoryWalk(filePath, 500);
     })
     .then(commits => {
-      if (commits) {
+      if (commits && commits[0] && commits[0].commit) {
         return commits[commits.length - 1].commit.date();
       } else {
         return Date.now();
