@@ -1,6 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
 
 module.exports = {
   module: {
@@ -27,7 +25,21 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|svg|jpe?g|gif|mp4)$/,
+        test: /\.(png|svg|jpe?g)$/,
+        use: [
+          {
+            loader: 'responsive-loader',
+            options: {
+              adapter: require('responsive-loader/sharp'),
+              context: 'src',
+              publicPath: '/',
+              name: '[path]/[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(gif|mp4)$/,
         use: [
           {
             loader: 'file-loader',
@@ -35,19 +47,6 @@ module.exports = {
               context: 'src',
               publicPath: '/',
               name: '[path]/[name].[ext]',
-            },
-          },
-          {
-            loader: 'img-loader',
-            options: {
-              plugins: [
-                imageminMozjpeg({
-                  quality: 90,
-                }),
-                imageminPngquant({
-                  quality: [0.3, 0.6],
-                }),
-              ],
             },
           },
         ],
