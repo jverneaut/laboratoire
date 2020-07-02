@@ -10,7 +10,7 @@ npm install
 
 ## Développement
 
-1. Ajouter un dossier à la racine avec à sa source un fichier `index.js` et un fichier `index.html` Le nom de ce dossier détermine le slug de la page.
+1. Créer un dossier dans le dossier `src` avec à sa racine un fichier `index.js` et un fichier `index.html` Le nom de ce dossier détermine le slug de la page.
 
 2. Ajouter au fichier html un tag `<title>MON TITRE</title>` qui deviendra le nom de l'expérimentation sur la page d'accueil.
 
