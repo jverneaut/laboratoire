@@ -67,6 +67,7 @@ body {
   width: 100%;
   position: relative;
   background: #f1f3f5;
+  overflow: hidden;
 
   &::after {
     content: '';
@@ -83,6 +84,11 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: 0.2s;
+}
+
+.experiment:hover .experiment__img img {
+  transform: scale(1.2) rotate(4deg);
 }
 
 h1 {
