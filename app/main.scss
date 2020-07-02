@@ -37,13 +37,13 @@ body {
   }
 
   @media screen and (max-width: 1200px) {
-    width: calc(33.33% - 16px);
+    width: calc(33.33% - 32px);
   }
   @media screen and (max-width: 1000px) {
-    width: calc(50% - 16px);
+    width: calc(50% - 32px);
   }
   @media screen and (max-width: 600px) {
-    width: calc(100% - 16px);
+    width: calc(100% - 32px);
   }
 }
 
