@@ -26,13 +26,17 @@ const getPageCategory = path => {
     .replace('" />', '');
 };
 
-const pages = pageDirectories.map(pageDirectory => ({
-  slug: pageDirectory.split('/').reverse()[0],
-  html: join(pageDirectory, 'index.html'),
-  js: join(pageDirectory, 'index.js'),
-  name: getPageTitle(join(pageDirectory, 'index.html')),
-  category: getPageCategory(join(pageDirectory, 'index.html')),
-}));
+const pages = pageDirectories.map(pageDirectory => {
+  const slug = pageDirectory.split('/').reverse()[0];
+  const html = join(pageDirectory, 'index.html');
+  const js = join(pageDirectory, 'index.js');
+  const name = getPageTitle(join(pageDirectory, 'index.html'));
+  const category = getPageCategory(join(pageDirectory, 'index.html'));
+
+  const page = { slug, html, js, name, category };
+
+  return page;
+});
 
 module.exports = {
   entry: {

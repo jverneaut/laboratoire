@@ -1,4 +1,5 @@
 import React from 'react';
+import Experiments from './Experiments';
 
 const App = ({ pages, categories }) => (
   <div className="container">
@@ -22,22 +23,8 @@ const App = ({ pages, categories }) => (
     <a className="btn" href="https://github.com/jverneaut/laboratoire">
       Code Source
     </a>
-    <div className="categories">
-      {categories.map(category => (
-        <div key={category} className="category">
-          <h2>{category}</h2>
-          <ul>
-            {pages
-              .filter(page => page.category === category)
-              .map(page => (
-                <li key={page.slug}>
-                  <a href={`/${page.slug}`}>{page.name}</a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+
+    <Experiments pages={pages} />
   </div>
 );
 
