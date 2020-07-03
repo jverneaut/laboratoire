@@ -162,8 +162,10 @@ h1 {
   margin: 0 16px;
 
   @media screen and (max-width: 720px) {
+    display: flex;
+    align-items: center;
     padding-right: 0;
-    width: 100%;
+    width: calc(100% - 32px);
 
     & + .filters__group {
       margin-top: 16px;
@@ -174,12 +176,23 @@ h1 {
 .filters__group h3 {
   margin-bottom: 8px;
   font-weight: bold;
+
+  @media screen and (max-width: 720px) {
+    white-space: nowrap;
+    margin-right: 8px;
+  }
 }
 
 .filters__group ul {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  @media screen and (max-width: 720px) {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow: auto;
+  }
 }
 
 .filters__group ul li {
