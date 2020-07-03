@@ -8,15 +8,20 @@ body {
   font-family: sans-serif;
   background: white;
   padding: 80px 120px;
+  font-family: 'Muli', sans-serif;
 
   min-height: 100vh;
   box-sizing: border-box;
+
+  @media screen and (max-width: 720px) {
+    padding: 24px 40px;
+  }
 }
 
 .experiments {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 56px;
+  margin-top: 72px;
   margin-left: -16px;
   margin-right: -16px;
 }
@@ -30,7 +35,7 @@ body {
   text-decoration: none;
   margin-bottom: 40px;
   overflow: hidden;
-  transition: 0.2s;
+  transition: 0.2s filter;
 
   &:hover {
     filter: invert(1) saturate(0) brightness(1.1) contrast(1.1);
@@ -56,6 +61,7 @@ body {
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 4px;
+  letter-spacing: -0.2px;
 }
 
 .experiment__date {
@@ -92,23 +98,22 @@ body {
 }
 
 h1 {
-  font-size: 54px;
-  font-weight: bold;
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: -0.6px;
   color: $primary;
 }
 
 .paragraphs {
-  margin-top: 40px;
+  margin-top: 24px;
   display: flex;
   flex-direction: column;
-  max-width: 680px;
+  max-width: 640px;
 }
 
 .paragraphs p {
-  padding-right: 20px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #868e96;
-  width: 50%;
 
   @media screen and (max-width: 980px) {
     width: 100%;
@@ -116,7 +121,7 @@ h1 {
 }
 
 .paragraphs p + p {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .paragraphs p a {
@@ -131,6 +136,7 @@ h1 {
   color: $dark;
   text-decoration: none;
   background: #15aabf;
-  margin-top: 40px;
-  border-radius: 4px;
+  border-radius: 8px;
+  margin-top: 24px;
+  font-weight: bold;
 }

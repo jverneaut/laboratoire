@@ -3,11 +3,7 @@ import Experiments from './Experiments';
 
 const App = ({ pages, categories }) => (
   <div className="container">
-    <h1>
-      Le
-      <br />
-      laboratoire
-    </h1>
+    <h1>Le laboratoire</h1>
     <div className="paragraphs">
       <p>
         Ce site rassemble mes expérimentations frontend. Il contient des essais
