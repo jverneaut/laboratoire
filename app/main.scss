@@ -192,6 +192,7 @@ h1 {
     flex-wrap: nowrap;
     white-space: nowrap;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
