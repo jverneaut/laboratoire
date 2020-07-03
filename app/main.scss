@@ -142,6 +142,7 @@ h1 {
 }
 
 .filters {
+  margin: 0 -16px;
   margin-top: 32px;
   display: flex;
   position: sticky;
@@ -151,12 +152,14 @@ h1 {
   padding: 16px 0;
   @media screen and (max-width: 720px) {
     flex-direction: column;
+    margin-top: 0;
   }
 }
 
 .filters__group {
   width: 50%;
   padding-right: 32px;
+  margin: 0 16px;
 
   @media screen and (max-width: 720px) {
     padding-right: 0;
