@@ -21,7 +21,7 @@ body {
 .experiments {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 72px;
+  margin-top: 40px;
   margin-left: -16px;
   margin-right: -16px;
 }
@@ -142,6 +142,7 @@ h1 {
 }
 
 .filters {
+  margin-top: 32px;
   display: flex;
   position: sticky;
   top: 0;
