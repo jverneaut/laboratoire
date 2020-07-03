@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { join, relative } = require('path');
 const { lstatSync, readdirSync, readFileSync, existsSync } = require('fs');
-const { getFirstCommitDateForFileSync } = require('./utils/repo');
 
 const isDirectory = source => lstatSync(source).isDirectory();
 const getDirectories = source =>
@@ -27,6 +26,19 @@ const getPageCategory = path => {
     .replace('" />', '');
 };
 
+const getPageDate = path => {
+  const html = readFileSync(path, 'utf8');
+  const dateMatch = html.match(/<meta name="date" content="(.*?)" \/>/g);
+  if (!dateMatch) return Date.now();
+
+  return parseInt(
+    dateMatch[0]
+      .replace('<meta name="date" content="', '')
+      .replace('" />', '')
+      .padEnd(13, 0)
+  );
+};
+
 const pages = pageDirectories.map(pageDirectory => {
   const slug = pageDirectory.split('/').reverse()[0];
   const html = join(pageDirectory, 'index.html');
@@ -34,19 +46,11 @@ const pages = pageDirectories.map(pageDirectory => {
   const name = getPageTitle(join(pageDirectory, 'index.html'));
   const category = getPageCategory(join(pageDirectory, 'index.html'));
   const screenshot = join(pageDirectory, 'screenshot.png');
+  const date = getPageDate(join(pageDirectory, 'index.html')) || 'TROLOLO';
 
-  const page = { slug, html, js, name, category };
+  const page = { slug, html, js, name, category, date };
   if (existsSync(screenshot)) {
     page.screenshot = relative(__dirname, screenshot);
-  }
-
-  try {
-    const date = getFirstCommitDateForFileSync(
-      relative(join(__dirname, '..'), html)
-    );
-    page.date = date;
-  } catch (err) {
-    throw Error(err);
   }
 
   return page;
