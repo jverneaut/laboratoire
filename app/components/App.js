@@ -1,42 +1,50 @@
-import React, { useState } from 'react';
-import Experiments from './Experiments';
-import Filters from './Filters';
+import React, { useEffect, useState } from 'react';
+
+import Home from './Home';
+import Experiment from './Experiment';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+const HomePlaceholder = ({ setLoaded }) => {
+  useEffect(() => {
+    setLoaded(false);
+  }, []);
+
+  return null;
+};
 
 const App = ({ pages, categories }) => {
-  const defaultFilterFunction = (a, b) => (a.date > b.date ? -1 : 1);
+  const [loaded, setLoaded] = useState(false);
 
-  const [filterFunction, setFilterFunction] = useState(() => arr =>
-    arr.sort(defaultFilterFunction)
-  );
+  const onMessage = e => {
+    if (e.data.type === 'loaded') {
+      if (window.location.pathname !== '/') {
+        setLoaded(true);
+      }
+    }
+  };
 
-  const sortedPages = filterFunction(pages);
+  useEffect(() => {
+    window.addEventListener('message', onMessage);
+    return () => {
+      window.removeEventListener('message', onMessage);
+    };
+  });
 
   return (
-    <div className="container">
-      <h1>Le laboratoire</h1>
-      <div className="paragraphs">
-        <p>
-          Ce site rassemble mes expérimentations frontend. Il contient des
-          essais d'animations, des expériences avec WebGL, des essais d'api et
-          bien d'autres choses.
-        </p>
-
-        <p>
-          La version précédente est disponible{' '}
-          <a href="https://fervent-allen-3654dd.netlify.com/">à cette url</a>.
-        </p>
+    <Router>
+      <div style={{ opacity: loaded ? 1 : 0 }}>
+        <Switch>
+          <Route path="/" exact>
+            <HomePlaceholder setLoaded={setLoaded} />
+          </Route>
+          <Route path="/*">
+            <Experiment setLoaded={setLoaded} />
+          </Route>
+        </Switch>
       </div>
-      <a className="btn" href="https://github.com/jverneaut/laboratoire">
-        Code Source
-      </a>
-
-      <Filters
-        defaultFilterFunction={defaultFilterFunction}
-        setFilterFunction={setFilterFunction}
-        categories={categories}
-      />
-      <Experiments pages={sortedPages} />
-    </div>
+      {loaded ? null : <Home pages={pages} categories={categories} />}
+    </Router>
   );
 };
 

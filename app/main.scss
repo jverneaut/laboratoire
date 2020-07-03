@@ -7,12 +7,14 @@ $dark: #f1f3f5;
 body {
   font-family: sans-serif;
   background: white;
-  padding: 80px 120px;
   font-family: 'Muli', sans-serif;
 
   min-height: 100vh;
   box-sizing: border-box;
+}
 
+main {
+  padding: 80px 120px;
   @media screen and (max-width: 720px) {
     padding: 24px 40px;
   }
@@ -50,6 +52,10 @@ body {
   @media screen and (max-width: 600px) {
     width: calc(100% - 32px);
   }
+}
+
+.experiment a {
+  text-decoration: none;
 }
 
 .experiment__info {
@@ -217,5 +223,17 @@ h1 {
     border-color: #868e96;
     background: #868e96;
     color: white;
+  }
+}
+
+body.iframe-container {
+  overflow: hidden;
+
+  iframe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }

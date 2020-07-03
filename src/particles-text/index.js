@@ -12,7 +12,7 @@ let height = window.innerHeight * 1.5;
 canvas.width = width;
 canvas.height = height;
 
-const input = fromEvent(window, 'keydown');
+const input = fromEvent(window.top, 'keydown');
 
 const text = input.pipe(
   map(e => e.key),

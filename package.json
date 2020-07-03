@@ -35,6 +35,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-flip-move": "^3.0.4",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^5.2.0",
     "responsive-loader": "^1.2.0",
     "rxjs": "^6.5.5",
     "sass-loader": "^8.0.2",

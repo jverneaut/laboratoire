@@ -15,61 +15,13 @@ document.head.appendChild(analytics);
 document.head.appendChild(analyticsScript);
 
 if (window.location.pathname !== '/') {
-  const html = `
-    <style>
-      * {
-        margin: 0;
-      }
-
-      body {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      a {
-        background: white;
-        height: 56px;
-        width: 56px;
-        border-radius: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
-      }
-
-      a.github {
-        background: black;
-        margin-top: 16px;
-        height: 48px;
-        width: 48px;
-      }
-    </style>
-
-    <a href="${window.location.origin}" target="_parent">
-      <svg fill="black" width="24" height="16" xmlns="http://www.w3.org/2000/svg">
-        <rect width="24" height="2"></rect>
-        <rect width="24" height="2" y="7"></rect>
-        <rect width="24" height="2" y="14"></rect>
-      </svg>
-    </a>
-
-    <a class="github" href="https://github.com/jverneaut/laboratoire/tree/master/src${window.location.pathname}" target="_parent">
-      <svg width="20" height="20" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <g id="GitHub-Mark" transform="translate(-136.000000, -331.000000)" fill="#ffffff">
-            <path d="M152.608,331.455 C143.614,331.455 136.32,338.748 136.32,347.745 C136.32,354.942 140.987,361.047 147.46,363.201 C148.275,363.351 148.572,362.848 148.572,362.416 C148.572,362.029 148.558,361.005 148.55,359.646 C144.019,360.63 143.063,357.462 143.063,357.462 C142.322,355.58 141.254,355.079 141.254,355.079 C139.775,354.069 141.366,354.089 141.366,354.089 C143.001,354.204 143.861,355.768 143.861,355.768 C145.314,358.257 147.674,357.538 148.602,357.121 C148.75,356.069 149.171,355.351 149.636,354.944 C146.019,354.533 142.216,353.135 142.216,346.893 C142.216,345.115 142.851,343.66 143.893,342.522 C143.725,342.11 143.166,340.453 144.053,338.211 C144.053,338.211 145.42,337.773 148.532,339.881 C149.831,339.519 151.225,339.339 152.61,339.332 C153.994,339.339 155.387,339.519 156.688,339.881 C159.798,337.773 161.163,338.211 161.163,338.211 C162.052,340.453 161.493,342.11 161.326,342.522 C162.37,343.66 163,345.115 163,346.893 C163,353.151 159.191,354.528 155.563,354.931 C156.147,355.434 156.668,356.428 156.668,357.947 C156.668,360.125 156.648,361.882 156.648,362.416 C156.648,362.852 156.942,363.359 157.768,363.2 C164.236,361.041 168.899,354.94 168.899,347.745 C168.899,338.748 161.605,331.455 152.608,331.455" id="Fill-51"></path>
-          </g>
-        </g>
-      </svg>
-    </a>
-  `;
-
   const iframe = document.createElement('iframe');
-  iframe.src = 'data:text/html;charset=utf-8,' + escape(html);
+  iframe.src = location.origin + '/overlay.html?iframe=1';
+
+  window.addEventListener('load', () => {
+    window.top.postMessage({ type: 'loaded' });
+  });
+  window.top.postMessage({ type: 'title', payload: document.title });
 
   Object.assign(iframe.style, {
     width: '92px',
