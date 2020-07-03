@@ -165,7 +165,7 @@ h1 {
     padding-right: 0;
     width: 100%;
 
-    &.filters__group {
+    & + .filters__group {
       margin-top: 16px;
     }
   }
