@@ -1,5 +1,8 @@
 import React from 'react';
 import { formatDistance } from 'date-fns';
+import { fr } from 'date-fns/locale';
+
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 const Experiments = ({ pages }) => {
   return (
@@ -16,9 +19,12 @@ const Experiments = ({ pages }) => {
             <div className="experiment__info">
               <h2 className="experiment__title">{page.name}</h2>
               <div className="experiment__date">
-                {formatDistance(new Date(page.date), Date.now(), {
-                  addSuffix: true,
-                })}
+                {capitalize(
+                  formatDistance(new Date(page.date), Date.now(), {
+                    addSuffix: true,
+                    locale: fr,
+                  })
+                )}
               </div>
             </div>
           </a>
