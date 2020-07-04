@@ -244,7 +244,7 @@ body.iframe-container {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 10000;
 }
 
 .loader__bar {
@@ -257,5 +257,5 @@ body.iframe-container {
   background: $accent;
   transform: scaleX(0);
   opacity: 0;
-  transition: 0.3s all;
+  transition: 0.3s;
 }
