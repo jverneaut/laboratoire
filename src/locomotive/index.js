@@ -40,5 +40,6 @@ scroll.on('scroll', setImagesStyles);
 
 window.addEventListener('load', () => {
   setImagesStyles({ scroll: { y: 0 } });
+  scroll.update();
   document.querySelector('main').classList.remove('loading');
 });
