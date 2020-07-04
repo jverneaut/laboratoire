@@ -7,17 +7,17 @@ const Loader = ({ loaded }) => {
   useEffect(() => {
     setImmediate(() => {
       setScale(0.2);
-
-      const tick = () => {
-        setScale(scale => Math.max(scale, scale + 0.2 * (1 - scale)));
-        timeoutId = setTimeout(tick, Math.random() * 200 + 200);
-      };
-      timeoutId = setTimeout(tick, Math.random() * 200 + 200);
-
-      return () => {
-        clearInterval(timeoutId);
-      };
     });
+
+    const tick = () => {
+      setScale(scale => Math.max(scale, scale + 0.2 * (1 - scale)));
+      timeoutId = setTimeout(tick, Math.random() * 200 + 200);
+    };
+    timeoutId = setTimeout(tick, Math.random() * 200 + 200);
+
+    return () => {
+      clearInterval(timeoutId);
+    };
   }, []);
 
   useEffect(() => {

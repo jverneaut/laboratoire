@@ -1,12 +1,12 @@
 @import '../src/reset.css';
 
 $primary: #343a40;
-$accent: #19aabf;
+$accent: #fd7e14;
 $dark: #f1f3f5;
 
 body {
   font-family: sans-serif;
-  background: white;
+  background: linear-gradient(to bottom, #fffbf7 0%, white 200px);
   font-family: 'Muli', sans-serif;
 
   min-height: 100vh;
@@ -38,7 +38,9 @@ main {
   margin-bottom: 40px;
   overflow: hidden;
   transition: 0.2s filter;
+  outline: none;
 
+  &:focus,
   &:hover {
     filter: invert(1) saturate(0) brightness(1.1) contrast(1.1);
   }
@@ -119,7 +121,7 @@ h1 {
 
 .paragraphs p {
   line-height: 1.6;
-  color: #868e96;
+  color: #495057;
 
   @media screen and (max-width: 980px) {
     width: 100%;
@@ -132,7 +134,7 @@ h1 {
 
 .paragraphs p a {
   font-weight: bold;
-  color: #19aabf;
+  color: $accent;
 }
 
 .btn {
@@ -141,10 +143,18 @@ h1 {
   display: inline-block;
   color: $dark;
   text-decoration: none;
-  background: #15aabf;
+  background: $accent;
   border-radius: 8px;
   margin-top: 24px;
   font-weight: bold;
+  outline: none;
+  border: 1px solid transparent;
+  transition: 0.3s;
+
+  &:hover,
+  &:focus {
+    background: #343a40;
+  }
 }
 
 .filters {
@@ -211,18 +221,20 @@ h1 {
   -webkit-appearance: none;
   background: none;
   border: none;
-  border: 1px solid #f1f3f5;
+  border: 1px solid transparent;
   font-family: inherit;
   cursor: pointer;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #495057;
+  outline: none;
 
   &.active {
-    border-color: #868e96;
-    background: #868e96;
-    color: white;
+    border-color: #fff4e6;
+    background: #fff4e6;
+    color: #f76707;
   }
 }
 
@@ -258,4 +270,14 @@ body.iframe-container {
   transform: scaleX(0);
   opacity: 0;
   transition: 0.3s;
+}
+
+button,
+.paragraphs a {
+  &:focus {
+    outline: none !important;
+    box-sizing: border-box !important;
+    border: 1px solid $accent !important;
+    border-style: dashed !important;
+  }
 }
