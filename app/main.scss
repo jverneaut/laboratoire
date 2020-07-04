@@ -168,7 +168,6 @@ h1 {
   padding: 16px 0;
   @media screen and (max-width: 720px) {
     flex-direction: column;
-    margin-top: 0;
   }
 }
 
@@ -280,4 +279,48 @@ button,
     border: 1px solid $accent !important;
     border-style: dashed !important;
   }
+}
+
+.infos {
+  display: inline-flex;
+  margin-top: 24px;
+}
+
+.infos__profile {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+  background: $accent;
+}
+
+.infos__profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.infos__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 12px;
+}
+
+.infos__name {
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 6px;
+}
+
+.infos__name a,
+.infos__contact {
+  font-weight: normal;
+  text-decoration: none;
+  color: $accent;
 }

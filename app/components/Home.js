@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Experiments from './Experiments';
 import Filters from './Filters';
+import Infos from './Infos';
 
 const Home = ({ pages, categories }) => {
   useEffect(() => {
@@ -20,6 +21,9 @@ const Home = ({ pages, categories }) => {
     <main>
       <div className="container">
         <h1>Le laboratoire</h1>
+
+        <Infos />
+
         <div className="paragraphs">
           <p>
             Ce site rassemble mes expérimentations frontend. Il contient des
