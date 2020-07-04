@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Home from './Home';
 import Experiment from './Experiment';
+import Loader from './Loader';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -33,6 +34,14 @@ const App = ({ pages, categories }) => {
 
   return (
     <Router>
+      <Switch>
+        <Route path="/" exact>
+          {null}
+        </Route>
+        <Route path="/*">
+          <Loader loaded={loaded} />
+        </Route>
+      </Switch>
       <div style={{ opacity: loaded ? 1 : 0 }}>
         <Switch>
           <Route path="/" exact>

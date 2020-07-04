@@ -237,3 +237,25 @@ body.iframe-container {
     height: 100%;
   }
 }
+
+.loader {
+  position: fixed;
+  height: 2px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.loader__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  background: $accent;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: 0.3s all;
+}
