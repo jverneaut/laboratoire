@@ -5,16 +5,19 @@ const Loader = ({ loaded }) => {
   const [scale, setScale] = useState(0);
 
   useEffect(() => {
-    const tick = () => {
-      setScale(scale => Math.max(scale, scale + 0.2 * (1 - scale)));
+    setImmediate(() => {
+      setScale(0.2);
+
+      const tick = () => {
+        setScale(scale => Math.max(scale, scale + 0.2 * (1 - scale)));
+        timeoutId = setTimeout(tick, Math.random() * 200 + 200);
+      };
       timeoutId = setTimeout(tick, Math.random() * 200 + 200);
-    };
 
-    timeoutId = setTimeout(tick, Math.random() * 200 + 200);
-
-    return () => {
-      clearInterval(timeoutId);
-    };
+      return () => {
+        clearInterval(timeoutId);
+      };
+    });
   }, []);
 
   useEffect(() => {
