@@ -4,6 +4,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.obj$/,
+        use: {
+          loader: 'webpack-obj-loader',
+        },
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
