@@ -30,11 +30,6 @@ const Home = ({ pages, categories }) => {
             essais d'animations, des expériences avec WebGL, des essais d'api et
             bien d'autres choses.
           </p>
-
-          <p>
-            La version précédente est disponible{' '}
-            <a href="https://fervent-allen-3654dd.netlify.com/">à cette url</a>.
-          </p>
         </div>
         <a className="btn" href="https://github.com/jverneaut/laboratoire">
           Code Source
