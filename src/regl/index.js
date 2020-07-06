@@ -1,3 +1,6 @@
+import '../reset.css';
+import './main.scss';
+
 const regl = require('regl')();
 import head from './ghost.obj';
 import mat4 from 'gl-mat4';
@@ -14,7 +17,7 @@ const draw = regl({
   },
   uniforms: {
     u_time: ({ tick }) => tick,
-    u_scale: 0.5,
+    u_scale: 1.5,
     u_rotation: ({ time }) => mat4.rotateY([], mat4.identity([]), time),
     u_view: ({ tick }) => {
       const t = 0.01 * tick;
@@ -40,7 +43,7 @@ const draw = regl({
 const loop = regl.frame(() => {
   try {
     regl.clear({
-      color: [0, 0, 0, 1],
+      color: [0, 0, 0, 0],
     });
 
     draw();

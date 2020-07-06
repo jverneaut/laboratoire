@@ -1,0 +1,26 @@
+body {
+  background: linear-gradient(to bottom, #000000 0%, #2e2e2e 100%);
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+h1 {
+  position: fixed;
+  color: #ffffffcf;
+  font-size: 40vh;
+  text-align: center;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: system-ui;
+  letter-spacing: 1vh;
+  font-weight: 900;
+  mix-blend-mode: difference;
+  z-index: 1000;
+}
+
+canvas {
+  filter: invert(1);
+}

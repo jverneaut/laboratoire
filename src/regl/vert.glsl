@@ -11,18 +11,15 @@ void main() {
   v_normals = a_normals;
   vec4 position = vec4(u_scale * a_position, 1.0);
 
-  position.x =
-    position.x + (
-          0.12 * sin(position.y + u_time * 0.02)
-        + 0.03 * sin(position.y * 5.0 + u_time * 0.15)
-      ) * 0.2 * min(position.y, 0.0);
-  position.z =
-    position.z + (
-          0.12 * sin(position.y + u_time * 0.02 + 3.14 * 0.5)
-        + 0.03 * sin(position.y * 5.0 + u_time * 0.15 + 3.14 * 0.5)
-      ) * 0.2 * min(position.y, 0.0);
+  position.x += 0.1 * sin(u_time * 0.02);
+  position.z += 0.1 * cos(u_time * 0.02);
 
-  position.y = position.y + 2.0;
+  position.x += 0.2 * sin(position.y + (position.y * 4.0 + u_time) * 0.04);
+  position.z += 0.2 * cos(position.y + (position.y * 4.0 + u_time) * 0.04);
+
+  position.y += 1.0 * cos(u_time * 0.01);
+
+  position.y = position.y + 3.5;
 
   gl_Position = u_projection * u_view * position;
 }
