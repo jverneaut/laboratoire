@@ -14,8 +14,25 @@ const draw = regl({
   },
   uniforms: {
     u_time: ({ tick }) => tick,
-    u_scale: 0.05,
+    u_scale: 0.5,
     u_rotation: ({ time }) => mat4.rotateY([], mat4.identity([]), time),
+    u_view: ({ tick }) => {
+      const t = 0.01 * tick;
+      return mat4.lookAt(
+        [],
+        [30 * Math.cos(t), 2.5, 30 * Math.sin(t)],
+        [0, 0, 0],
+        [0, 1, 0]
+      );
+    },
+    u_projection: ({ viewportWidth, viewportHeight }) =>
+      mat4.perspective(
+        [],
+        Math.PI / 4,
+        viewportWidth / viewportHeight,
+        0.01,
+        1000
+      ),
   },
   elements: head.indices,
 });
