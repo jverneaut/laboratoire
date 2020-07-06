@@ -17,9 +17,9 @@ void main() {
   position.x += 0.2 * sin(position.y + (position.y * 4.0 + u_time) * 0.04);
   position.z += 0.2 * cos(position.y + (position.y * 4.0 + u_time) * 0.04);
 
-  position.y += 1.0 * cos(u_time * 0.01);
+  position.y += 0.85 * cos(u_time * 0.014);
 
-  position.y = position.y + 3.5;
+  position.y = position.y + 4.5;
 
   gl_Position = u_projection * u_view * position;
 }

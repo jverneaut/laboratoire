@@ -24,3 +24,12 @@ h1 {
 canvas {
   filter: invert(1);
 }
+
+p {
+  position: fixed;
+  color: white;
+  right: 20px;
+  bottom: 20px;
+  font-size: 14px;
+  font-family: system-ui;
+}
