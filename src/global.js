@@ -16,7 +16,7 @@ document.head.appendChild(analyticsScript);
 
 if (window.location.pathname !== '/') {
   const iframe = document.createElement('iframe');
-  iframe.src = location.origin + '/overlay.html?iframe=1';
+  iframe.src = location.origin + '/overlay.html';
 
   window.addEventListener('load', () => {
     window.top.postMessage({ type: 'loaded' });

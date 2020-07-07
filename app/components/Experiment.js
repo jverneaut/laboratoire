@@ -18,7 +18,7 @@ const Experiment = () => {
     }
   });
 
-  return <iframe src={location.pathname + '?iframe=1'}></iframe>;
+  return <iframe src={location.pathname}></iframe>;
 };
 
 export default Experiment;

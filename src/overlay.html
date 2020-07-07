@@ -71,7 +71,7 @@
 
 <script>
   function handleClick(e) {
-    if (window.parent.location.href.includes('iframe')) {
+    if (window.parent !== window.top) {
       e.preventDefault();
       window.top.postMessage({ type: 'go-home' });
     }
