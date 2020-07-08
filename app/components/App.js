@@ -42,11 +42,11 @@ const App = ({ pages, categories }) => {
         <meta name="og:title" content="Le laboratoire" />
         <meta
           name="twitter:image"
-          content={'https://lab.julienverneaut.com/' + socialImg}
+          content={'https://lab.julienverneaut.com' + socialImg}
         />
         <meta
           property="og:image"
-          content={'https://lab.julienverneaut.com/' + socialImg}
+          content={'https://lab.julienverneaut.com' + socialImg}
         />
       </Helmet>
       <Switch>
