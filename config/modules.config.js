@@ -31,7 +31,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|svg|jpe?g)$/,
+        test: /\.(png|jpe?g)$/,
         use: [
           {
             loader: 'responsive-loader',
@@ -45,7 +45,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(gif|mp4)$/,
+        test: /\.(gif|mp4|svg)$/,
         use: [
           {
             loader: 'file-loader',

@@ -77,6 +77,11 @@ const App = () => {
 
   return (
     <main>
+      <img
+        src={require('../img/The_Office_US_logo.svg').default}
+        class="logo"
+        alt=""
+      />
       {cards
         .map((card, index) => (
           <Card

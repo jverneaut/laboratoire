@@ -60,3 +60,13 @@ $card_bottom_height: 54px;
   font-size: 16px;
   color: #f1f3f5;
 }
+
+.logo {
+  user-select: none;
+  position: absolute;
+  width: 80px;
+  right: 0;
+  top: -40px;
+  user-select: none;
+  pointer-events: none;
+}
