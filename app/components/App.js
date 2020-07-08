@@ -39,13 +39,27 @@ const App = ({ pages, categories }) => {
     <Router>
       <Helmet>
         <meta name="twitter:title" content="Le laboratoire" />
-        <meta name="og:title" content="Le laboratoire" />
         <meta
           name="twitter:image"
           content={'https://lab.julienverneaut.com' + socialImg}
         />
+        <meta property="og:url" content="https://lab.julienverneaut.com" />
+        <meta property="og:title" content="Le laboratoire" />
+        <meta
+          property="og:description"
+          content="Ce site rassemble mes expérimentations frontend. Il contient des essais d'animations, des expériences avec WebGL, des essais d'api et bien d'autres choses."
+        />
+        <meta property="og:image:type" content="image/png" />
         <meta
           property="og:image"
+          content={'https://lab.julienverneaut.com' + socialImg}
+        />
+        <meta
+          property="og:image:url"
+          content={'https://lab.julienverneaut.com' + socialImg}
+        />
+        <meta
+          property="og:image:secure_url"
           content={'https://lab.julienverneaut.com' + socialImg}
         />
       </Helmet>
