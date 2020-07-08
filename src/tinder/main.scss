@@ -1,0 +1,56 @@
+@import '../reset.css';
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f3f3;
+  min-height: 100vh;
+  font-family: system-ui;
+}
+
+main {
+  width: 280px;
+  height: 400px;
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 16px;
+  user-select: none;
+  box-shadow: 0px 4px 16px rgba(black, 0.2);
+  overflow: hidden;
+  border: 20px solid white;
+}
+
+.card img {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 56px);
+  position: absolute;
+  object-fit: cover;
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.card h2 {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: calc(100% - 40px);
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+}

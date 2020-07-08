@@ -41,6 +41,7 @@
     "react-flip-move": "^3.0.4",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
+    "react-spring": "^8.0.27",
     "regl": "^1.6.1",
     "responsive-loader": "^1.2.0",
     "rxjs": "^6.5.5",
