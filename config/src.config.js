@@ -67,13 +67,11 @@ module.exports = {
         />
       `;
 
-      const htmlString = readFileSync(page.html, 'utf-8');
-      const htmlChunks = htmlString.split('</head>');
-
       return new HtmlWebpackPlugin({
         chunks: [page.slug, 'global'],
         filename: page.slug + '/index.html',
-        templateContent: htmlChunks[0] + meta + htmlChunks[1],
+        metaString: meta,
+        template: page.html,
         alwaysWriteToDisk: true,
       });
     }),
