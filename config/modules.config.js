@@ -32,6 +32,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g)$/,
+        exclude: /app/,
         use: [
           {
             loader: 'responsive-loader',
@@ -39,7 +40,21 @@ module.exports = {
               adapter: require('responsive-loader/sharp'),
               context: 'src',
               publicPath: '/',
-              name: '[path]/[name].[ext]',
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g)$/,
+        include: /app/,
+        use: [
+          {
+            loader: 'responsive-loader',
+            options: {
+              adapter: require('responsive-loader/sharp'),
+              publicPath: '/',
+              name: '[path][name].[ext]',
             },
           },
         ],
@@ -52,7 +67,7 @@ module.exports = {
             options: {
               context: 'src',
               publicPath: '/',
-              name: '[path]/[name].[ext]',
+              name: '[path][name].[ext]',
             },
           },
         ],
