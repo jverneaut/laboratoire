@@ -79,6 +79,6 @@
 
   document.querySelector(
     '.github'
-  ).href = `https://github.com/jverneaut/laboratoire/tree/master/src${window.location.pathname}`;
+  ).href = `https://github.com/jverneaut/laboratoire/tree/master/src${window.top.location.pathname}`;
   document.querySelector('#home-link').addEventListener('click', handleClick);
 </script>
