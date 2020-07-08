@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
+
+import socialImg from './../social.png';
 
 import Home from './Home';
 import Experiment from './Experiment';
@@ -34,6 +37,18 @@ const App = ({ pages, categories }) => {
 
   return (
     <Router>
+      <Helmet>
+        <meta name="twitter:title" content="Le laboratoire" />
+        <meta name="og:title" content="Le laboratoire" />
+        <meta
+          name="twitter:image"
+          content={'https://lab.julienverneaut.com/' + socialImg}
+        />
+        <meta
+          property="og:image"
+          content={'https://lab.julienverneaut.com/' + socialImg}
+        />
+      </Helmet>
       <Switch>
         <Route path="/" exact>
           {null}
