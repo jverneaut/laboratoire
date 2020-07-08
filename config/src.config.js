@@ -56,15 +56,14 @@ module.exports = {
     ...pages.map(page => {
       const meta = `
         <meta name="twitter:title" content="${page.name}" />
-        <meta name="og:title" content="${page.name}" />
-        <meta
-          name="twitter:image"
-          content="https://lab.julienverneaut.com/${page.slug}/screenshot.png"
-        />
-        <meta
-          property="og:image"
-          content="https://lab.julienverneaut.com/${page.slug}/screenshot.png"
-        />
+        <meta name="twitter:image" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
+        <meta property="og:url" content="https://lab.julienverneaut.com" />
+        <meta property="og:title" content="${page.name}" />
+        <meta property="og:description" content="Ce site rassemble mes expérimentations frontend. Il contient des essais d'animations, des expériences avec WebGL, des essais d'api et bien d'autres choses." />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
+        <meta property="og:image:url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
+        <meta property="og:image:secure_url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
       `;
 
       return new HtmlWebpackPlugin({
