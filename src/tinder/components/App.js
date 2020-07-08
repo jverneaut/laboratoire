@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Card from './Card';
 
-const THRESHOLD = 120;
+export const THRESHOLD = 120;
+export const RENDERED = 5;
 
 const cards = [
   {
@@ -83,7 +84,6 @@ const App = () => {
             index={index}
             current={current}
             setCurrent={setCurrent}
-            threshold={THRESHOLD}
           >
             <h2>{card.name}</h2>
             <img src={card.img} alt="" />

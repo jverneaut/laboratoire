@@ -1,12 +1,18 @@
 @import '../reset.css';
 
+html {
+  overflow: hidden;
+}
+
 body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f3f3f3;
+  background: rgb(33, 37, 41);
   min-height: 100vh;
   font-family: system-ui;
+  width: 100vw;
+  overflow: hidden;
 }
 
 main {
@@ -14,6 +20,9 @@ main {
   height: 400px;
   position: relative;
 }
+
+$card_border: 8px;
+$card_bottom_height: 54px;
 
 .card {
   position: absolute;
@@ -25,22 +34,20 @@ main {
   align-items: center;
   justify-content: center;
   background: white;
-  border-radius: 16px;
+  border-radius: 8px;
   user-select: none;
-  box-shadow: 0px 4px 16px rgba(black, 0.2);
   overflow: hidden;
-  border: 20px solid white;
+  box-sizing: border-box;
 }
 
 .card img {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: calc(100% - 56px);
+  top: $card_border;
+  left: $card_border;
+  width: calc(100% - #{$card_border * 2});
+  height: calc(100% - #{$card_bottom_height});
   position: absolute;
   object-fit: cover;
   pointer-events: none;
-  border-radius: 4px;
 }
 
 .card h2 {
@@ -48,9 +55,8 @@ main {
   position: absolute;
   left: 0;
   width: 100%;
-  top: calc(100% - 40px);
-  height: 40px;
-  line-height: 40px;
+  top: calc(100% - #{$card_bottom_height});
+  line-height: #{$card_bottom_height};
   font-size: 16px;
-  font-weight: bold;
+  color: #f1f3f5;
 }
