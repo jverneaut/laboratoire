@@ -53,14 +53,29 @@ module.exports = {
       ),
   },
   plugins: [
-    ...pages.map(
-      page =>
-        new HtmlWebpackPlugin({
-          chunks: [page.slug, 'global'],
-          filename: page.slug + '/index.html',
-          template: page.html,
-          alwaysWriteToDisk: true,
-        })
-    ),
+    ...pages.map(page => {
+      const meta = `
+        <meta name="twitter:title" content="${page.name}" />
+        <meta name="og:title" content="${page.name}" />
+        <meta
+          name="twitter:image"
+          content="https://lab.julienverneaut.com/${page.slug}/screenshot.png"
+        />
+        <meta
+          property="og:image"
+          content="https://lab.julienverneaut.com/${page.slug}/screenshot.png"
+        />
+      `;
+
+      const htmlString = readFileSync(page.html, 'utf-8');
+      const htmlChunks = htmlString.split('</head>');
+
+      return new HtmlWebpackPlugin({
+        chunks: [page.slug, 'global'],
+        filename: page.slug + '/index.html',
+        templateContent: htmlChunks[0] + meta + htmlChunks[1],
+        alwaysWriteToDisk: true,
+      });
+    }),
   ],
 };
