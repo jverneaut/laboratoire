@@ -55,8 +55,7 @@ module.exports = {
   plugins: [
     ...pages.map(page => {
       const meta = `
-        <meta name="twitter:title" content="${page.name}" />
-        <meta name="twitter:image" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
+        <meta name="twitter:card" content="summary" />
         <meta property="og:url" content="https://lab.julienverneaut.com/${page.slug}" />
         <meta property="og:title" content="${page.name}" />
         <meta property="og:description" content="Ce site rassemble mes expérimentations frontend. Il contient des essais d'animations, des expériences avec WebGL, des essais d'api et bien d'autres choses." />
