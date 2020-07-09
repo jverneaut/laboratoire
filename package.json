@@ -35,6 +35,8 @@
     "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
     "prerender-loader": "^1.3.0",
+    "primitive-cube": "^2.0.1",
+    "primitive-plane": "^2.0.1",
     "randexp": "^0.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
