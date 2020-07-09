@@ -10,6 +10,7 @@ const canvas = document.createElement('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+document.body.style.height = window.innerHeight + 'px';
 document.body.appendChild(canvas);
 
 const gl = canvas.getContext('webgl');
