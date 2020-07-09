@@ -27,6 +27,6 @@ void main() {
   position.x += 0.01 * sin(u_time * 0.04 + 10.0 * (a_position.x + a_position.y));
   position.y += 0.01 * cos(u_time * 0.04 + 10.0 * (a_position.x + a_position.y));
 
-  gl_PointSize = 2.0 + 5.0 * ratio;
+  gl_PointSize = 2.0 + 3.0 * ratio;
   gl_Position = u_projection * u_view * u_model * position;
 }
