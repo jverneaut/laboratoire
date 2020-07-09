@@ -32,7 +32,7 @@ gl.linkProgram(program);
 gl.useProgram(program);
 
 /** Mesh setup */
-const plane = createPlane(1.0, 1.0, 20, 20);
+const plane = createPlane(1.0, 1.0, 40, 40);
 
 const vertices = plane.positions.flat();
 const indices = plane.cells.flat();
@@ -72,20 +72,30 @@ const view = mat4.lookAt([], [0, 0, -0.5], [0, 0, 0], [0, 1, 0]);
 const viewUniform = gl.getUniformLocation(program, 'u_view');
 gl.uniformMatrix4fv(viewUniform, false, new Float32Array(view));
 
-const mouse = [0, 0];
-document.addEventListener('mousemove', e => {
-  mouse[0] = (-2 * (e.clientX - window.innerWidth / 2)) / window.innerWidth;
-  mouse[1] = (-2 * (e.clientY - window.innerHeight / 2)) / window.innerHeight;
-});
+const mouse = [-1000, -1000];
+
+const moveListener = e => {
+  const x = e.clientX || e.touches[0].clientX;
+  const y = e.clientY || e.touches[0].clientY;
+  mouse[0] = (-2 * (x - window.innerWidth / 2)) / window.innerWidth;
+  mouse[1] = (-2 * (y - window.innerHeight / 2)) / window.innerHeight;
+};
+document.addEventListener('mousemove', moveListener);
+document.addEventListener('touchmove', moveListener);
+
 const mouseUniform = gl.getUniformLocation(program, 'u_mouse');
+
+const timeUniform = gl.getUniformLocation(program, 'u_time');
 
 /** Draw loop */
 let time = 0;
+gl.uniform1f(timeUniform, time);
 const draw = () => {
   time += 1;
   gl.clearColor(0, 0, 0, 1);
   gl.clear(gl.COLOR_BUFFER_BIT);
 
+  gl.uniform1f(timeUniform, time);
   gl.uniform2f(mouseUniform, mouse[0], mouse[1]);
 
   gl.drawElements(gl.POINTS, indices.length, gl.UNSIGNED_SHORT, 0);
