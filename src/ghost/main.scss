@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(to bottom, #000000 0%, #2e2e2e 100%);
+  background: linear-gradient(30deg, #0b0b0b 0%, #000000 100%);
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -7,8 +7,8 @@ body {
 
 h1 {
   position: fixed;
-  color: #ffffffcf;
-  font-size: 40vh;
+  color: #262626;
+  font-size: 30vh;
   text-align: center;
   display: block;
   top: 50%;
@@ -22,7 +22,7 @@ h1 {
 }
 
 canvas {
-  filter: invert(1);
+  // filter: invert(1);
 }
 
 p {

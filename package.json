@@ -26,6 +26,7 @@
     "diapositive": "^1.11.0",
     "favicons-webpack-plugin": "^3.0.0",
     "file-loader": "^5.0.2",
+    "gl-mat3": "^2.0.0",
     "gl-mat4": "^1.2.0",
     "glslify": "^7.0.0",
     "html-webpack-plugin": "^4.0.0-beta.11",
