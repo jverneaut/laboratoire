@@ -21,6 +21,11 @@ module.exports = {
     }),
     new FaviconsWebpackPlugin({
       logo: join(__dirname, '/../src/favicon.svg'),
+      favicons: {
+        appName: 'Le laboratoire',
+        lang: 'fr-FR',
+        theme_color: '#fd7e14',
+      },
     }),
   ],
   devServer: {

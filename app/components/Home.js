@@ -5,7 +5,7 @@ import Infos from './Infos';
 
 const Home = ({ pages, categories }) => {
   useEffect(() => {
-    document.title = 'Laboratoire';
+    document.title = 'Le laboratoire';
     document.body.classList.remove('iframe-container');
   }, []);
 

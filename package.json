@@ -1,8 +1,8 @@
 {
-  "name": "wlab",
+  "name": "laboratoire",
   "version": "1.0.0",
   "description": "",
-  "main": "postcss.config.js",
+  "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack --mode=production"
