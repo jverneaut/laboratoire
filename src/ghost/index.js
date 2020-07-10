@@ -69,7 +69,6 @@ const drawProcessed = regl({
     a_position: [-4, -4, 4, -4, 0, 4],
   },
   uniforms: {
-    u_time: ({ tick }) => tick,
     u_texture: fbo,
   },
 
