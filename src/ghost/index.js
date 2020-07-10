@@ -6,10 +6,21 @@ import head from './ghost.obj';
 import mat4 from 'gl-mat4';
 import mat3 from 'gl-mat3';
 
-import vert from './vert.glsl';
-import frag from './frag.glsl';
+import vert from './shader.vert';
+import frag from './shader.frag';
+import postVert from './post.vert';
+import postFrag from './post.frag';
 
-const draw = regl({
+const fbo = regl.framebuffer({
+  color: regl.texture({
+    width: 1,
+    height: 1,
+    wrap: 'clamp',
+  }),
+  depth: true,
+});
+
+const drawGhost = regl({
   vert,
   frag,
   attributes: {
@@ -48,15 +59,38 @@ const draw = regl({
     },
   },
   elements: head.indices,
+  framebuffer: fbo,
 });
 
-const loop = regl.frame(() => {
+const drawProcessed = regl({
+  vert: postVert,
+  frag: postFrag,
+  attributes: {
+    a_position: [-4, -4, 4, -4, 0, 4],
+  },
+  uniforms: {
+    u_time: ({ tick }) => tick,
+    u_texture: fbo,
+  },
+
+  count: 3,
+  depth: {
+    enable: false,
+  },
+});
+
+const loop = regl.frame(({ viewportHeight, viewportWidth }) => {
+  fbo.resize(viewportWidth, viewportHeight);
+
   try {
     regl.clear({
       color: [0, 0, 0, 0],
+      depth: true,
+      framebuffer: fbo,
     });
 
-    draw();
+    drawGhost();
+    drawProcessed();
   } catch (error) {
     loop.cancel();
     throw error;
