@@ -3,8 +3,8 @@ import './main.scss';
 import mat4 from 'gl-mat4';
 import createPlane from 'primitive-plane';
 
-import vertexShaderSource from './vertex.glsl';
-import fragmentShaderSource from './fragment.glsl';
+import vertexShaderSource from './default.vert';
+import fragmentShaderSource from './default.frag';
 
 const canvas = document.createElement('canvas');
 canvas.width = window.innerWidth;
