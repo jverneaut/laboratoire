@@ -10,9 +10,10 @@ const mountainImage = images[0];
 const seaImage = images[1];
 
 const brush = e => {
-  const radius = 75;
-  const x = e.offsetX;
-  const y = e.offsetY;
+  const radius = 65;
+  console.log(e);
+  const x = e.offsetX || e.touches[0].clientX - canvas.offsetLeft;
+  const y = e.offsetY || e.touches[0].clientY - canvas.offsetTop;
 
   ctx.save();
   ctx.beginPath();
@@ -24,8 +25,9 @@ const brush = e => {
 
 const paint = () => {
   ctx.drawImage(mountainImage, 0, 0, 400, 700);
-  canvas.addEventListener('mouseover', brush);
-  canvas.addEventListener('mousemove', brush);
+  ['mouseover', 'mousemove', 'touchstart', 'touchmove'].forEach(eventName =>
+    canvas.addEventListener(eventName, brush)
+  );
 };
 
 mountainImage.addEventListener('load', () => {

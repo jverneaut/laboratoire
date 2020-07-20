@@ -2,6 +2,8 @@
 
 body {
   background: #f7f7f7;
+  position: fixed;
+  overflow: hidden;
 }
 
 figure {
@@ -18,6 +20,8 @@ canvas {
   position: absolute;
   width: 400px;
   height: 700px;
+  top: 0;
+  left: 0;
   background: transparent;
   z-index: 10;
 }
