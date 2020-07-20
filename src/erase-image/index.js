@@ -10,7 +10,7 @@ const mountainImage = images[0];
 const seaImage = images[1];
 
 const brush = e => {
-  const radius = 40;
+  const radius = 75;
   const x = e.offsetX;
   const y = e.offsetY;
 
