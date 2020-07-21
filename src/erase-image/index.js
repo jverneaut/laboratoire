@@ -11,7 +11,6 @@ const seaImage = images[1];
 
 const brush = e => {
   const radius = 65;
-  console.log(e);
   const x = e.offsetX || e.touches[0].clientX - canvas.offsetLeft;
   const y = e.offsetY || e.touches[0].clientY - canvas.offsetTop;
 
