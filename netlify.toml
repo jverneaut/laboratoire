@@ -1,4 +1,6 @@
 [[headers]]
   for = "/*"
+
   [headers.values]
-    server = ""
+    server = "Julien"
+    X-Frame-Options = "DENY"
