@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import socialImg from './../social.png';
-
 import Home from './Home';
 import Experiment from './Experiment';
 import Loader from './Loader';
