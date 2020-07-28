@@ -54,7 +54,7 @@ module.exports = {
   },
   plugins: [
     ...pages.map(page => {
-      const meta = `
+      const headContent = `
         <meta name="twitter:card" content="summary" />
         <meta property="og:url" content="https://lab.julienverneaut.com/${page.slug}" />
         <meta property="og:title" content="${page.name}" />
@@ -63,12 +63,20 @@ module.exports = {
         <meta property="og:image" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
         <meta property="og:image:url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
         <meta property="og:image:secure_url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
+        <script src="https://browser.sentry-cdn.com/5.20.1/bundle.min.js" integrity="sha384-O8HdAJg1h8RARFowXd2J/r5fIWuinSBtjhwQoPesfVILeXzGpJxvyY/77OaPPXUo" crossorigin="anonymous"></script>
+      `;
+
+      const footerContent = `
+        <script>
+          Sentry.init({ dsn: 'https://f8c5e0d067084e399345afda0f102d02@o426505.ingest.sentry.io/5368480' });
+        </script>
       `;
 
       return new HtmlWebpackPlugin({
         chunks: [page.slug, 'global'],
         filename: page.slug + '/index.html',
-        metaString: meta,
+        headContent: headContent,
+        footerContent: footerContent,
         template: page.html,
         alwaysWriteToDisk: true,
       });

@@ -8,7 +8,7 @@
     <title>WebGL Demo</title>
     <meta name="category" content="WebGL 🔥" />
     <meta name="date" content="1579824000000" />
-    <%= htmlWebpackPlugin.options.metaString %>
+    <%= htmlWebpackPlugin.options.headContent %>
   </head>
   <body>
     <section>
@@ -22,5 +22,6 @@
     <section>
       <img src="<%= require('./img/plane.jpeg?size=1400').src %>" alt="" />
     </section>
+    <%= htmlWebpackPlugin.options.footerContent %>
   </body>
 </html>

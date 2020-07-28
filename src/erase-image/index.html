@@ -7,7 +7,7 @@
     <title>Erase Image</title>
     <meta name="category" content="Canvas 2D" />
     <meta name="date" content="1595254478173" />
-    <%= htmlWebpackPlugin.options.metaString %>
+    <%= htmlWebpackPlugin.options.headContent %>
   </head>
   <body>
     <figure>
@@ -15,5 +15,6 @@
       <canvas></canvas>
       <img src="<%= require('./sea.jpg').src %>" alt="" />
     </figure>
+    <%= htmlWebpackPlugin.options.footerContent %>
   </body>
 </html>
