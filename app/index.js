@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
+import './social.png';
 import './main.scss';
 
 if (document.querySelector('#root').childElementCount) {
