@@ -1,1 +1,9 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.ball {
+  position: fixed;
+  height: 80px;
+  width: 80px;
+  background-color: red;
+  border-radius: 80px;
+}

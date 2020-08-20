@@ -1,45 +1,69 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Window from './Window';
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-  const [isWindowOpen, setIsWindowOpen] = useState(false);
+  const { availWidth: screenWidth, availHeight: screenHeight } = window.screen;
+  const [visible, setVisible] = useState(false);
+  const [time, setTime] = useState(Date.now());
 
-  const incrementCounter = () => setCounter(counter => counter + 1);
-  const decrementCounter = () => setCounter(counter => counter - 1);
+  useEffect(() => {
+    const tick = dt => {
+      setTime(Date.now());
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, []);
 
-  const openWindow = () => setIsWindowOpen(true);
-  const closeWindow = () => setIsWindowOpen(false);
+  const showWindows = () => {
+    setVisible(true);
+  };
 
   return (
-    <div className="container py-5">
-      <h1>React Portals</h1>
-      {isWindowOpen ? (
-        <button className="btn btn-danger" onClick={closeWindow}>
-          Fermer la fenêtre
-        </button>
-      ) : (
-        <button className="btn btn-primary" onClick={openWindow}>
-          Ouvrir la fenêtre
-        </button>
-      )}
-      <div className="mt-4">
-        <button className="btn btn-light" onClick={incrementCounter}>
-          Incrémenter
-        </button>
-        <button className="btn btn-light" onClick={decrementCounter}>
-          Décrémenter
-        </button>
+    <>
+      <div className="container my-5">
+        <div className="row">
+          <div
+            onClick={showWindows}
+            className="col-12 d-flex justify-content-center"
+          >
+            <button className="btn btn-primary">Show windows</button>
+          </div>
+        </div>
       </div>
-
-      {isWindowOpen && (
-        <Window>
-          <h2>Je suis dans un portail</h2>
-          <p>Counter: {counter}</p>
-        </Window>
+      {visible && (
+        <>
+          <Window
+            x={screenWidth * 0.0}
+            y={screenHeight * 0.0}
+            width={screenWidth * 0.5}
+            height={screenHeight * 0.5}
+            time={time}
+          />
+          <Window
+            x={screenWidth * 0.5}
+            y={screenHeight * 0.0}
+            width={screenWidth * 0.5}
+            height={screenHeight * 0.5}
+            time={time}
+          />
+          <Window
+            x={screenWidth * 0.0}
+            y={screenHeight * 0.5}
+            width={screenWidth * 0.5}
+            height={screenHeight * 0.5}
+            time={time}
+          />
+          <Window
+            x={screenWidth * 0.5}
+            y={screenHeight * 0.5}
+            width={screenWidth * 0.5}
+            height={screenHeight * 0.5}
+            time={time}
+          />
+        </>
       )}
-    </div>
+    </>
   );
 };
 
