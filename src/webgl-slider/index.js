@@ -219,7 +219,7 @@ const init = () => {
 
   let index = 0;
   let isAnimating = false;
-  document.addEventListener('keydown', () => {
+  const animate = () => {
     if (!isAnimating) {
       gl.activeTexture(gl.TEXTURE0);
       gl.bindTexture(gl.TEXTURE_2D, textures[index % textures.length]);
@@ -247,7 +247,10 @@ const init = () => {
         },
       });
     }
-  });
+  };
+
+  document.addEventListener('keydown', animate);
+  canvas.addEventListener('click', animate);
 };
 
 window.addEventListener('load', () => {
