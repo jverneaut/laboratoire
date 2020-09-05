@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.9.4",
     "angle-normals": "^1.0.0",
+    "animejs": "^3.2.0",
     "autoprefixer": "^9.8.4",
     "babel-loader": "^8.0.6",
     "bootstrap": "^4.5.2",

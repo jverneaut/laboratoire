@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>WebGL Slider</title>
+    <meta name="category" content="WebGL 🔥" />
+    <meta name="date" content="1599236056282" />
+    <%= htmlWebpackPlugin.options.headContent %>
+  </head>
+  <body>
+    <div class="images-loader">
+      <img src="<%= require('./images/texture.jpg').src %>" id="texture" />
+      <img src="<%= require('./images/image-1.jpg').src %>" class="img" />
+      <img src="<%= require('./images/image-2.jpg').src %>" class="img" />
+      <img src="<%= require('./images/image-3.jpg').src %>" class="img" />
+      <img src="<%= require('./images/image-4.jpg').src %>" class="img" />
+    </div>
+
+    <canvas></canvas>
+
+    <h1>Press any key</h1>
+  </body>
+</html>
