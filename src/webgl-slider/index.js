@@ -124,7 +124,7 @@ const init = () => {
       vec4 bg = vec4((1.0 - opacity) * image0_bg) + vec4(opacity * image1_bg);
       vec4 fg = vec4((1.0 - opacity) * image0_fg) + vec4(opacity * image1_fg);
 
-      vec4 mask = texture2D(u_mask, vec2(1.0 / zoom_mask) * (0.5, -0.5) * v_position * u_maskAspect + 0.5);
+      vec4 mask = texture2D(u_mask, vec2(1.0 / zoom_mask) * vec2(0.5, -0.5) * v_position * u_maskAspect + 0.5);
 
       gl_FragColor = bg * mask.r + (1.0 - mask.r) * fg;
     }
