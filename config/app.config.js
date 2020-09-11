@@ -40,12 +40,13 @@ const getPageDate = path => {
 };
 
 const pages = pageDirectories
-  .filter(
-    dir =>
-      dir
-        .split('/')
-        .reverse()[0]
-        .charAt(0) !== '_'
+  .filter(dir =>
+    process.env.NODE_ENV === 'production'
+      ? dir
+          .split('/')
+          .reverse()[0]
+          .charAt(0) !== '_'
+      : true
   )
   .map(pageDirectory => {
     const slug = pageDirectory.split('/').reverse()[0];

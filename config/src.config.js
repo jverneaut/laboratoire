@@ -8,12 +8,13 @@ const getDirectories = source =>
     .map(name => join(source, name))
     .filter(isDirectory);
 
-const pageDirectories = getDirectories(join(__dirname, '../src')).filter(
-  dir =>
-    dir
-      .split('/')
-      .reverse()[0]
-      .charAt(0) !== '_'
+const pageDirectories = getDirectories(join(__dirname, '../src')).filter(dir =>
+  process.env.NODE_ENV === 'production'
+    ? dir
+        .split('/')
+        .reverse()[0]
+        .charAt(0) !== '_'
+    : true
 );
 
 const getPageTitle = path => {
