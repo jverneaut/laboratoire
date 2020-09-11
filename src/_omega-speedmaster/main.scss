@@ -1,19 +1,36 @@
-@import '../../src/reset.css';
+// @import '../../src/reset.css';
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
+// body {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100vw;
+//   height: 100vh;
+//   overflow: hidden;
+// }
 
-$face_width: 240px;
+// $face_radius: 240px;
+// $face_center_radius: 180px;
+// $face_tick_width: 2px;
 
-div {
-  width: $face_width;
-  height: $face_width;
-  border-radius: 0.5 * $face_width;
-  background: #f1f1f1;
-}
+// .face {
+//   width: $face_radius;
+//   height: $face_radius;
+//   border-radius: 0.5 * $face_radius;
+//   background: #262626;
+//   box-sizing: border-box;
+//   position: relative;
+
+//   &::after {
+//     background: #1a1a1a;
+//     position: absolute;
+//     display: block;
+//     content: '';
+//     top: 50%;
+//     left: 50%;
+//     width: $face_center_radius;
+//     height: $face_center_radius;
+//     border-radius: 0.5 * $face_center_radius;
+//     transform: translate(-50%, -50%);
+//   }
+// }
