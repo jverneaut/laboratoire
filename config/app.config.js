@@ -39,22 +39,30 @@ const getPageDate = path => {
   );
 };
 
-const pages = pageDirectories.map(pageDirectory => {
-  const slug = pageDirectory.split('/').reverse()[0];
-  const html = join(pageDirectory, 'index.html');
-  const js = join(pageDirectory, 'index.js');
-  const name = getPageTitle(join(pageDirectory, 'index.html'));
-  const category = getPageCategory(join(pageDirectory, 'index.html'));
-  const screenshot = join(pageDirectory, 'screenshot.png');
-  const date = getPageDate(join(pageDirectory, 'index.html')) || 'TROLOLO';
+const pages = pageDirectories
+  .filter(
+    dir =>
+      dir
+        .split('/')
+        .reverse()[0]
+        .charAt(0) !== '_'
+  )
+  .map(pageDirectory => {
+    const slug = pageDirectory.split('/').reverse()[0];
+    const html = join(pageDirectory, 'index.html');
+    const js = join(pageDirectory, 'index.js');
+    const name = getPageTitle(join(pageDirectory, 'index.html'));
+    const category = getPageCategory(join(pageDirectory, 'index.html'));
+    const screenshot = join(pageDirectory, 'screenshot.png');
+    const date = getPageDate(join(pageDirectory, 'index.html')) || 'TROLOLO';
 
-  const page = { slug, html, js, name, category, date };
-  if (existsSync(screenshot)) {
-    page.screenshot = relative(__dirname, screenshot);
-  }
+    const page = { slug, html, js, name, category, date };
+    if (existsSync(screenshot)) {
+      page.screenshot = relative(__dirname, screenshot);
+    }
 
-  return page;
-});
+    return page;
+  });
 
 const categories = Array.from(new Set(pages.map(page => page.category))).sort();
 

@@ -8,7 +8,13 @@ const getDirectories = source =>
     .map(name => join(source, name))
     .filter(isDirectory);
 
-const pageDirectories = getDirectories(join(__dirname, '../src'));
+const pageDirectories = getDirectories(join(__dirname, '../src')).filter(
+  dir =>
+    dir
+      .split('/')
+      .reverse()[0]
+      .charAt(0) !== '_'
+);
 
 const getPageTitle = path => {
   const html = readFileSync(path, 'utf8');

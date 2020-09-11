@@ -1,0 +1,19 @@
+@import '../../src/reset.css';
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+$face_width: 240px;
+
+div {
+  width: $face_width;
+  height: $face_width;
+  border-radius: 0.5 * $face_width;
+  background: #f1f1f1;
+}
