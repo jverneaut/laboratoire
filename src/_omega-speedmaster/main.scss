@@ -9,19 +9,21 @@ body {
   overflow: hidden;
 }
 
-$face_radius: 240px;
-$face_center_radius: 180px;
+$face__radius: 240px;
+$face__center_radius: 180px;
 
-$face_ticks_offset: 4px;
-$face_small_ticks_length: 4px;
-$face_medium_ticks_length: 8px;
-$face_long_ticks_length: 14px;
+$face__ticks_offset: 4px;
+$face__small_ticks_length: 4px;
+$face__medium_ticks_length: 8px;
+$face__long_ticks_length: 18px;
+
+$face__dial_radius: 40px;
 
 .face {
   position: relative;
-  width: $face_radius;
-  height: $face_radius;
-  border-radius: $face_radius;
+  width: $face__radius;
+  height: $face__radius;
+  border-radius: $face__radius;
   background: #262626;
 }
 
@@ -31,7 +33,7 @@ $face_long_ticks_length: 14px;
 .face__tick {
   display: block;
   width: 1px;
-  height: 0.5 * $face_radius;
+  height: 0.5 * $face__radius;
   position: absolute;
   top: 0;
   left: 50%;
@@ -42,10 +44,10 @@ $face_long_ticks_length: 14px;
   background: linear-gradient(
     to bottom,
     transparent 0px,
-    transparent #{$face_ticks_offset},
-    white #{$face_ticks_offset},
-    white #{$face_ticks_offset + $face_small_ticks_length},
-    transparent #{$face_ticks_offset + $face_small_ticks_length}
+    transparent #{$face__ticks_offset},
+    white #{$face__ticks_offset},
+    white #{$face__ticks_offset + $face__small_ticks_length},
+    transparent #{$face__ticks_offset + $face__small_ticks_length}
   );
 
   // Medium ticks every second
@@ -53,22 +55,23 @@ $face_long_ticks_length: 14px;
     background: linear-gradient(
       to bottom,
       transparent 0px,
-      transparent #{$face_ticks_offset},
-      white #{$face_ticks_offset},
-      white #{$face_ticks_offset + $face_medium_ticks_length},
-      transparent #{$face_ticks_offset + $face_medium_ticks_length}
+      transparent #{$face__ticks_offset},
+      white #{$face__ticks_offset},
+      white #{$face__ticks_offset + $face__medium_ticks_length},
+      transparent #{$face__ticks_offset + $face__medium_ticks_length}
     );
   }
 
   // Long ticks every 5 seconds
   &:nth-child(25n) {
+    width: 3px;
     background: linear-gradient(
       to bottom,
       transparent 0px,
-      transparent #{$face_ticks_offset},
-      white #{$face_ticks_offset},
-      white #{$face_ticks_offset + $face_long_ticks_length},
-      transparent #{$face_ticks_offset + $face_long_ticks_length}
+      transparent #{$face__ticks_offset},
+      white #{$face__ticks_offset},
+      white #{$face__ticks_offset + $face__long_ticks_length},
+      transparent #{$face__ticks_offset + $face__long_ticks_length}
     );
   }
 
@@ -84,9 +87,9 @@ $face_long_ticks_length: 14px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: $face_center_radius;
-  height: $face_center_radius;
-  border-radius: $face_center_radius;
+  width: $face__center_radius;
+  height: $face__center_radius;
+  border-radius: $face__center_radius;
   background: #1a1a1a;
 }
 
@@ -94,4 +97,27 @@ $face_long_ticks_length: 14px;
 }
 
 .face__dial {
+  display: block;
+  width: $face__dial_radius;
+  height: $face__dial_radius;
+  border-radius: 0.5 * $face__dial_radius;
+  position: absolute;
+  background: white;
+  top: 50%;
+  left: 50%;
+
+  &:nth-of-type(1) {
+    left: calc(50% - 120px);
+    transform: translate(-100%, 0);
+  }
+
+  &:nth-of-type(2) {
+    top: calc(50% + 120px);
+    transform: translate(-50%, 100%);
+  }
+
+  &:nth-of-type(3) {
+    left: calc(50% + 120px);
+    transform: translate(100%, 0);
+  }
 }
