@@ -1,36 +1,97 @@
-// @import '../../src/reset.css';
+@import '../../src/reset.css';
 
-// body {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100vw;
-//   height: 100vh;
-//   overflow: hidden;
-// }
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 
-// $face_radius: 240px;
-// $face_center_radius: 180px;
-// $face_tick_width: 2px;
+$face_radius: 240px;
+$face_center_radius: 180px;
 
-// .face {
-//   width: $face_radius;
-//   height: $face_radius;
-//   border-radius: 0.5 * $face_radius;
-//   background: #262626;
-//   box-sizing: border-box;
-//   position: relative;
+$face_ticks_offset: 4px;
+$face_small_ticks_length: 4px;
+$face_medium_ticks_length: 8px;
+$face_long_ticks_length: 14px;
 
-//   &::after {
-//     background: #1a1a1a;
-//     position: absolute;
-//     display: block;
-//     content: '';
-//     top: 50%;
-//     left: 50%;
-//     width: $face_center_radius;
-//     height: $face_center_radius;
-//     border-radius: 0.5 * $face_center_radius;
-//     transform: translate(-50%, -50%);
-//   }
-// }
+.face {
+  position: relative;
+  width: $face_radius;
+  height: $face_radius;
+  border-radius: $face_radius;
+  background: #262626;
+}
+
+.face__ticks {
+}
+
+.face__tick {
+  display: block;
+  width: 1px;
+  height: 0.5 * $face_radius;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%);
+
+  // Small ticks
+  background: linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent #{$face_ticks_offset},
+    white #{$face_ticks_offset},
+    white #{$face_ticks_offset + $face_small_ticks_length},
+    transparent #{$face_ticks_offset + $face_small_ticks_length}
+  );
+
+  // Medium ticks every second
+  &:nth-child(5n) {
+    background: linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent #{$face_ticks_offset},
+      white #{$face_ticks_offset},
+      white #{$face_ticks_offset + $face_medium_ticks_length},
+      transparent #{$face_ticks_offset + $face_medium_ticks_length}
+    );
+  }
+
+  // Long ticks every 5 seconds
+  &:nth-child(25n) {
+    background: linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent #{$face_ticks_offset},
+      white #{$face_ticks_offset},
+      white #{$face_ticks_offset + $face_long_ticks_length},
+      transparent #{$face_ticks_offset + $face_long_ticks_length}
+    );
+  }
+
+  @for $i from 1 through 60 * 5 {
+    &:nth-of-type(#{$i}) {
+      transform: translateX(-50%) rotate(#{1/5 * $i * 360 / 60}deg);
+    }
+  }
+}
+
+.face__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: $face_center_radius;
+  height: $face_center_radius;
+  border-radius: $face_center_radius;
+  background: #1a1a1a;
+}
+
+.face__dials {
+}
+
+.face__dial {
+}
