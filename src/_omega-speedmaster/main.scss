@@ -9,15 +9,28 @@ body {
   overflow: hidden;
 }
 
+img,
+main {
+  width: 50%;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 $face__radius: 240px;
-$face__center_radius: 180px;
+$face__center_radius: 196px;
 
 $face__ticks_offset: 4px;
-$face__small_ticks_length: 4px;
-$face__medium_ticks_length: 8px;
+$face__small_ticks_length: 3px;
+$face__medium_ticks_length: 14px;
 $face__long_ticks_length: 18px;
 
 $face__dial_radius: 40px;
+
+$bezel__radius: 276px;
 
 .face {
   position: relative;
@@ -25,6 +38,7 @@ $face__dial_radius: 40px;
   height: $face__radius;
   border-radius: $face__radius;
   background: #262626;
+  background: linear-gradient(to bottom, #222222 0%, #101010 100%);
 }
 
 .face__ticks {
@@ -45,8 +59,8 @@ $face__dial_radius: 40px;
     to bottom,
     transparent 0px,
     transparent #{$face__ticks_offset},
-    white #{$face__ticks_offset},
-    white #{$face__ticks_offset + $face__small_ticks_length},
+    #868686 #{$face__ticks_offset},
+    #868686 #{$face__ticks_offset + $face__small_ticks_length},
     transparent #{$face__ticks_offset + $face__small_ticks_length}
   );
 
@@ -56,8 +70,8 @@ $face__dial_radius: 40px;
       to bottom,
       transparent 0px,
       transparent #{$face__ticks_offset},
-      white #{$face__ticks_offset},
-      white #{$face__ticks_offset + $face__medium_ticks_length},
+      #868686 #{$face__ticks_offset},
+      #868686 #{$face__ticks_offset + $face__medium_ticks_length},
       transparent #{$face__ticks_offset + $face__medium_ticks_length}
     );
   }
@@ -69,8 +83,12 @@ $face__dial_radius: 40px;
       to bottom,
       transparent 0px,
       transparent #{$face__ticks_offset},
-      white #{$face__ticks_offset},
-      white #{$face__ticks_offset + $face__long_ticks_length},
+      #868686 #{$face__ticks_offset},
+      #868686 #{$face__ticks_offset + $face__small_ticks_length},
+      transparent #{$face__ticks_offset + $face__small_ticks_length},
+      transparent #{$face__ticks_offset},
+      #e0e5ce #{$face__ticks_offset},
+      #e0e5ce #{$face__ticks_offset + $face__long_ticks_length},
       transparent #{$face__ticks_offset + $face__long_ticks_length}
     );
   }
@@ -90,7 +108,7 @@ $face__dial_radius: 40px;
   width: $face__center_radius;
   height: $face__center_radius;
   border-radius: $face__center_radius;
-  background: #1a1a1a;
+  background: linear-gradient(to bottom, #171716 0%, #191919 100%);
 }
 
 .face__dials {
@@ -118,4 +136,14 @@ $face__dial_radius: 40px;
   &:nth-of-type(3) {
     left: calc(50% + 40px);
   }
+}
+
+.bezel {
+  width: $bezel__radius;
+  height: $bezel__radius;
+  border-radius: 0.5 * $bezel__radius;
+  background: radial-gradient(circle, #101010 0%, #101010 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
