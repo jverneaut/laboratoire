@@ -96,10 +96,10 @@ const init = () => {
     }
 
     void main() {
-      float offset_bg = 0.05;
-      float offset_fg = 0.06;
-      float zoom_bg = 1.0;
-      float zoom_fg = 1.0 - 0.04 * sin(u_progress * 3.14159);
+      float offset_bg = 0.09;
+      float offset_fg = 0.3;
+      float zoom_bg = 1.0 - 0.02 * sin(u_progress * 3.14159);;
+      float zoom_fg = 1.0 + 0.05 * sin(u_progress * 3.14159);
 
       float zoom_mask = 1.0 + 0.05 * sin(u_progress * 3.14159);
 
