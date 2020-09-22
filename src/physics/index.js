@@ -22,39 +22,30 @@ const render = Render.create({
   },
 });
 
-const ballsRadius = 60;
-
-const ballsCoordinates = [
-  {
-    x: window.innerWidth * 0.75,
-    y: window.innerHeight * 0.2,
-    radius: ballsRadius,
-  },
-  {
-    x: window.innerWidth * 0.75,
-    y: window.innerHeight * 0.4,
-    radius: ballsRadius,
-  },
-  {
-    x: window.innerWidth * 0.75,
-    y: window.innerHeight * 0.6,
-    radius: ballsRadius,
-  },
-];
-
-const balls = ballsCoordinates.map(({ x, y, radius }) => {
-  const body = Bodies.circle(x, y, radius);
-  body.restitution = 0.8;
+const balls = new Array(140).fill(0).map(() => {
+  const body = Bodies.circle(
+    Math.random() * window.innerWidth,
+    Math.random() * window.innerHeight,
+    Math.random() < 0.9 ? 30 : 55
+  );
+  body.restitution = 0.5;
 
   return body;
 });
 
-const wallsThickness = 100;
+const paddle = Bodies.rectangle(
+  window.innerWidth * 0.5,
+  window.innerHeight - 30,
+  500,
+  60
+);
+
+const wallsThickness = 1000;
 
 const floor = Bodies.rectangle(
   window.innerWidth * 0.5,
   window.innerHeight + 0.5 * wallsThickness,
-  window.innerWidth,
+  window.innerWidth * 2,
   wallsThickness,
   {
     isStatic: true,
@@ -64,7 +55,7 @@ const floor = Bodies.rectangle(
 const ceiling = Bodies.rectangle(
   window.innerWidth * 0.5,
   -0.5 * wallsThickness,
-  window.innerWidth,
+  window.innerWidth * 2,
   wallsThickness,
   {
     isStatic: true,
@@ -75,7 +66,7 @@ const leftWall = Bodies.rectangle(
   -0.5 * wallsThickness,
   0.5 * window.innerHeight,
   wallsThickness,
-  window.innerHeight,
+  window.innerHeight * 2,
   {
     isStatic: true,
   }
@@ -85,7 +76,7 @@ const rightWall = Bodies.rectangle(
   window.innerWidth + 0.5 * wallsThickness,
   0.5 * window.innerHeight,
   wallsThickness,
-  window.innerHeight,
+  window.innerHeight * 2,
   {
     isStatic: true,
   }
@@ -93,7 +84,7 @@ const rightWall = Bodies.rectangle(
 
 const walls = [floor, ceiling, leftWall, rightWall];
 
-const bodies = [...balls, ...walls];
+const bodies = [...balls, paddle, ...walls];
 
 const mouse = Mouse.create(render.canvas);
 const mouseConstraint = MouseConstraint.create(engine, {
