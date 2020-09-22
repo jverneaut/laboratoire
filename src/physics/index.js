@@ -22,11 +22,15 @@ const render = Render.create({
   },
 });
 
-const balls = new Array(140).fill(0).map(() => {
+const balls = new Array(80).fill(0).map(() => {
   const body = Bodies.circle(
     Math.random() * window.innerWidth,
     Math.random() * window.innerHeight,
-    Math.random() < 0.9 ? 30 : 55
+    Math.random() < 0.7
+      ? Math.sqrt(window.innerWidth * window.innerHeight) * 0.03
+      : Math.random() < 0.7
+      ? Math.sqrt(window.innerWidth * window.innerHeight) * 0.01
+      : Math.sqrt(window.innerWidth * window.innerHeight) * 0.05
   );
   body.restitution = 0.5;
 
@@ -35,9 +39,9 @@ const balls = new Array(140).fill(0).map(() => {
 
 const paddle = Bodies.rectangle(
   window.innerWidth * 0.5,
-  window.innerHeight - 30,
-  500,
-  60
+  window.innerHeight * 0.5,
+  60,
+  500
 );
 
 const wallsThickness = 1000;
