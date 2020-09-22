@@ -22,7 +22,7 @@ const render = Render.create({
   },
 });
 
-const balls = new Array(80).fill(0).map(() => {
+const balls = new Array(100).fill(0).map(() => {
   const body = Bodies.circle(
     Math.random() * window.innerWidth,
     Math.random() * window.innerHeight,
@@ -41,7 +41,14 @@ const paddle = Bodies.rectangle(
   window.innerWidth * 0.5,
   window.innerHeight * 0.5,
   60,
-  500
+  500,
+  {
+    render: {
+      fillStyle: 'white',
+      strokeStyle: '#999',
+      lineWidth: 1,
+    },
+  }
 );
 
 const wallsThickness = 1000;
