@@ -40,8 +40,8 @@ const balls = new Array(100).fill(0).map(() => {
 const paddle = Bodies.rectangle(
   window.innerWidth * 0.5,
   window.innerHeight * 0.5,
-  60,
-  500,
+  Math.min(window.innerWidth * 0.1, 60),
+  Math.min(window.innerWidth * 0.5, 400),
   {
     render: {
       fillStyle: 'white',
