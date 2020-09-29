@@ -2,10 +2,10 @@
 
 body {
   background: #f4f4f4;
+  overflow: hidden;
 }
 
 canvas {
-  border: 1px solid red;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -16,7 +16,6 @@ canvas {
   }
 
   &:nth-of-type(2) {
-    // opacity: 0;
     pointer-events: none;
   }
 }

@@ -18,31 +18,36 @@ class Canvas {
 
     let lastPoint;
 
-    document.addEventListener('mousemove', e => {
-      const point = {
-        x: e.clientX,
-        y: e.clientY,
-        date: Date.now(),
-        direction: [null, null],
-        magnitude: null,
-        radius: null,
-        opacity: null,
-      };
+    ['mouseover', 'mousemove', 'touchstart', 'touchmove'].forEach(event =>
+      document.addEventListener(event, e => {
+        const x = e.clientX || e.touches[0].clientX;
+        const y = e.clientY || e.touches[0].clientY;
 
-      if (lastPoint) {
-        const dX = point.x - lastPoint.x;
-        const dY = point.y - lastPoint.y;
+        const point = {
+          x,
+          y,
+          date: Date.now(),
+          direction: [null, null],
+          magnitude: null,
+          radius: null,
+          opacity: null,
+        };
 
-        const magnitude = Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2));
+        if (lastPoint) {
+          const dX = point.x - lastPoint.x;
+          const dY = point.y - lastPoint.y;
 
-        point.direction = [dX / magnitude || 0, dY / magnitude || 0];
-        point.magnitude = magnitude;
+          const magnitude = Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2));
 
-        this.points.push(point);
-      }
+          point.direction = [dX / magnitude || 0, dY / magnitude || 0];
+          point.magnitude = magnitude;
 
-      lastPoint = Object.assign({}, point);
-    });
+          this.points.push(point);
+        }
+
+        lastPoint = Object.assign({}, point);
+      })
+    );
   }
 
   update() {
