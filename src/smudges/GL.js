@@ -26,8 +26,8 @@ uniform sampler2D u_texture;
 void main() {
   float strength = 0.2;
 
-  vec4 texture = texture2D(u_texture, vec2(0.5) + vec2(1.0, -1.0) * v_position.xy);
-  vec4 image = texture2D(u_image, vec2(0.5) + vec2(1.0, -1.0) * v_position.xy + vec2(strength * (-0.5 + texture.r), strength * (-0.5 + texture.g)));
+  vec4 texture = texture2D(u_texture, vec2(0.5) + vec2(0.5, -0.5) * v_position.xy);
+  vec4 image = texture2D(u_image, vec2(0.5) + vec2(0.5, -0.5) * v_position.xy + vec2(strength * (-0.5 + texture.r), strength * (-0.5 + texture.g)));
 
   gl_FragColor = image;
 }

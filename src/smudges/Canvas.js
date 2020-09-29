@@ -58,7 +58,7 @@ class Canvas {
 
       this.points[index].x += FLUIDITY * point.direction[0];
       this.points[index].y += FLUIDITY * point.direction[1];
-      this.points[index].radius = 50 + 40 * progress;
+      this.points[index].radius = 60 + 40 * progress;
       this.points[index].opacity = 1 - progress;
 
       if (progress > 1) {
