@@ -68,11 +68,11 @@ class Canvas {
   }
 
   draw() {
-    this.ctx.fillStyle = 'rgb(0, 0, 0)';
+    this.ctx.fillStyle = 'rgb(126, 126, 126)';
     this.ctx.fillRect(0, 0, this.width, this.height);
     this.points.forEach(({ x, y, direction, radius, opacity }) => {
       const gradient = this.ctx.createRadialGradient(x, y, 0, x, y, radius);
-      const rgb = [126 + 126 * direction[0], 126 + 126 * direction[1], 255];
+      const rgb = [126 - 126 * direction[0], 126 - 126 * direction[1], 255];
 
       gradient.addColorStop(
         0,
