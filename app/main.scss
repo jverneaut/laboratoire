@@ -1,8 +1,9 @@
 @import '../src/reset.css';
 
-$primary: #343a40;
-$accent: #fd7e14;
-$dark: #f1f3f5;
+$primary: #fd7e14;
+$light: #f1f3f5;
+$dark: #343a40;
+$darker: #1f252b;
 
 body {
   font-family: sans-serif;
@@ -109,7 +110,7 @@ h1 {
   font-size: 46px;
   font-weight: 900;
   letter-spacing: -0.6px;
-  color: $primary;
+  color: $dark;
 }
 
 .paragraphs {
@@ -134,16 +135,16 @@ h1 {
 
 .paragraphs p a {
   font-weight: bold;
-  color: $accent;
+  color: $primary;
 }
 
 .btn {
   padding: 14px 16px;
   font-size: 14px;
   display: inline-block;
-  color: $dark;
+  color: $light;
   text-decoration: none;
-  background: $accent;
+  background: $primary;
   border-radius: 8px;
   margin-top: 24px;
   font-weight: bold;
@@ -269,7 +270,7 @@ body.iframe-container {
   height: 100%;
   width: 100%;
   transform-origin: left;
-  background: $accent;
+  background: $primary;
   transform: scaleX(0);
   opacity: 0;
   transition: 0.2s;
@@ -280,7 +281,7 @@ button,
   &:focus {
     outline: none !important;
     box-sizing: border-box !important;
-    border: 1px solid $accent !important;
+    border: 1px solid $primary !important;
     border-style: dashed !important;
   }
 }
@@ -296,7 +297,7 @@ button,
   position: relative;
   border-radius: 40px;
   overflow: hidden;
-  background: $accent;
+  background: $primary;
 }
 
 .infos__profile img {
@@ -326,5 +327,32 @@ button,
 .infos__contact {
   font-weight: normal;
   text-decoration: none;
-  color: $accent;
+  color: $primary;
+}
+
+@media (prefers-color-scheme: dark) {
+  .filters,
+  body {
+    background: $darker;
+  }
+
+  .experiment {
+    background: $dark;
+    color: white;
+  }
+
+  .filters__group ul li button.active {
+    background: $dark;
+    border-color: $dark;
+    color: white;
+  }
+
+  h1,
+  .filters__group h3,
+  .experiment__title,
+  .filters__group ul li button,
+  .infos__name,
+  .paragraphs p {
+    color: white;
+  }
 }
