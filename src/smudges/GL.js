@@ -1,6 +1,6 @@
 import createPlane from 'primitive-plane';
 
-const UPSCALE = 2;
+const UPSCALE = 1.5;
 
 const vShaderSource = `
 precision mediump float;
@@ -9,10 +9,11 @@ attribute vec2 a_position;
 varying vec2 v_position;
 
 void main() {
-  v_position = a_position;
+  vec2 position = a_position * vec2(0.5, -0.5) + vec2(0.5);
 
-  vec4 position = vec4(a_position.x, a_position.y, 0.0, 1.0);
-  gl_Position = position;
+  v_position = position;
+
+  gl_Position = vec4(a_position.x, a_position.y, 0.0, 1.0);
 }
 `;
 
@@ -26,8 +27,8 @@ uniform sampler2D u_texture;
 void main() {
   float strength = 0.2;
 
-  vec4 texture = texture2D(u_texture, vec2(0.5) + vec2(0.5, -0.5) * v_position.xy);
-  vec4 image = texture2D(u_image, vec2(0.5) + vec2(0.5, -0.5) * v_position.xy + vec2(strength * (-0.5 + texture.r), strength * (-0.5 + texture.g)));
+  vec4 texture = texture2D(u_texture, v_position.xy);
+  vec4 image = texture2D(u_image, v_position.xy + vec2(strength) * texture.rg + vec2(-0.5 * strength));
 
   gl_FragColor = image;
 }

@@ -1,4 +1,4 @@
-const LIFESPAN = 4000;
+const LIFESPAN = 3000;
 const FLUIDITY = 2;
 
 class Canvas {
