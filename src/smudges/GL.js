@@ -1,6 +1,6 @@
 import createPlane from 'primitive-plane';
 
-const UPSCALE = 1.5;
+const UPSCALE = 2;
 
 const vShaderSource = `
 precision mediump float;
