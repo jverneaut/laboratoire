@@ -1,4 +1,6 @@
+import { use } from 'matter-js';
 import React, { useState, useEffect } from 'react';
+import slugify from '../utils/slugify';
 
 const Filters = ({ defaultFilterFunction, setFilterFunction, categories }) => {
   const sortFilters = [
@@ -19,22 +21,64 @@ const Filters = ({ defaultFilterFunction, setFilterFunction, categories }) => {
       function: (a, b) => (Math.random() < 0.5 ? -1 : 1),
     },
   ];
+
+  const getCategoryIndexBySlug = slug =>
+    categories.map(category => slugify(category)).indexOf(slug);
+
   const [sortFiltersIndex, setSortFiltersIndex] = useState(0);
-  const [categoriesIndices, setCategoriesIndices] = useState([]);
+  const [categoriesIndex, setCategoriesIndex] = useState(undefined);
+
+  useEffect(() => {
+    const categoryIndexBySlug = getCategoryIndexBySlug(
+      window.location.hash.replace(/#/g, '')
+    );
+
+    if (categoryIndexBySlug > -1) {
+      setCategoriesIndex(categoryIndexBySlug);
+    }
+  }, []);
 
   useEffect(() => {
     const filterFunction = el =>
-      categoriesIndices.length
-        ? categoriesIndices
-            .map(index => categories[index])
-            .includes(el.category)
+      categoriesIndex !== null && categoriesIndex !== undefined
+        ? el.category === categories[categoriesIndex]
         : true;
+
     const sortFunction = sortFilters[sortFiltersIndex].function;
 
     setFilterFunction(() => arr =>
       arr.filter(filterFunction).sort(sortFunction)
     );
-  }, [sortFiltersIndex, categoriesIndices]);
+  }, [sortFiltersIndex, categoriesIndex]);
+
+  useEffect(() => {
+    if (categoriesIndex === undefined) return;
+
+    if (categoriesIndex === null) {
+      history.pushState('', document.title, window.location.pathname);
+      return;
+    }
+
+    const slug = slugify(categories[categoriesIndex]);
+    window.location.hash = slug;
+  }, [categoriesIndex]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const slug = window.location.hash.replace(/#/g, '');
+
+      const categoryIndexBySlug = getCategoryIndexBySlug(slug);
+
+      if (categoryIndexBySlug > -1) {
+        setCategoriesIndex(categoryIndexBySlug);
+      } else {
+        setCategoriesIndex(null);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   return (
     <div className="filters">
@@ -59,8 +103,12 @@ const Filters = ({ defaultFilterFunction, setFilterFunction, categories }) => {
         <ul>
           <li>
             <button
-              onClick={() => setCategoriesIndices([])}
-              className={categoriesIndices.length ? '' : 'active'}
+              onClick={() => setCategoriesIndex(null)}
+              className={
+                categoriesIndex === null || categoriesIndex === undefined
+                  ? 'active'
+                  : ''
+              }
             >
               Toutes les catégories
             </button>
@@ -68,14 +116,8 @@ const Filters = ({ defaultFilterFunction, setFilterFunction, categories }) => {
           {categories.map((category, index) => (
             <li key={category}>
               <button
-                className={categoriesIndices.includes(index) ? 'active' : ''}
-                onClick={() =>
-                  setCategoriesIndices(indices =>
-                    indices.includes(index)
-                      ? indices.filter(el => el !== index)
-                      : [...indices, index]
-                  )
-                }
+                onClick={() => setCategoriesIndex(index)}
+                className={index === categoriesIndex ? 'active' : ''}
               >
                 {category}
               </button>
