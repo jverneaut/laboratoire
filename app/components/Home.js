@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
 import Experiments from './Experiments';
 import Filters from './Filters';
 import Infos from './Infos';
+import Newsletter from './Newsletter';
 
 const Home = ({ pages, categories }) => {
   useEffect(() => {
@@ -34,6 +36,7 @@ const Home = ({ pages, categories }) => {
         <a className="btn" href="https://github.com/jverneaut/laboratoire">
           Code Source
         </a>
+        <Newsletter />
 
         <Filters
           defaultFilterFunction={defaultFilterFunction}

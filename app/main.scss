@@ -142,7 +142,7 @@ h1 {
   padding: 14px 16px;
   font-size: 14px;
   display: inline-block;
-  color: $light;
+  color: white;
   text-decoration: none;
   background: $primary;
   border-radius: 8px;
@@ -151,11 +151,22 @@ h1 {
   outline: none;
   border: 1px solid transparent;
   transition: 0.3s;
+  font-family: inherit;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border-width: 1px;
+  line-height: 1;
 
   &:hover,
   &:focus {
     background: #343a40;
+    color: white;
   }
+}
+
+.btn-outline {
+  color: $dark;
+  background: transparent;
 }
 
 .filters {
@@ -328,6 +339,165 @@ button,
   font-weight: normal;
   text-decoration: none;
   color: $primary;
+}
+
+.newsletter {
+  background: $darker;
+  width: 100%;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  z-index: 20;
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  margin-top: 56px;
+  transition: 0.5s opacity;
+
+  @media screen and (max-width: 720px) {
+    margin-left: -40px;
+    margin-right: -40px;
+    width: calc(100% + 80px);
+    border-radius: 0;
+    padding: 32px 40px;
+    margin-top: 40px;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  &--submitting {
+    opacity: 0.5;
+  }
+}
+
+.newsletter__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+  }
+}
+
+.newsletter small {
+  display: block;
+  color: rgba($light, 0.6);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.newsletter__content {
+  width: 50%;
+  box-sizing: border-box;
+  padding-right: 80px;
+  max-width: 540px;
+
+  @media screen and (max-width: 1200px) {
+    padding-right: 40px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+  }
+}
+
+.newsletter h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: bold;
+  letter-spacing: -0.2px;
+  color: white;
+  line-height: 1.4;
+}
+
+.newsletter p {
+  color: $light;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.newsletter form {
+  width: 50%;
+  padding-left: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    margin-top: 24px;
+    padding-left: 0;
+  }
+}
+
+.newsletter__fields,
+.newsletter__controls {
+  display: flex;
+  align-items: center;
+}
+
+.newsletter__controls {
+  margin-top: 12px;
+}
+
+.newsletter__controls .btn {
+  margin-top: 0;
+}
+
+.newsletter .input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+
+  & + .input-group {
+    margin-left: 8px;
+  }
+}
+
+.newsletter .input-group label {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  color: $light;
+  margin-bottom: 8px;
+}
+
+.newsletter .input-group input {
+  width: 100%;
+  font-family: inherit;
+  padding: 12px;
+  display: block;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: none;
+  background: $dark;
+  color: $light;
+  font-size: 14px;
+
+  &::placeholder {
+    color: rgba($light, 0.6);
+  }
+}
+
+.newsletter .btn:not(.btn-outline) {
+  background: transparent;
+  border: 1px solid white;
+
+  &:hover {
+    color: $dark;
+    background: white;
+  }
+}
+
+.newsletter .btn-outline {
+  margin-left: 12px;
+  color: $light;
+  color: rgba($light, 0.6);
 }
 
 @media (prefers-color-scheme: dark) {
