@@ -5,7 +5,7 @@ const Newsletter = () => {
     name: '',
     email: '',
     submitting: false,
-    message: '',
+    message: null,
   });
 
   const handleSubmit = async e => {
@@ -14,6 +14,7 @@ const Newsletter = () => {
     setFormState(prevState => ({
       ...prevState,
       submitting: true,
+      message: null,
     }));
 
     const url = window.location.origin + '/.netlify/functions/newsletter';
@@ -34,7 +35,12 @@ const Newsletter = () => {
         name: '',
         email: '',
         submitting: false,
-        message: `L\'erreur suivante s\'est produite, merci de réessayer : ${formState.message}.`,
+        message: (
+          <p>
+            L'erreur suivante s'est produite, merci de réessayer :{' '}
+            <strong>{json.message}</strong>.
+          </p>
+        ),
       }));
     } else {
       setFormState(prevState => ({
@@ -42,7 +48,12 @@ const Newsletter = () => {
         name: '',
         email: '',
         submitting: false,
-        message: 'Merci de votre inscription à la newsletter du laboratoire.',
+        message: (
+          <p>
+            <strong>Merci de votre inscription</strong> à la newsletter du
+            laboratoire.
+          </p>
+        ),
       }));
     }
   };

@@ -405,6 +405,10 @@ button,
   }
 }
 
+.newsletter strong {
+  font-weight: bold;
+}
+
 .newsletter h3 {
   font-size: 18px;
   margin-bottom: 12px;
@@ -505,7 +509,7 @@ button,
   font-size: 16px;
   margin-top: 16px;
   border-left: 1px solid $primary;
-  padding: 12px 16px;
+  padding: 4px 16px;
 }
 
 @media (prefers-color-scheme: dark) {
