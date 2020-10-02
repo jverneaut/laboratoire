@@ -500,6 +500,14 @@ button,
   color: rgba($light, 0.6);
 }
 
+.newsletter__message {
+  color: white;
+  font-size: 16px;
+  margin-top: 16px;
+  border-left: 1px solid $primary;
+  padding: 12px 16px;
+}
+
 @media (prefers-color-scheme: dark) {
   .filters,
   body {

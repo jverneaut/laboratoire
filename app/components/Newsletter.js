@@ -28,8 +28,23 @@ const Newsletter = () => {
     });
 
     const json = await res.json();
-
-    console.log(json);
+    if (json.error) {
+      setFormState(prevState => ({
+        ...prevState,
+        name: '',
+        email: '',
+        submitting: false,
+        message: `L\'erreur suivante s\'est produite, merci de réessayer : ${formState.message}.`,
+      }));
+    } else {
+      setFormState(prevState => ({
+        ...prevState,
+        name: '',
+        email: '',
+        submitting: false,
+        message: 'Merci de votre inscription à la newsletter du laboratoire.',
+      }));
+    }
   };
 
   return (
@@ -71,6 +86,7 @@ const Newsletter = () => {
                 required
               />
             </div>
+
             <div className="input-group">
               <label htmlFor="name">Email</label>
               <input
@@ -95,6 +111,9 @@ const Newsletter = () => {
           <div className="newsletter__controls">
             <input type="submit" className="btn" value="Je m'inscris" />
           </div>
+          {formState.message ? (
+            <div className="newsletter__message">{formState.message}</div>
+          ) : null}
         </form>
       </div>
     </div>
