@@ -27,8 +27,9 @@ const Newsletter = () => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    console.log(res);
-    console.log(res.json());
+    const json = await res.json();
+
+    console.log(json);
   };
 
   return (
