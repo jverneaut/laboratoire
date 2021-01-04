@@ -10,9 +10,10 @@ import createPlane from 'primitive-plane';
 
 const settings = {
   originalDimensions: [200, 400],
-  activeDimensions: [1100, 600],
+  activeDimensions: [window.innerWidth, window.innerHeight],
   instances: 12,
   gap: 20,
+  startPosition: 2,
 };
 
 const init = () => {
@@ -77,19 +78,22 @@ const init = () => {
     u_active: 0,
     u_mouseIndex: -999,
     u_position: -999,
+    u_speed: 0,
   };
 
-  let startX = 0;
-  let lastX = 0;
-  let targetX = 0;
-  let currentX = 0;
+  let currentX = -settings.startPosition * settings.originalDimensions[0];
+  let targetX = currentX;
+  let startX = currentX;
+  let lastX = currentX;
   let isMouseDown = false;
 
+  let lastRenderX = 0;
   // Render
   const render = time => {
     time *= 0.001;
 
-    currentX += 0.12 * (targetX - currentX);
+    currentX += 0.09 * (targetX - currentX);
+    uniforms.u_speed = 0.5 * (lastRenderX - currentX);
 
     uniforms.u_position = currentX / settings.originalDimensions[0];
 
@@ -132,6 +136,7 @@ const init = () => {
     });
 
     twgl.drawObjectList(gl, objects);
+    lastRenderX = currentX;
 
     requestAnimationFrame(render);
   };

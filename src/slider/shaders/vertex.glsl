@@ -12,19 +12,16 @@ uniform mat4 u_view;
 uniform float u_index;
 uniform float u_mouseIndex;
 uniform float u_position;
+uniform float u_speed;
 
 varying vec2 v_texCoord;
+
+float sigmoid(float x) { return 1.0 / (1.0 + exp(-x)); }
 
 void main() {
   vec4 position = a_position;
 
-  if (u_mouseIndex > -999.0) {
-    if ((u_mouseIndex - floor(u_position)) == u_index) {
-      position.xy *= mix(1.12, 1.0, u_active);
-    } else {
-      position.xy *= mix(0.9, 1.0, u_active);
-    }
-  }
+  position.xy *= 1.0 - .5 * (sigmoid(abs(u_speed) * 0.05) - 0.5);
   position = u_view * position;
 
   position.xy = position.xy / u_resolution * 2.0 - 1.0;
