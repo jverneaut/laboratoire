@@ -7,14 +7,14 @@ import fShaderSource from './shaders/fragment.glsl';
 
 const defaultOptions = {
   base: {
-    subdivisions: [1, 1],
-    dimensions: [300, 400],
+    subdivisions: [30, 30],
+    dimensions: [240, 400],
+    zoom: 1.2,
     upscale: 1,
     gap: 60,
   },
   open: {
-    dimensions: [window.innerWidth, window.innerHeight],
-    gap: 40,
+    gap: 20,
   },
 };
 
@@ -33,6 +33,8 @@ export default class Slider {
       open: 0,
       index: 0,
     };
+
+    this.canvas.addEventListener('mousemove', this.mousemove.bind(this));
 
     window.addEventListener('resize', this.resize.bind(this));
     requestAnimationFrame(this.update.bind(this));
@@ -72,6 +74,27 @@ export default class Slider {
     };
   }
 
+  getTextureScale(containerDimensions, textureDimensions) {
+    if (
+      containerDimensions[0] / containerDimensions[1] <
+      textureDimensions[0] / textureDimensions[1]
+    ) {
+      return [
+        containerDimensions[0] /
+          containerDimensions[1] /
+          (textureDimensions[0] / textureDimensions[1]),
+        1,
+      ];
+    } else {
+      return [
+        1,
+        containerDimensions[1] /
+          containerDimensions[0] /
+          (textureDimensions[1] / textureDimensions[0]),
+      ];
+    }
+  }
+
   resize() {
     twgl.resizeCanvasToDisplaySize(
       this.canvas,
@@ -98,24 +121,24 @@ export default class Slider {
       bufferInfo: this.bufferInfo,
       programInfo: this.programInfo,
       texture,
-      textureScale: [
-        this.options.base.dimensions[0] /
-          this.options.base.dimensions[1] /
-          (options.width / options.height),
-        1,
-      ],
-      textureScaleOpen: [
-        this.options.open.dimensions[0] /
-          this.options.open.dimensions[1] /
-          (options.width / options.height),
-        1,
-      ],
+      width: options.width,
+      height: options.height,
+      hover: 0,
     };
 
     this.slides.push(slide);
   }
 
   open() {
+    if (this.hoveredIndex !== null) {
+      anime({
+        targets: this.animatedProperties,
+        index: this.hoveredIndex,
+        easing: 'easeInOutSine',
+        duration: 800,
+      });
+    }
+
     anime({
       targets: this.animatedProperties,
       open: 1,
@@ -151,17 +174,57 @@ export default class Slider {
     });
   }
 
+  mousemove(e) {
+    const hoveredIndex = Math.floor(
+      (e.clientX -
+        0.5 * window.innerWidth +
+        0.5 * this.options.base.dimensions[0] +
+        0.5 * this.options.base.gap) /
+        (this.options.base.dimensions[0] + this.options.base.gap) +
+        this.animatedProperties.index
+    );
+
+    if (
+      hoveredIndex > -1 &&
+      hoveredIndex < this.slides.length &&
+      Math.abs(e.clientY - 0.5 * window.innerHeight) <
+        0.5 * this.options.base.dimensions[1]
+    ) {
+      if (hoveredIndex !== this.hoveredIndex) {
+        this.slides.forEach((slide, index) => {
+          anime({
+            targets: slide,
+            hover: index == hoveredIndex ? 0 : 1,
+            easing: 'easeOutQuart',
+            duration: 400,
+          });
+        });
+      }
+      this.hoveredIndex = hoveredIndex;
+    } else {
+      this.slides.forEach((slide, index) => {
+        anime({
+          targets: slide,
+          hover: 0,
+          easing: 'easeOutQuart',
+          duration: 400,
+        });
+      });
+      this.hoveredIndex = null;
+    }
+  }
+
   draw(time) {
     this.slides.forEach((slide, index) => {
       const scale = [
         mix(
           1,
-          this.options.open.dimensions[0] / this.options.base.dimensions[0],
+          window.innerWidth / this.options.base.dimensions[0],
           this.animatedProperties.open
         ),
         mix(
           1,
-          this.options.open.dimensions[1] / this.options.base.dimensions[1],
+          window.innerHeight / this.options.base.dimensions[1],
           this.animatedProperties.open
         ),
       ];
@@ -184,15 +247,12 @@ export default class Slider {
       twgl.m4.translate(view, [...pos, 0, 0], view);
 
       const textureScale = [
-        mix(
-          slide.textureScale[0],
-          slide.textureScaleOpen[0],
-          this.animatedProperties.open
-        ),
-        mix(
-          slide.textureScale[1],
-          slide.textureScaleOpen[1],
-          this.animatedProperties.open
+        ...this.getTextureScale(
+          [
+            this.options.base.dimensions[0] * scale[0],
+            this.options.base.dimensions[1] * scale[1],
+          ],
+          [slide.width, slide.height]
         ),
       ];
 
@@ -202,6 +262,9 @@ export default class Slider {
         u_textureScale: textureScale,
         u_time: time,
         u_view: view,
+        u_open: this.animatedProperties.open,
+        u_zoom: mix(this.options.base.zoom, 1, this.animatedProperties.open),
+        u_hover: slide.hover,
       };
     });
 

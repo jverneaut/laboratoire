@@ -36,4 +36,14 @@ window.addEventListener('load', () => {
       slider.prev();
     }
   });
+
+  canvas.addEventListener('click', () => {
+    open = !open;
+
+    if (open) {
+      slider.open();
+    } else {
+      slider.close();
+    }
+  });
 });
