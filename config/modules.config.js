@@ -40,7 +40,7 @@ module.exports = {
               adapter: require('responsive-loader/sharp'),
               context: 'src',
               publicPath: '/',
-              name: '[path][name].[ext]',
+              name: '[path][name]-[width].[ext]',
             },
           },
         ],
