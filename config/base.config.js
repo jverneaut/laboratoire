@@ -32,4 +32,5 @@ module.exports = {
     contentBase: resolve(__dirname, 'dist'),
     publicPath: '/',
   },
+  devtool: 'eval-cheap-source-map',
 };
