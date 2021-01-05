@@ -17,4 +17,16 @@ h1 {
   left: 50vw;
   transform: translateX(-50%);
   font-family: sans-serif;
+  text-align: center;
+}
+
+div {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  content: '';
+  display: block;
+  background: red;
 }

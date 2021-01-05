@@ -9,12 +9,12 @@ const defaultOptions = {
   base: {
     subdivisions: [30, 30],
     dimensions: [240, 400],
-    zoom: 1.2,
+    zoom: 1.5,
     upscale: 1,
-    gap: 60,
+    gap: 20,
   },
   open: {
-    gap: 20,
+    gap: 160,
   },
 };
 
@@ -34,7 +34,16 @@ export default class Slider {
       index: 0,
     };
 
+    this.canvas.addEventListener('mousemove', this.hover.bind(this));
+
+    this.currentX = 0;
+    this.targetX = this.currentX;
+
+    this.canvas.addEventListener('mousedown', this.mousedown.bind(this));
     this.canvas.addEventListener('mousemove', this.mousemove.bind(this));
+    this.canvas.addEventListener('mouseup', this.mouseup.bind(this));
+
+    window.addEventListener('keydown', this.keydown.bind(this));
 
     window.addEventListener('resize', this.resize.bind(this));
     requestAnimationFrame(this.update.bind(this));
@@ -143,7 +152,7 @@ export default class Slider {
       targets: this.animatedProperties,
       open: 1,
       easing: 'easeInOutQuart',
-      duration: 1600,
+      duration: 1800,
     });
   }
 
@@ -152,7 +161,7 @@ export default class Slider {
       targets: this.animatedProperties,
       open: 0,
       easing: 'easeInOutQuart',
-      duration: 1600,
+      duration: 1800,
     });
   }
 
@@ -174,7 +183,7 @@ export default class Slider {
     });
   }
 
-  mousemove(e) {
+  hover(e) {
     const hoveredIndex = Math.floor(
       (e.clientX -
         0.5 * window.innerWidth +
@@ -190,27 +199,82 @@ export default class Slider {
       Math.abs(e.clientY - 0.5 * window.innerHeight) <
         0.5 * this.options.base.dimensions[1]
     ) {
+      document.body.style.cursor = 'pointer';
       if (hoveredIndex !== this.hoveredIndex) {
         this.slides.forEach((slide, index) => {
           anime({
             targets: slide,
             hover: index == hoveredIndex ? 0 : 1,
             easing: 'easeOutQuart',
-            duration: 400,
+            duration: 600,
           });
         });
       }
       this.hoveredIndex = hoveredIndex;
     } else {
+      document.body.style.cursor = '';
       this.slides.forEach((slide, index) => {
         anime({
           targets: slide,
           hover: 0,
           easing: 'easeOutQuart',
-          duration: 400,
+          duration: 600,
         });
       });
       this.hoveredIndex = null;
+    }
+  }
+
+  mousedown(e) {
+    this.moved = false;
+    this.isMousedown = true;
+    this.startX = e.clientX;
+    this.lastX = this.currentX;
+  }
+
+  mousemove(e) {
+    if (this.isMousedown) {
+      this.moved = true;
+      this.targetX = this.lastX + (e.clientX - this.startX);
+      document.body.style.cursor = 'grabbing';
+    }
+  }
+
+  mouseup() {
+    this.isMousedown = false;
+
+    if (this.moved === false) {
+      if (this.animatedProperties.open === 0) {
+        this.open();
+      } else if (this.animatedProperties.open === 1) {
+        this.close();
+      }
+    }
+
+    if (this.hoveredIndex) {
+      document.body.style.cursor = 'pointer';
+    } else {
+      document.body.style.cursor = '';
+    }
+
+    this.moved = false;
+  }
+
+  keydown(e) {
+    if (['Space', 'Enter'].includes(e.code)) {
+      if (this.animatedProperties.open === 0) {
+        this.open();
+      } else if (this.animatedProperties.open === 1) {
+        this.close();
+      }
+    }
+
+    if (e.code == 'ArrowRight') {
+      this.next();
+    }
+
+    if (e.code == 'ArrowLeft') {
+      this.prev();
     }
   }
 
@@ -244,6 +308,7 @@ export default class Slider {
 
       const view = twgl.m4.identity();
       twgl.m4.scale(view, [...scale, 1, 1], view);
+      twgl.m4.translate(view, [this.currentX, 0, 0, 0], view);
       twgl.m4.translate(view, [...pos, 0, 0], view);
 
       const textureScale = [
@@ -273,6 +338,30 @@ export default class Slider {
 
   update(time) {
     time *= 0.001;
+
+    if (Math.abs(this.currentX - this.targetX) > 1) {
+      this.currentX += 0.12 * (this.targetX - this.currentX);
+    }
+
+    if (Math.abs(this.currentX - this.targetX) < 1 && this.targetX !== 0) {
+      const index =
+        -this.currentX /
+        (this.options.base.dimensions[0] + this.options.base.gap);
+      this.targetX = 0;
+      this.currentX = 0;
+      this.animatedProperties.index += index;
+
+      if (this.settleAnimation?.remove) {
+        this.settleAnimation.remove(this.animatedProperties);
+      }
+      this.settleAnimation = anime({
+        targets: this.animatedProperties,
+        index: Math.round(this.animatedProperties.index),
+        easing: 'easeOutQuart',
+        duration: 1200,
+      });
+    }
+
     this.draw(time);
     requestAnimationFrame(this.update.bind(this));
   }
