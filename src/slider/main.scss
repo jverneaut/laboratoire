@@ -4,8 +4,17 @@ canvas {
   position: fixed;
   width: 100vw;
   height: 100vh;
+  z-index: 10;
 }
 
 img {
   display: none;
+}
+
+h1 {
+  position: fixed;
+  bottom: 24px;
+  left: 50vw;
+  transform: translateX(-50%);
+  font-family: sans-serif;
 }
