@@ -18,7 +18,7 @@ const Experiment = () => {
     }
   });
 
-  return <iframe src={location.pathname}></iframe>;
+  return <iframe src={location.pathname} allow="camera;microphone"></iframe>;
 };
 
 export default Experiment;
