@@ -29,10 +29,11 @@ void main() {
   paperColor.rgb += 0.2;
 
   vec4 circle = vec4(1.0, 0.2, 0.0, 0.0);
-  vec2 pos =
-      vec2(1.0, u_resolution.y / u_resolution.x) *
-      (v_position.xy + vec2(1.0 - 2.0 * circlePos.x, -1.0 + 2.0 * circlePos.y));
-  if (pos.x * pos.x + pos.y * pos.y < pow(circleWidth, 2.0)) {
+  float aspectRatio = u_resolution.x / u_resolution.y;
+  vec2 offset = vec2(1.0 - 2.0 * circlePos.x, -1.0 + 2.0 * circlePos.y);
+  vec2 pos = vec2(1.0, 1.0 / aspectRatio) * (v_position.xy + offset);
+
+  if (pow(pos.x, 2.0) + pow(pos.y, 2.0) < pow(circleWidth, 2.0)) {
     circle.a = 1.0;
   }
 
