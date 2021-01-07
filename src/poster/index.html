@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Poster</title>
+    <meta name="category" content="WebGL 🔥" />
+    <meta name="date" content="1610013988655" />
+    <%= htmlWebpackPlugin.options.headContent %>
+  </head>
+  <body>
+    <canvas></canvas>
+    <img
+      id="paper"
+      src="<%= require('./assets/paper-texture.jpg').src %>"
+      alt=""
+    />
+    <img
+      id="car"
+      src="<%= require('./assets/andrei-ianovskii-qXRSqzckI_s-unsplash.jpg').src %>"
+      alt=""
+    />
+    <img
+      id="car-cutout"
+      src="<%= require('./assets/andrei-ianovskii-qXRSqzckI_s-unsplash.png').src %>"
+      alt=""
+    />
+    <h1>
+      Inspired by
+      <a href="https://www.instagram.com/p/CJtUNQ1qMgX/">this Instagram post</a>
+      from _kickin_
+    </h1>
+  </body>
+</html>
