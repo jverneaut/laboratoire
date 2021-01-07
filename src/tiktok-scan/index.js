@@ -8,6 +8,7 @@ const video = document.querySelector('video');
 const bar = document.querySelector('div');
 
 const TIME = 8000;
+const DELAY = 500;
 const BAND_HEIGHT = 3;
 
 const animData = {
@@ -42,6 +43,7 @@ const anim = () => {
     targets: animData,
     progress: 1,
     duration: TIME,
+    delay: DELAY,
     easing: 'linear',
     begin: () => {
       bar.style.opacity = 1;
