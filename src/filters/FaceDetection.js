@@ -91,16 +91,16 @@ class FaceDetection {
     const sunglassesHeight =
       (sunglasses.height * sunglassesWidth) / sunglasses.width;
 
-    this.drawAngledImage(
-      sunglasses,
-      eyesCenter.x - 0.5 * sunglassesWidth,
-      eyesCenter.y - 0.5 * sunglassesHeight,
-      sunglassesWidth,
-      sunglassesHeight,
-      eyesAngle
-    );
+    // this.drawAngledImage(
+    //   sunglasses,
+    //   eyesCenter.x - 0.5 * sunglassesWidth,
+    //   eyesCenter.y - 0.5 * sunglassesHeight,
+    //   sunglassesWidth,
+    //   sunglassesHeight,
+    //   eyesAngle
+    // );
 
-    // faceapi.draw.drawFaceLandmarks(this.canvas, this.landmarks);
+    faceapi.draw.drawFaceLandmarks(this.canvas, this.landmarks);
   }
 
   getAngleBetweenTwoPointsInRadians(a, b) {

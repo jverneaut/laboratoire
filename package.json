@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "cross-env NODE_ENV=production webpack --mode=production"
+    "build": "cross-env NODE_ENV=production webpack --mode=production",
+    "new": "node cli/index.js"
   },
   "keywords": [],
   "author": "",
@@ -69,5 +70,9 @@
     "webpack-glsl-loader": "^1.0.1",
     "webpack-merge": "^4.2.2",
     "webpack-obj-loader": "^1.0.4"
+  },
+  "devDependencies": {
+    "prompts": "^2.4.1",
+    "shelljs": "^0.8.4"
   }
 }
