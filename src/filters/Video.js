@@ -2,6 +2,10 @@ class Video {
   constructor(videoHTMLElement) {
     this.stream = null;
     this.videoHTMLElement = videoHTMLElement;
+
+    this.video.setAttribute('autoplay', '');
+    this.video.setAttribute('muted', '');
+    this.video.setAttribute('playsinline', '');
   }
 
   async getStream() {
