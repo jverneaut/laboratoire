@@ -1,0 +1,49 @@
+body {
+  background: yellow;
+}
+
+canvas {
+  background: #222222;
+  border: 32px solid black;
+  border-radius: 60px;
+  box-shadow: 0px 20px 40px rgba(black, 0.2);
+}
+
+.phone {
+  position: relative;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    background: black;
+    top: 0;
+    height: 60px;
+    width: 200px;
+    border-radius: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 64px;
+    content: '';
+    display: block;
+    background: rgba(white, 0.2);
+    border: 4px solid white;
+  }
+}
+
+.hide {
+  display: none;
+}

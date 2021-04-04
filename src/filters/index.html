@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Filters</title>
+    <meta name="category" content="Misc" />
+    <meta name="date" content="1617539139751" />
+    <%= htmlWebpackPlugin.options.headContent %>
+  </head>
+  <body>
+    <img
+      src="<%= require('./sunglasses.png').src %>"
+      alt=""
+      style="display: none;"
+      class="sunglasses"
+    />
+    <div class="phone">
+      <canvas></canvas>
+    </div>
+    <video class="hide"></video>
+  </body>
+</html>
