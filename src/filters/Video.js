@@ -3,9 +3,9 @@ class Video {
     this.stream = null;
     this.videoHTMLElement = videoHTMLElement;
 
-    this.video.setAttribute('autoplay', '');
-    this.video.setAttribute('muted', '');
-    this.video.setAttribute('playsinline', '');
+    this.videoHTMLElement.setAttribute('autoplay', '');
+    this.videoHTMLElement.setAttribute('muted', '');
+    this.videoHTMLElement.setAttribute('playsinline', '');
   }
 
   async getStream() {
