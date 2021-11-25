@@ -68,7 +68,7 @@ module.exports = {
         <meta property="og:image" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
         <meta property="og:image:url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
         <meta property="og:image:secure_url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
-        <script defer data-domain="lab.julienverneaut.com" src="https://plausible.io/js/plausible.outbound-links.js"></script>
+        <script defer data-domain="lab.julienverneaut.com" src="https://plausible.io/js/plausible.js"></script>
       `;
 
       return new HtmlWebpackPlugin({
