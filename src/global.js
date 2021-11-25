@@ -1,12 +1,4 @@
 // All of this is very ugly, please don't judge me
-const analytics = document.createElement('script');
-
-analytics.src = 'https://plausible.io/js/plausible.js';
-analytics.dataset.domain = 'lab.julienverneaut.com';
-analytics.defer = true;
-
-document.head.appendChild(analytics);
-
 if (window.location.pathname !== '/') {
   const iframe = document.createElement('iframe');
   iframe.src = location.origin + '/overlay.html';

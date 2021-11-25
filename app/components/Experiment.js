@@ -8,7 +8,7 @@ const Experiment = () => {
 
   const history = useHistory();
 
-  window.addEventListener('message', function(e) {
+  window.addEventListener('message', function (e) {
     if (e.data.type === 'title') {
       document.title = e.data.payload;
     }
@@ -18,7 +18,12 @@ const Experiment = () => {
     }
   });
 
-  return <iframe src={location.pathname} allow="camera;microphone"></iframe>;
+  return (
+    <iframe
+      src={`${location.pathname}/index-iframe.html`}
+      allow="camera;microphone"
+    ></iframe>
+  );
 };
 
 export default Experiment;
