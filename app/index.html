@@ -9,6 +9,12 @@
       rel="stylesheet"
     />
 
+    <script
+      defer
+      data-domain="lab.julienverneaut.com"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+
     <title>Le laboratoire</title>
     <meta name="twitter:card" content="summary" />
     <meta property="og:url" content="https://lab.julienverneaut.com" />
@@ -30,20 +36,8 @@
       property="og:image:secure_url"
       content="https://lab.julienverneaut.com/app/social.png"
     />
-
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'UA-120978536-6');
-    </script>
   </head>
   <body>
-    <div id="root">
-      {{prerender:app/index}}
-    </div>
+    <div id="root">{{prerender:app/index}}</div>
   </body>
 </html>
