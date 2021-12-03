@@ -27,6 +27,8 @@ const Window = ({ x, y, width, height, time }) => {
       `width=${width},height=${height},left=${x},top=${y}`
     );
 
+    if (externalWindow === null) return;
+
     externalWindow.document.body.appendChild(container);
 
     const newStyleElement = styleElement.cloneNode();

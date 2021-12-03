@@ -79,7 +79,7 @@ const App = () => {
     <main>
       <img
         src={require('../img/The_Office_US_logo.svg').default}
-        class="logo"
+        className="logo"
         alt=""
       />
       {cards

@@ -50,8 +50,8 @@
     "primitive-cube": "^2.0.1",
     "primitive-plane": "^2.0.1",
     "randexp": "^0.5.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-flip-move": "^3.0.4",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
@@ -69,7 +69,8 @@
     "webpack-dev-server": "^3.10.1",
     "webpack-glsl-loader": "^1.0.1",
     "webpack-merge": "^4.2.2",
-    "webpack-obj-loader": "^1.0.4"
+    "webpack-obj-loader": "^1.0.4",
+    "xp.css": "^0.3.0"
   },
   "devDependencies": {
     "prompts": "^2.4.1",

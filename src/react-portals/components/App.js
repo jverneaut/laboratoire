@@ -8,7 +8,7 @@ const App = () => {
   const [time, setTime] = useState(Date.now());
 
   useEffect(() => {
-    const tick = dt => {
+    const tick = (dt) => {
       setTime(Date.now());
       requestAnimationFrame(tick);
     };
@@ -25,9 +25,10 @@ const App = () => {
         <div className="row">
           <div
             onClick={showWindows}
-            className="col-12 d-flex justify-content-center"
+            className="col-12 d-flex flex-column align-items-center"
           >
             <button className="btn btn-primary">Show windows</button>
+            <p className="mt-4">You need to allow popups for this to work.</p>
           </div>
         </div>
       </div>
