@@ -1,0 +1,54 @@
+@import '../../src/reset.css';
+@import '../../node_modules/xp.css/dist/XP.css';
+
+body {
+  $left-bar-width: 92px;
+  $left-bar-color: rgb(231, 231, 231);
+
+  $background-color: white;
+
+  padding-left: $left-bar-width;
+  background: linear-gradient(
+    to right,
+    $left-bar-color 0px,
+    $left-bar-color $left-bar-width,
+    $background-color $left-bar-width,
+    $background-color $left-bar-width
+  );
+}
+
+#root {
+  height: 100vh;
+}
+
+.matcap-editor {
+  display: flex;
+  height: 100%;
+  align-items: stretch;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.matcap-editor .window {
+  flex: 1;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.matcap-editor .window-body {
+  flex: 1;
+}
+
+.window {
+  overflow: hidden;
+}
+
+.window-body {
+  overflow: auto;
+}
+
+canvas.editor {
+  border: 1px solid black;
+  width: 100%;
+}
