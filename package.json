@@ -18,6 +18,7 @@
     "@babel/preset-react": "^7.9.4",
     "@react-three/drei": "^7.25.4",
     "@react-three/fiber": "^7.0.21",
+    "@react-three/postprocessing": "^2.0.5",
     "angle-normals": "^1.0.0",
     "animejs": "^3.2.0",
     "autoprefixer": "^9.8.4",
