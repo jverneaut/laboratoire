@@ -1,8 +1,50 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as THREE from 'three';
 
 const CANVAS_WIDTH = 512;
 const CANVAS_HEIGHT = 512;
+
+const importAll = (r) => {
+  return r.keys().map(r);
+};
+
+const matCaps = importAll(
+  require.context('../assets/matcaps', false, /\.(png|jpe?g|svg)$/)
+);
+
+const ColorPicker = ({ name, label, value, onChange }) => {
+  return (
+    <div className="control">
+      <label>{label}</label>
+      <input type="color" value={value} name={name} onChange={onChange} />
+    </div>
+  );
+};
+
+const Range = ({ name, label, value, min, max, onChange: propsOnChange }) => {
+  const onChange = (e) => {
+    propsOnChange({
+      ...e,
+      target: { ...e.target, value: parseFloat(e.target.value) },
+    });
+  };
+
+  return (
+    <div className="control">
+      <label>{label}</label>
+      <label>{min}</label>
+      <input
+        type="range"
+        value={value}
+        name={name}
+        min={min}
+        max={max}
+        onChange={onChange}
+      />
+      <label>{max}</label>
+    </div>
+  );
+};
 
 const getPos = (e) => {
   const {
@@ -18,129 +60,287 @@ const getPos = (e) => {
   ];
 };
 
-const Editor = ({ canvasRef, setTexture }) => {
-  const canvas = canvasRef.current;
+const Editor = ({ setTexture }) => {
+  /** @type HTMLCanvasElement */
+  let drawingCanvas = null;
+  /** @type HTMLCanvasElement */
+  let postProcessingCanvas = null;
 
   const [state, setState] = useState({
-    mouseDown: false,
-    lastPos: [null, null],
-    brushSize: 20,
-    color: '#ffffff',
+    drawing: {
+      mouseDown: false,
+      lastPos: [null, null],
+    },
+    mouseStyle: {
+      top: 0,
+      left: 0,
+      opacity: 0,
+    },
+    controls: {
+      baseColor: {
+        type: 'color',
+        label: 'Base Color',
+        value: '#dddddd',
+      },
+      brushColor: {
+        type: 'color',
+        label: 'Brush Color',
+        value: '#000000',
+      },
+      brushSize: {
+        type: 'range',
+        label: 'Brush Size',
+        value: 50,
+        min: 1,
+        max: 256,
+      },
+      blur: {
+        type: 'range',
+        label: 'Blur Size',
+        value: 0,
+        min: 0,
+        max: 64,
+      },
+    },
   });
 
+  const clearCanvas = (ctx) => {
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.fillStyle = state.controls.baseColor.value;
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  };
+
+  // Post processing
   useEffect(() => {
-    setTexture(new THREE.CanvasTexture(canvasRef.current));
-  }, []);
+    const postProcessingCanvasCtx = postProcessingCanvas.getContext('2d');
+
+    const imageURL = drawingCanvas.toDataURL();
+
+    const image = new Image();
+    image.onload = () => {
+      clearCanvas(postProcessingCanvasCtx);
+      postProcessingCanvasCtx.filter = `blur(${state.controls.blur.value}px)`;
+      postProcessingCanvasCtx.drawImage(image, 0, 0);
+
+      setTexture(new THREE.CanvasTexture(postProcessingCanvasCtx.canvas));
+    };
+
+    image.src = imageURL;
+  }, [postProcessingCanvas, state.controls.blur, state.controls.baseColor]);
+
+  // Post processing
+  useEffect(() => {
+    const postProcessingCanvasCtx = postProcessingCanvas.getContext('2d');
+    const imageURL = drawingCanvas.toDataURL();
+
+    const image = new Image();
+    image.onload = () => {
+      clearCanvas(postProcessingCanvasCtx);
+      postProcessingCanvasCtx.drawImage(image, 0, 0);
+
+      setTexture(new THREE.CanvasTexture(postProcessingCanvasCtx.canvas));
+    };
+
+    image.src = imageURL;
+  }, [postProcessingCanvas, state.drawing.lastPos, state.controls.baseColor]);
+
+  const onMouseEnter = (e) => {
+    const pos = getPos(e);
+
+    setState((state) => ({
+      ...state,
+      drawing: {
+        ...state.drawing,
+        lastPos: state.drawing.mouseDown ? pos : state.drawing.lastPos,
+      },
+      mouseStyle: { ...state.mouseStyle, opacity: 1 },
+    }));
+  };
+
+  const onMouseLeave = () => {
+    setState((state) => ({
+      ...state,
+      mouseStyle: { ...state.mouseStyle, opacity: 0 },
+    }));
+  };
 
   const onMouseDown = (e) => {
     const pos = getPos(e);
 
     setState((state) => ({
       ...state,
-      mouseDown: true,
-      lastPos: pos,
+      drawing: { ...state.drawing, mouseDown: true, lastPos: pos },
     }));
   };
 
   const onMouseMove = (e) => {
-    if (!state.mouseDown) return;
-
-    const pos = getPos(e);
-
-    /** @type CanvasRenderingContext2D */
-    const ctx = canvas.getContext('2d');
-
-    ctx.beginPath();
-    ctx.strokeStyle = state.color;
-    ctx.lineWidth = state.brushSize;
-    ctx.moveTo(state.lastPos[0], state.lastPos[1]);
-    ctx.lineTo(pos[0], pos[1]);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(pos[0], pos[1], 0.5 * state.brushSize, 0, 2 * Math.PI);
-    ctx.fillStyle = state.color;
-    ctx.fill();
+    const { x: canvasLeft, y: canvasTop } = e.target.getBoundingClientRect();
 
     setState((state) => ({
       ...state,
-      mouseDown: true,
-      lastPos: pos,
+      mouseStyle: {
+        ...state.mouseStyle,
+        left: e.clientX - canvasLeft,
+        top: e.clientY - canvasTop,
+      },
     }));
 
-    setTexture(new THREE.CanvasTexture(canvasRef.current));
+    if (!state.drawing.mouseDown) return;
+
+    const pos = getPos(e);
+
+    const drawingCanvasCtx = drawingCanvas.getContext('2d');
+
+    drawingCanvasCtx.beginPath();
+    drawingCanvasCtx.strokeStyle = state.controls.brushColor.value;
+    drawingCanvasCtx.lineWidth = state.controls.brushSize.value;
+    drawingCanvasCtx.moveTo(state.drawing.lastPos[0], state.drawing.lastPos[1]);
+    drawingCanvasCtx.lineTo(pos[0], pos[1]);
+    drawingCanvasCtx.stroke();
+
+    drawingCanvasCtx.beginPath();
+    drawingCanvasCtx.arc(
+      pos[0],
+      pos[1],
+      0.5 * state.controls.brushSize.value,
+      0,
+      2 * Math.PI
+    );
+    drawingCanvasCtx.fillStyle = state.controls.brushColor.value;
+    drawingCanvasCtx.fill();
+
+    setState((state) => ({
+      ...state,
+      drawing: {
+        ...state.drawing,
+        lastPos: pos,
+      },
+    }));
   };
 
-  const onMouseUp = () => {
-    setState((state) => ({ ...state, mouseDown: false }));
+  useEffect(() => {
+    window.addEventListener('mouseup', () => {
+      setState((state) => ({
+        ...state,
+        drawing: { ...state.drawing, mouseDown: false },
+      }));
+    });
+  }, [drawingCanvas]);
+
+  const setMatCapImage = (src) => {
+    const drawingCanvasCtx = drawingCanvas.getContext('2d');
+    const postProcessingCanvasCtx = postProcessingCanvas.getContext('2d');
+
+    const image = new Image();
+    image.onload = () => {
+      drawingCanvasCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      postProcessingCanvasCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      drawingCanvasCtx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+      setState((state) => ({
+        ...state,
+        controls: {
+          ...state.controls,
+          blur: { ...state.controls.blur, value: 0 },
+        },
+      }));
+    };
+
+    image.src = src;
   };
 
   const clear = () => {
-    /** @type CanvasRenderingContext2D */
-    const ctx = canvas.getContext('2d');
+    const drawingCanvasCtx = drawingCanvas.getContext('2d');
+    const postProcessingCanvasCtx = postProcessingCanvas.getContext('2d');
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    setTexture(new THREE.CanvasTexture(canvasRef.current));
+    drawingCanvasCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    clearCanvas(postProcessingCanvasCtx);
+
+    setState((state) => ({
+      ...state,
+      controls: {
+        ...state.controls,
+        blur: { ...state.controls.blur, value: 0 },
+      },
+    }));
   };
 
   return (
     <>
-      <canvas
-        ref={canvasRef}
-        className="editor"
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
-        onMouseLeave={onMouseUp}
-        width="512"
-        height="512"
-      ></canvas>
+      <div className="editor">
+        <div className="editor-canvas">
+          <canvas
+            id="post-processing-canvas"
+            ref={(element) => (postProcessingCanvas = element)}
+            width={CANVAS_WIDTH}
+            height={CANVAS_HEIGHT}
+          ></canvas>
 
-      <button onClick={clear}>Clear</button>
+          <canvas
+            id="drawing-canvas"
+            ref={(element) => (drawingCanvas = element)}
+            width={CANVAS_WIDTH}
+            height={CANVAS_HEIGHT}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+          ></canvas>
 
-      <div className="field-row">
-        <label htmlFor="range25">Volume:</label>
-        <label htmlFor="range26">Low</label>
-        <input
-          id="range26"
-          type="range"
-          min="8"
-          max="200"
-          value={state.brushSize}
-          onChange={(e) =>
-            setState((state) => ({ ...state, brushSize: e.target.value }))
-          }
-        />
-        <label htmlFor="range27">High</label>
+          <div className="editor-canvas__guides">
+            <div className="editor-canvas__zone"></div>
+            <div
+              className="editor-canvas__mouse"
+              style={{
+                ...state.mouseStyle,
+                backgroundColor: state.controls.brushColor.value,
+                width: state.controls.brushSize.value,
+                height: state.controls.brushSize.value,
+              }}
+            ></div>
+          </div>
+        </div>
+
+        <div className="editor-matcaps">
+          {matCaps.map((matCap) => (
+            <img
+              src={matCap.src}
+              key={matCap.src}
+              onClick={() => setMatCapImage(matCap.src)}
+            />
+          ))}
+          <button onClick={clear}>Clear</button>
+        </div>
+
+        <div className="editor-controls">
+          {Object.keys(state.controls).map((controlKey) => {
+            const props = {
+              ...state.controls[controlKey],
+              name: controlKey,
+              onChange: (e) =>
+                setState((state) => ({
+                  ...state,
+                  controls: {
+                    ...state.controls,
+                    [controlKey]: {
+                      ...state.controls[controlKey],
+                      value: e.target.value,
+                    },
+                  },
+                })),
+            };
+
+            switch (state.controls[controlKey].type) {
+              case 'color':
+                return <ColorPicker {...props} key={controlKey} />;
+              case 'range':
+                return <Range {...props} key={controlKey} />;
+              default:
+                return;
+            }
+          })}
+        </div>
       </div>
-
-      <input
-        type="color"
-        value={state.color}
-        onChange={(e) =>
-          setState((state) => ({ ...state, color: e.target.value }))
-        }
-      />
-
-      <fieldset>
-        <legend>Today's mood</legend>
-        <div className="field-row">
-          <input id="radio17" type="radio" name="fieldset-example2" />
-          <label htmlFor="radio17">Claire Saffitz</label>
-        </div>
-        <div className="field-row">
-          <input id="radio18" type="radio" name="fieldset-example2" />
-          <label htmlFor="radio18">Brad Leone</label>
-        </div>
-        <div className="field-row">
-          <input id="radio19" type="radio" name="fieldset-example2" />
-          <label htmlFor="radio19">Chris Morocco</label>
-        </div>
-        <div className="field-row">
-          <input id="radio20" type="radio" name="fieldset-example2" />
-          <label htmlFor="radio20">Carla Lalli Music</label>
-        </div>
-      </fieldset>
     </>
   );
 };
