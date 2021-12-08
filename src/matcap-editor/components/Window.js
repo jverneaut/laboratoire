@@ -1,10 +1,17 @@
 import React from 'react';
 import Draggable from 'react-draggable';
 
-const Window = ({ title, children, className }) => {
+const Window = ({ title, children, className, topWindow, setTopWindow }) => {
+  const onMouseDown = () => {
+    setTopWindow(title);
+  };
+
   return (
-    <Draggable handle=".title-bar">
-      <div className={['window', className].join(' ')}>
+    <Draggable handle=".title-bar" onMouseDown={onMouseDown}>
+      <div
+        className={['window', className].join(' ')}
+        style={{ zIndex: topWindow === title ? 10 : 1 }}
+      >
         <div className="title-bar">
           <div className="title-bar-text">{title}</div>
           <div className="title-bar-controls">
