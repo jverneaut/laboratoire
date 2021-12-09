@@ -70,6 +70,8 @@ const Editor = ({ setTexture }) => {
     drawing: {
       mouseDown: false,
       lastPos: [null, null],
+      width: 50,
+      height: 50,
     },
     mouseStyle: {
       top: 0,
@@ -174,7 +176,12 @@ const Editor = ({ setTexture }) => {
   };
 
   const onMouseMove = (e) => {
-    const { x: canvasLeft, y: canvasTop } = e.target.getBoundingClientRect();
+    const {
+      x: canvasLeft,
+      y: canvasTop,
+      width: canvasWidth,
+      height: canvasHeight,
+    } = e.target.getBoundingClientRect();
 
     setState((state) => ({
       ...state,
@@ -182,6 +189,8 @@ const Editor = ({ setTexture }) => {
         ...state.mouseStyle,
         left: e.clientX - canvasLeft,
         top: e.clientY - canvasTop,
+        width: state.controls.brushSize.value * (canvasWidth / CANVAS_WIDTH),
+        height: state.controls.brushSize.value * (canvasHeight / CANVAS_HEIGHT),
       },
     }));
 
@@ -294,8 +303,6 @@ const Editor = ({ setTexture }) => {
               style={{
                 ...state.mouseStyle,
                 backgroundColor: state.controls.brushColor.value,
-                width: state.controls.brushSize.value,
-                height: state.controls.brushSize.value,
               }}
             ></div>
           </div>
