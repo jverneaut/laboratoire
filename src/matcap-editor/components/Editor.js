@@ -54,9 +54,12 @@ const getPos = (e) => {
     height: elementHeight,
   } = e.target.getBoundingClientRect();
 
+  const x = e.clientX || e.touches[0].clientX;
+  const y = e.clientY || e.touches[0].clientY;
+
   return [
-    (e.clientX - elementX) * (CANVAS_WIDTH / elementWidth),
-    (e.clientY - elementY) * (CANVAS_HEIGHT / elementHeight),
+    (x - elementX) * (CANVAS_WIDTH / elementWidth),
+    (y - elementY) * (CANVAS_HEIGHT / elementHeight),
   ];
 };
 
@@ -176,6 +179,9 @@ const Editor = ({ setTexture }) => {
   };
 
   const onMouseMove = (e) => {
+    const x = e.clientX || e.touches[0].clientX;
+    const y = e.clientY || e.touches[0].clientY;
+
     const {
       x: canvasLeft,
       y: canvasTop,
@@ -187,8 +193,8 @@ const Editor = ({ setTexture }) => {
       ...state,
       mouseStyle: {
         ...state.mouseStyle,
-        left: e.clientX - canvasLeft,
-        top: e.clientY - canvasTop,
+        left: x - canvasLeft,
+        top: y - canvasTop,
         width: state.controls.brushSize.value * (canvasWidth / CANVAS_WIDTH),
         height: state.controls.brushSize.value * (canvasHeight / CANVAS_HEIGHT),
       },
@@ -228,11 +234,13 @@ const Editor = ({ setTexture }) => {
   };
 
   useEffect(() => {
-    window.addEventListener('mouseup', () => {
-      setState((state) => ({
-        ...state,
-        drawing: { ...state.drawing, mouseDown: false },
-      }));
+    ['mouseup', 'touchend'].forEach((event) => {
+      window.addEventListener(event, () => {
+        setState((state) => ({
+          ...state,
+          drawing: { ...state.drawing, mouseDown: false },
+        }));
+      });
     });
   }, [drawingCanvas]);
 
@@ -305,6 +313,8 @@ const Editor = ({ setTexture }) => {
             onMouseLeave={onMouseLeave}
             onMouseDown={onMouseDown}
             onMouseMove={onMouseMove}
+            onTouchStart={onMouseDown}
+            onTouchMove={onMouseMove}
           ></canvas>
 
           <div className="editor-canvas__guides">

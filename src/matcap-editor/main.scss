@@ -151,3 +151,30 @@
   font-size: 14px;
   margin-right: 8px;
 }
+
+@media screen and (max-width: 1200px) {
+  .container {
+    padding: 0;
+  }
+
+  .editor-matcaps img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .window-preview,
+  .window-editor {
+    width: 100%;
+    margin: 0;
+  }
+
+  .window-editor {
+    padding-bottom: 80px;
+  }
+}
