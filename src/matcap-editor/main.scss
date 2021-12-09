@@ -164,6 +164,10 @@
 }
 
 @media screen and (max-width: 900px) {
+  body {
+    overflow: hidden;
+  }
+
   .container {
     flex-direction: column;
   }
