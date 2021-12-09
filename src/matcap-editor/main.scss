@@ -166,6 +166,7 @@
 @media screen and (max-width: 900px) {
   body {
     overflow: hidden;
+    height: 100vh;
   }
 
   .container {
@@ -176,6 +177,10 @@
   .window-editor {
     width: 100%;
     margin: 0;
+  }
+
+  .window-preview {
+    flex: 1;
   }
 
   .window-editor {
