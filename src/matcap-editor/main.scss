@@ -30,7 +30,7 @@
 }
 
 .window-editor {
-  max-width: 800px;
+  max-width: 860px;
   margin-left: 16px;
 }
 
@@ -106,11 +106,20 @@
   box-sizing: border-box;
 }
 
+.editor-buttons {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .editor-matcaps button {
   width: 100%;
+  max-width: 180px;
   height: 54px;
   font-size: 14px;
-  margin-top: 40px;
+  margin-top: 8px;
 }
 
 .editor-matcaps img {

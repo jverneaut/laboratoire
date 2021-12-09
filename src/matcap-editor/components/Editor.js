@@ -274,6 +274,17 @@ const Editor = ({ setTexture }) => {
     }));
   };
 
+  const save = () => {
+    const downloadLink = document.createElement('a');
+    downloadLink.setAttribute('download', 'matcap.png');
+
+    postProcessingCanvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      downloadLink.setAttribute('href', url);
+      downloadLink.click();
+    });
+  };
+
   return (
     <>
       <div className="editor">
@@ -316,7 +327,10 @@ const Editor = ({ setTexture }) => {
               onClick={() => setMatCapImage(matCap.src)}
             />
           ))}
-          <button onClick={clear}>Clear</button>
+          <div className="editor-buttons">
+            <button onClick={clear}>Clear</button>
+            <button onClick={save}>Save</button>
+          </div>
         </div>
 
         <div className="editor-controls">
