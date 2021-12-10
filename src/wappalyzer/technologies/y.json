@@ -1,0 +1,395 @@
+{
+  "YUI": {
+    "cats": [
+      59
+    ],
+    "cpe": "cpe:/a:yahoo:yui",
+    "icon": "YUI.png",
+    "js": {
+      "YAHOO.VERSION": "^(.+)$\\;version:\\1",
+      "YUI.version": "^(.+)$\\;version:\\1"
+    },
+    "scriptSrc": "(?:/yui/|yui\\.yahooapis\\.com)",
+    "website": "http://yuilibrary.com"
+  },
+  "YUI Doc": {
+    "cats": [
+      4
+    ],
+    "description": "UIDoc is a Node.js application used at build time to generate API documentation.",
+    "html": "(?:<html[^>]* yuilibrary\\.com/rdf/[\\d.]+/yui\\.rdf|<body[^>]+class=\"yui3-skin-sam)",
+    "icon": "yahoo.png",
+    "website": "http://developer.yahoo.com/yui/yuidoc"
+  },
+  "YaBB": {
+    "cats": [
+      2
+    ],
+    "html": "Powered by <a href=\"[^>]+yabbforum",
+    "icon": "YaBB.png",
+    "website": "http://www.yabbforum.com"
+  },
+  "Yahoo Advertising": {
+    "cats": [
+      36
+    ],
+    "html": [
+      "<iframe[^>]+adserver\\.yahoo\\.com",
+      "<img[^>]+clicks\\.beap\\.bc\\.yahoo\\.com"
+    ],
+    "icon": "yahoo.png",
+    "js": {
+      "adxinserthtml": ""
+    },
+    "scriptSrc": "adinterax\\.com",
+    "website": "http://advertising.yahoo.com"
+  },
+  "Yahoo! Ecommerce": {
+    "cats": [
+      6
+    ],
+    "headers": {
+      "X-XRDS-Location": "/ystore/"
+    },
+    "html": "<link[^>]+store\\.yahoo\\.net",
+    "icon": "yahoo.png",
+    "js": {
+      "YStore": ""
+    },
+    "website": "http://smallbusiness.yahoo.com/ecommerce"
+  },
+  "Yahoo! Tag Manager": {
+    "cats": [
+      42
+    ],
+    "html": "<!-- (?:End )?Yahoo! Tag Manager -->",
+    "icon": "yahoo.png",
+    "scriptSrc": "b\\.yjtag\\.jp/iframe",
+    "website": "https://tagmanager.yahoo.co.jp/"
+  },
+  "Yahoo! Web Analytics": {
+    "cats": [
+      10
+    ],
+    "icon": "yahoo.png",
+    "js": {
+      "YWA": ""
+    },
+    "scriptSrc": "d\\.yimg\\.com/mi/ywa\\.js",
+    "website": "http://web.analytics.yahoo.com"
+  },
+  "Yandex.Cloud": {
+    "cats": [
+      62
+    ],
+    "description": "Yandex.Cloud is a public cloud platform where companies can create and develop projects using Yandex's scalable computing power, advanced technologies, and infrastructure.",
+    "icon": "Yandex.Cloud.svg",
+    "pricing": [
+      "payg"
+    ],
+    "saas": false,
+    "website": "https://cloud.yandex.com/en/"
+  },
+  "Yandex.Cloud CDN": {
+    "cats": [
+      31
+    ],
+    "description": "Yandex.Cloud CDN helps you streamline static content delivery for your web service.",
+    "dom": "[href*='storage.yandexcloud.net'], [src*='storage.yandexcloud.net']",
+    "icon": "Yandex.Cloud.svg",
+    "implies": "Yandex.Cloud",
+    "website": "https://cloud.yandex.com/en/services/cdn"
+  },
+  "Yandex.Direct": {
+    "cats": [
+      36
+    ],
+    "description": "Yandex Direct is the platform designed for sponsored ad management.",
+    "html": "<yatag class=\"ya-partner__ads\">",
+    "icon": "Yandex.Direct.png",
+    "js": {
+      "yandex_ad_format": "",
+      "yandex_partner_id": ""
+    },
+    "scriptSrc": "https?://an\\.yandex\\.ru/",
+    "website": "http://partner.yandex.com"
+  },
+  "Yandex.Messenger": {
+    "cats": [
+      5,
+      52
+    ],
+    "description": "Yandex.Messenger is an instant messaging application.",
+    "icon": "Yandex.Messenger.svg",
+    "js": {
+      "yandexChatWidget": ""
+    },
+    "pricing": [
+      "payg"
+    ],
+    "scriptSrc": "chat\\.s3\\.yandex\\.net/widget\\.js",
+    "website": "https://dialogs.yandex.ru"
+  },
+  "Yandex.Metrika": {
+    "cats": [
+      10
+    ],
+    "description": "Yandex.Metrica is a free web analytics service that tracks and reports website traffic.",
+    "icon": "Yandex.Metrika.png",
+    "js": {
+      "yandex_metrika": ""
+    },
+    "scriptSrc": [
+      "mc\\.yandex\\.ru/metrika/(?:tag|watch)\\.js",
+      "cdn\\.jsdelivr\\.net/npm/yandex\\-metrica\\-watch/watch\\.js"
+    ],
+    "website": "http://metrika.yandex.com"
+  },
+  "Yaws": {
+    "cats": [
+      22
+    ],
+    "headers": {
+      "Server": "Yaws(?: ([\\d.]+))?\\;version:\\1"
+    },
+    "icon": "Yaws.png",
+    "website": "http://yaws.hyber.org"
+  },
+  "Yelp Reservations": {
+    "cats": [
+      93
+    ],
+    "description": "Yelp Reservations is a cloud-based restaurant management system.",
+    "dom": {
+      "iframe[src*='yelp']": {
+        "attributes": {
+          "src": "yelp(?:.com/reservations|reservations\\.com)"
+        }
+      }
+    },
+    "icon": "Yelp.svg",
+    "website": "http://yelp.com"
+  },
+  "Yelp Review Badge": {
+    "cats": [
+      5
+    ],
+    "description": "Yelp Review Badges showcase business reviews from Yelp on websites.",
+    "dom": {
+      "img[src*='dyn.yelpcdn.com']": {
+        "attributes": {
+          "src": ""
+        }
+      }
+    },
+    "icon": "Yelp.svg",
+    "scriptSrc": "yelp\\.com/biz_badge_js",
+    "website": "http://yelp.com"
+  },
+  "Yepcomm": {
+    "cats": [
+      6
+    ],
+    "icon": "yepcomm.png",
+    "meta": {
+      "author": "Yepcomm Tecnologia",
+      "copyright": "Yepcomm Tecnologia"
+    },
+    "website": "https://www.yepcomm.com.br"
+  },
+  "Yett": {
+    "cats": [
+      67
+    ],
+    "description": "Yett is a small webpage library to control the execution of (third party) scripts like analytics.",
+    "icon": "Yett.png",
+    "js": {
+      "YETT_BLACKLIST": ""
+    },
+    "oss": true,
+    "scriptSrc": "/yett@([\\d\\.]+)/dist/yett\\.min\\.js\\;version:\\1",
+    "website": "https://github.com/elbywan/yett"
+  },
+  "Yieldify": {
+    "cats": [
+      76
+    ],
+    "description": "Yieldify is a customer journey optimisation platform that brings personalisation to the full customer journey.",
+    "icon": "Yieldify.svg",
+    "js": {
+      "_yieldify": ""
+    },
+    "pricing": [
+      "poa",
+      "payg"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.yieldify\\.com",
+    "website": "https://www.yieldify.com"
+  },
+  "Yieldlab": {
+    "cats": [
+      36
+    ],
+    "icon": "Yieldlab.png",
+    "scriptSrc": "^https?://(?:[^/]+\\.)?yieldlab\\.net/",
+    "website": "http://yieldlab.de"
+  },
+  "Yii": {
+    "cats": [
+      18
+    ],
+    "cookies": {
+      "YII_CSRF_TOKEN": ""
+    },
+    "description": "Yii is an open-source, object-oriented, component-based MVC PHP web application framework.",
+    "html": [
+      "Powered by <a href=\"http://www\\.yiiframework\\.com/\" rel=\"external\">Yii Framework</a>",
+      "<input type=\"hidden\" value=\"[a-zA-Z0-9]{40}\" name=\"YII_CSRF_TOKEN\" \\/>",
+      "<!\\[CDATA\\[YII-BLOCK-(?:HEAD|BODY-BEGIN|BODY-END)\\]"
+    ],
+    "icon": "Yii.png",
+    "implies": "PHP",
+    "scriptSrc": [
+      "/assets/[a-zA-Z0-9]{8}\\/yii\\.js$",
+      "/yii\\.(?:validation|activeForm)\\.js"
+    ],
+    "website": "https://www.yiiframework.com"
+  },
+  "Yoast Duplicate Post": {
+    "cats": [
+      87
+    ],
+    "description": "Yoast Duplicate Post is a WordPress plugin which allows users to clone posts of any type, or copy them to new drafts for further editing.",
+    "dom": "link[href*='/wp-content/plugins/duplicate-post/']",
+    "icon": "Yoast SEO.png",
+    "requires": "WordPress",
+    "website": "https://wordpress.org/plugins/duplicate-post"
+  },
+  "Yoast SEO": {
+    "cats": [
+      54,
+      87
+    ],
+    "description": "Yoast SEO is a search engine optimisation plugin for WordPress and other platforms.",
+    "dom": {
+      "script.yoast-schema-graph": {
+        "attributes": {
+          "class": ""
+        }
+      }
+    },
+    "html": [
+      "<!-- This site is optimized with the Yoast (?:WordPress )?SEO plugin v([^\\s]+) -\\;version:\\1",
+      "<!-- This site is optimized with the Yoast SEO Premium plugin v(?:[^\\s]+) \\(Yoast SEO v([^\\s]+)\\) -\\;version:\\1"
+    ],
+    "icon": "Yoast SEO.png",
+    "oss": true,
+    "requires": "WordPress",
+    "website": "https://yoast.com/wordpress/plugins/seo/"
+  },
+  "Yoast SEO Premium": {
+    "cats": [
+      54
+    ],
+    "description": "Yoast SEO Premium is a search engine optimisation plugin for WordPress and other platforms.",
+    "html": "<!-- This site is optimized with the Yoast SEO Premium plugin v([^\\s]+) \\;version:\\1",
+    "icon": "Yoast SEO.png",
+    "oss": true,
+    "pricing": [
+      "low",
+      "freemium",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://yoast.com/wordpress/plugins/seo/"
+  },
+  "Yodel": {
+    "cats": [
+      99
+    ],
+    "description": "Yodel is a delivery company for B2B and B2C orders in the United Kingdom.",
+    "requiresCategory": 6,
+    "text": [
+      "\\bYodel\\b"
+    ],
+    "website": "https://www.yodel.co.uk/"
+  },
+  "Yotpo": {
+    "cats": [
+      84,
+      90
+    ],
+    "description": "Yotpo is a user-generated content marketing platform.",
+    "icon": "Yotpo.svg",
+    "js": {
+      "SwellConfig": "",
+      "swellAPI": "",
+      "yotpo": ""
+    },
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": [
+      "\\.yotpo\\.com/",
+      "cdn\\.swellrewards\\.com/"
+    ],
+    "website": "https://www.yotpo.com"
+  },
+  "Yottaa": {
+    "cats": [
+      42,
+      74,
+      92
+    ],
+    "description": "Yottaa is an ecommerce optimisation platform that helps with conversions, performance and security.",
+    "icon": "Yottaa.svg",
+    "meta": {
+      "X-Yottaa-Metrics": "",
+      "X-Yottaa-Optimizations": ""
+    },
+    "scriptSrc": "cdn\\.yottaa\\.\\w+/",
+    "website": "https://www.yottaa.com"
+  },
+  "YouTrack": {
+    "cats": [
+      13
+    ],
+    "description": "YouTrack is a browser-based bug tracker, issue tracking system and project management software.",
+    "html": [
+      "no-title=\"YouTrack\">",
+      "data-reactid=\"[^\"]+\">youTrack ([0-9.]+)<\\;version:\\1",
+      "type=\"application/opensearchdescription\\+xml\" title=\"YouTrack\"/>"
+    ],
+    "icon": "YouTrack.png",
+    "website": "http://www.jetbrains.com/youtrack/"
+  },
+  "YouTube": {
+    "cats": [
+      14
+    ],
+    "description": "YouTube is a video sharing service where users can create their own profile, upload videos, watch, like and comment on other videos.",
+    "html": "<(?:param|embed|iframe)[^>]+youtube(?:-nocookie)?\\.com/(?:v|embed)",
+    "icon": "YouTube.png",
+    "website": "http://www.youtube.com"
+  },
+  "yellow.ai": {
+    "cats": [
+      52
+    ],
+    "description": "yellow.ai provides chatbot and automation services.",
+    "icon": "yellow.ai.svg",
+    "js": {
+      "ymConfig": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "cdn\\.yellowmessenger\\.com",
+    "website": "https://yellow.ai/"
+  }
+}
