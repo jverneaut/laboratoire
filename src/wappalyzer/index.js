@@ -83,6 +83,7 @@ technologiesGroups.forEach((technologiesGroup) => {
       });
     }
 
+    // Add scripts with generated src
     if (technology.scriptSrc) {
       [technology.scriptSrc].flat().forEach((scriptSrc) => {
         const script = document.createElement('script');

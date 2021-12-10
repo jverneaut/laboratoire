@@ -1,32 +1,126 @@
+body {
+  background-color: #4608ad;
+  color: white;
+  font-family: system-ui;
+  font-size: 20px;
+  line-height: 2;
+
+  ::selection {
+    background: #380b80;
+    color: white;
+  }
+}
+
+.container {
+  padding: 120px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 h1 {
   font-size: 8vw;
   font-family: sans-serif;
-  position: fixed;
-  top: 30vh;
-  left: 20vw;
   font-weight: 800;
   line-height: 1;
   transform: rotate(-4deg);
   transform-origin: top left;
+  color: white;
+
+  @media screen and (min-width: 720px) {
+    font-size: 60px;
+  }
 }
 
 h1 strong {
   position: relative;
+  color: #4608ad;
+  display: block;
 }
 
 h1 strong::after {
   z-index: -1;
   position: absolute;
   display: block;
-  height: 5vw;
-  background: red;
+  height: 100%;
+  background: #f0ebf9;
   content: '';
   width: 100%;
   position: absolute;
-  top: 50%;
-  left: 0;
+  top: 0.4vw;
+  left: -1vw;
 }
 
 h1 span {
   font-size: 16px;
+}
+
+.big {
+  font-size: 32px;
+  transform: rotate(-2deg);
+  margin-top: 0;
+}
+
+a {
+  color: #7e9fff;
+
+  &:hover {
+    color: white;
+  }
+}
+
+hr {
+  width: 100%;
+  display: block;
+  height: 1px;
+  border: none;
+  background-color: #f0ebf9;
+  margin: 60px 0;
+}
+
+img {
+  margin: 60px 0;
+  border: 10px solid white;
+  width: 100%;
+  display: block;
+  box-shadow: 0px 8px 40px rgba(black, 0.12);
+  border-radius: 4px;
+}
+
+ul li,
+ol li {
+  line-height: 1.5;
+}
+
+ol li + li,
+ul li + li {
+  margin-top: 16px;
+}
+
+code {
+  background: #380b80;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+ul,
+ol {
+  margin-top: 0;
+}
+
+.gist {
+  width: 100%;
+  margin: 60px 0;
+}
+
+.note {
+  margin-top: 40px;
+  font-size: 16px;
+  color: #7e9fff;
+
+  a {
+    color: white;
+  }
 }
