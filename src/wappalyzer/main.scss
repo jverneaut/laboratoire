@@ -18,6 +18,11 @@ body {
   align-items: flex-start;
   max-width: 800px;
   margin: 0 auto;
+
+  @media screen and (max-width: 720px) {
+    padding: 120px 20px;
+    padding-bottom: 60px;
+  }
 }
 
 h1 {
@@ -87,6 +92,7 @@ img {
   display: block;
   box-shadow: 0px 8px 40px rgba(black, 0.12);
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 ul li,
