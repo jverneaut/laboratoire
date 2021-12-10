@@ -63,6 +63,7 @@ module.exports = {
         <meta name="twitter:card" content="summary" />
         <meta property="og:url" content="https://lab.julienverneaut.com/${page.slug}" />
         <meta property="og:title" content="${page.name}" />
+        <meta property="og:type" content="website" />
         <meta property="og:description" content="Ce site rassemble mes expérimentations frontend. Il contient des essais d'animations, des expériences avec WebGL, des essais d'api et bien d'autres choses." />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
