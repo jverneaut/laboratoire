@@ -4,13 +4,13 @@ import { fr } from 'date-fns/locale';
 import FlipMove from 'react-flip-move';
 import { Link } from 'react-router-dom';
 
-const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const Experiments = ({ pages }) => {
   return (
     <FlipMove className="experiments" duration={350 + pages.length * 5}>
-      {pages.map(page => (
-        <Link to={page.slug} className="experiment" key={page.slug}>
+      {pages.map((page) => (
+        <Link to={page.slug + '/'} className="experiment" key={page.slug}>
           <div className="experiment__img">
             {page.screenshot && (
               <img src={page.screenshot.src} loading="lazy" />
