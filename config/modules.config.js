@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = {
   module: {
@@ -32,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g)$/,
-        exclude: /app/,
+        exclude: path.resolve(__dirname, 'app'),
         use: [
           {
             loader: 'responsive-loader',
@@ -47,7 +48,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g)$/,
-        include: /app/,
+        include: path.resolve(__dirname, 'app'),
         use: [
           {
             loader: 'responsive-loader',
