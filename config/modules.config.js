@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g)$/,
-        exclude: path.resolve(__dirname, 'app'),
+        exclude: path.resolve(__dirname, '../app'),
         use: [
           {
             loader: 'responsive-loader',
@@ -48,7 +48,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g)$/,
-        include: path.resolve(__dirname, 'app'),
+        include: path.resolve(__dirname, '../app'),
         use: [
           {
             loader: 'responsive-loader',
