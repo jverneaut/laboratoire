@@ -111,6 +111,18 @@ h1 {
   font-weight: 900;
   letter-spacing: -0.6px;
   color: $dark;
+  max-width: 720px;
+  line-height: 1.2;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 32px;
+    max-width: 480px;
+  }
+
+  @media screen and (max-width: 720px) {
+    font-size: 24px;
+    max-width: 320px;
+  }
 }
 
 .paragraphs {

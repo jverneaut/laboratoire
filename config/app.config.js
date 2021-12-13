@@ -2,15 +2,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { join, relative } = require('path');
 const { lstatSync, readdirSync, readFileSync, existsSync } = require('fs');
 
-const isDirectory = source => lstatSync(source).isDirectory();
-const getDirectories = source =>
+const isDirectory = (source) => lstatSync(source).isDirectory();
+const getDirectories = (source) =>
   readdirSync(source)
-    .map(name => join(source, name))
+    .map((name) => join(source, name))
     .filter(isDirectory);
 
 const pageDirectories = getDirectories(join(__dirname, '../src'));
 
-const getPageTitle = path => {
+const getPageTitle = (path) => {
   const html = readFileSync(path, 'utf8');
   return html
     .match(/<title>(.*?)<\/title>/g)[0]
@@ -18,7 +18,7 @@ const getPageTitle = path => {
     .replace('</title>', '');
 };
 
-const getPageCategory = path => {
+const getPageCategory = (path) => {
   const html = readFileSync(path, 'utf8');
   return html
     .match(/<meta name="category" content="(.*?)" \/>/g)[0]
@@ -26,7 +26,7 @@ const getPageCategory = path => {
     .replace('" />', '');
 };
 
-const getPageDate = path => {
+const getPageDate = (path) => {
   const html = readFileSync(path, 'utf8');
   const dateMatch = html.match(/<meta name="date" content="(.*?)" \/>/g);
   if (!dateMatch) return Date.now();
@@ -40,15 +40,12 @@ const getPageDate = path => {
 };
 
 const pages = pageDirectories
-  .filter(dir =>
+  .filter((dir) =>
     process.env.NODE_ENV === 'production'
-      ? dir
-          .split('/')
-          .reverse()[0]
-          .charAt(0) !== '_'
+      ? dir.split('/').reverse()[0].charAt(0) !== '_'
       : true
   )
-  .map(pageDirectory => {
+  .map((pageDirectory) => {
     const slug = pageDirectory.split('/').reverse()[0];
     const html = join(pageDirectory, 'index.html');
     const js = join(pageDirectory, 'index.js');
@@ -65,7 +62,9 @@ const pages = pageDirectories
     return page;
   });
 
-const categories = Array.from(new Set(pages.map(page => page.category))).sort();
+const categories = Array.from(
+  new Set(pages.map((page) => page.category))
+).sort();
 
 module.exports = {
   entry: {

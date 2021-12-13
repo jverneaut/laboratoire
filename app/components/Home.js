@@ -5,16 +5,18 @@ import Filters from './Filters';
 import Infos from './Infos';
 import Newsletter from './Newsletter';
 
+const title = document.querySelector('title').innerText;
+
 const Home = ({ pages, categories }) => {
   useEffect(() => {
-    document.title = 'Le laboratoire';
+    document.title = title;
     document.body.classList.remove('iframe-container');
   }, []);
 
   const defaultFilterFunction = (a, b) => (a.date > b.date ? -1 : 1);
 
-  const [filterFunction, setFilterFunction] = useState(() => arr =>
-    arr.sort(defaultFilterFunction)
+  const [filterFunction, setFilterFunction] = useState(
+    () => (arr) => arr.sort(defaultFilterFunction)
   );
 
   const sortedPages = filterFunction(pages);
@@ -22,7 +24,7 @@ const Home = ({ pages, categories }) => {
   return (
     <main>
       <div className="container">
-        <h1>Le laboratoire</h1>
+        <h1>Le laboratoire – WebGL and JavaScript Experiments</h1>
 
         <Infos />
 

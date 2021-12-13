@@ -1,6 +1,7 @@
 const { lstatSync, readdirSync, readFileSync } = require('fs');
 const { join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TitleSuffixHtmlWebpackPlugin = require('./TitleSuffixHtmlWebpackPlugin');
 
 const isDirectory = (source) => lstatSync(source).isDirectory();
 const getDirectories = (source) =>
@@ -58,6 +59,7 @@ module.exports = {
       ),
   },
   plugins: [
+    new TitleSuffixHtmlWebpackPlugin(),
     ...pages.map((page) => {
       const headContent = `
         <meta name="twitter:card" content="summary" />
