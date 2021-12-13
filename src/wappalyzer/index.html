@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <title>I built a webpage that uses 1568 different web technologies.</title>
+    <title>Wappalyzer is unreliable</title>
     <meta name="category" content="Misc" />
     <meta name="date" content="1639140949803" />
     <%= htmlWebpackPlugin.options.headContent %>
@@ -17,18 +17,19 @@
         Wappalyzer is <br /><strong>unreliable<sup>*</sup></strong>
       </h1>
       <p class="big"><sup>*</sup>but it doesn't matter</p>
+      <h2>What is Wappalyzer</h2>
       <p>
         If you've never heard of it,
-        <a href="https://www.wappalyzer.com/">Wappalyzer</a> is a great tool
-        that allows anyone to analyze a website to learn more about its
-        technology stack.
+        <a href="https://www.wappalyzer.com/">the Wappalyzer extension</a> is a
+        great tool that allows anyone to detect the technologies of a website.
       </p>
       <p>
-        Since it comes as a browser extension, it's always just a click away.
-        All my web developer friends and I have made a habit of using it
-        whenever we browse an interesting website. At a quick glance, you can
-        learn that a website was built with WordPress, React, uses GSAP as an
-        animation library and Google Analytics to collect user data.
+        Since it comes as a browser extension for popular browsers like Chrome,
+        Firefox and Safari, it's always just a click away. All my web developer
+        friends and I have made a habit of using it whenever we browse an
+        interesting website. At a quick glance, you can learn that a website was
+        built with WordPress, React, uses GSAP as an animation library and
+        Google Analytics to collect user data.
       </p>
 
       <p>If you have it installed on your system, go ahead and open it...</p>
@@ -39,7 +40,7 @@
       />
       <p>
         At the time of writing, Wappalyzer detects a whopping
-        <strong>1545 technologies</strong> for this single webpage.
+        <strong>1,929 technologies</strong> for this single webpage.
       </p>
       <p>...what?? 😳 How come??</p>
       <p>
@@ -71,9 +72,12 @@
         </li>
       </ul>
 
-      <hr />
+      <p>
+        Let me tell you how I was able to exploit Wappalyzer by
+        reverse-engineering its inner workings.
+      </p>
 
-      <p>Here is how I put this little experiment together:</p>
+      <h2>How does Wappalyzer work?</h2>
       <p>
         Wappalyzer is open source. If you want, you can fork their
         <a href="https://github.com/AliasIO/wappalyzer">GitHub repository</a>
@@ -130,6 +134,8 @@
 
       <script src="https://gist.github.com/jverneaut/028b4e87d481b2dabd0194d93731e37a.js"></script>
 
+      <h2>Should you stop using Wappalyzer?</h2>
+
       <p>
         This article specifically targeted Wappalyzer as it is the one I use and
         love, but all other tools on the market take a similar approach and
@@ -143,10 +149,17 @@
         This was merely an exploration of how they work, how you can trick them,
         and have a bit of a laugh along the way.
       </p>
+
+      <h2>Can you hide a website technology?</h2>
+
       <p>
         As you have seen, tricking them is actually quite easy and you could
         easily obfuscate what technology your website is using by manually
         altering the DOM and the global JavaScript scope.
+      </p>
+      <p>
+        At the server level, you could easily hide the php or nginx version by
+        manipulating the HTTP headers sent with every request.
       </p>
       <p>
         Since Wappalyzer has never been a threat to your business, you probably
@@ -157,9 +170,42 @@
         is never really viable in the long run.
       </p>
       <p>
+        In short, you could easily hide a website technology, but if you're
+        using a vulnerable version of a specific software in the first place,
+        you have bigger problems than trying to hide its version to your users.
+      </p>
+      <p>
         The Web should be an open platform, what technology stack you use
         shouldn't matter as much as what you do with it.
       </p>
+
+      <hr />
+
+      <p>
+        I tweeted about this and had a fun little exchange with the @wappalyzer
+        Twitter account:
+      </p>
+      <blockquote class="twitter-tweet">
+        <p lang="und" dir="ltr">🥺</p>
+        &mdash; Wappalyzer (@Wappalyzer)
+        <a
+          href="https://twitter.com/Wappalyzer/status/1469380668635242503?ref_src=twsrc%5Etfw"
+          >December 10, 2021</a
+        >
+      </blockquote>
+      <script
+        async
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      ></script>
+
+      <p>
+        To rephrase my answer to the above Tweet, I think this short experiment
+        is more of a statement of the quality of this tool than a rant about it.
+        Being able to identify 2,000+ technologies is a lot, and I’m glad that a
+        tool exists to be able to discover them.
+      </p>
+
       <p class="note">
         (Note to prospective readers: I actually know and use some of these
         technologies. Not all of them, but enough to create beautiful web pages

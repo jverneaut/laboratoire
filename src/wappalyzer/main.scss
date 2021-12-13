@@ -62,6 +62,15 @@ h1 span {
   font-size: 16px;
 }
 
+h2 {
+  font-size: 24px;
+  margin-top: 54px;
+  margin-bottom: 0;
+  transform: rotate(-1deg);
+  transform-origin: top left;
+  text-decoration: underline;
+}
+
 .big {
   font-size: 32px;
   transform: rotate(-2deg);
@@ -83,6 +92,7 @@ hr {
   border: none;
   background-color: #f0ebf9;
   margin: 60px 0;
+  opacity: 0.2;
 }
 
 img {
@@ -97,12 +107,12 @@ img {
 
 ul li,
 ol li {
-  line-height: 1.5;
+  font-size: 0.9em;
 }
 
 ol li + li,
 ul li + li {
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 code {
@@ -129,4 +139,9 @@ ol {
   a {
     color: white;
   }
+}
+
+p,
+li {
+  color: #d3e0ff;
 }
