@@ -7,6 +7,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const GenerateJsonPlugin = require('generate-json-webpack-plugin');
+const { formatDistance } = require('date-fns');
+const { fr } = require('date-fns/locale');
+
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const isDirectory = (source) => lstatSync(source).isDirectory();
 const getDirectories = (source) =>
@@ -59,8 +63,14 @@ const pages = pageDirectories
     const category = getPageCategory(join(pageDirectory, 'index.html'));
     const screenshot = join(pageDirectory, 'screenshot.png');
     const date = getPageDate(join(pageDirectory, 'index.html')) || 'TROLOLO';
+    const dateDisplay = capitalize(
+      formatDistance(new Date(date), Date.now(), {
+        addSuffix: true,
+        locale: fr,
+      })
+    );
 
-    const page = { slug, html, js, name, category, date };
+    const page = { slug, html, js, name, category, date, dateDisplay };
     if (existsSync(screenshot)) {
       page.screenshot = relative(__dirname, screenshot);
     }
@@ -109,6 +119,7 @@ module.exports = {
       'api.json',
       pages.map((page) => ({
         date: page.date,
+        dateDisplay: page.dateDisplay,
         name: page.name,
         category: page.category,
         url: `https://lab.julienverneaut.com/${page.slug}`,
