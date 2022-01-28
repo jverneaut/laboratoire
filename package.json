@@ -36,6 +36,7 @@
     "face-api.js": "^0.22.2",
     "favicons-webpack-plugin": "^3.0.0",
     "file-loader": "^5.0.2",
+    "generate-json-webpack-plugin": "^1.0.0",
     "gl-mat3": "^2.0.0",
     "gl-mat4": "^1.2.0",
     "glsl-film-grain": "^1.0.4",
