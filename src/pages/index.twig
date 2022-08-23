@@ -1,0 +1,5 @@
+<ul>
+  {% for page in pages %}
+    <li><a href="/{{ page.slug }}">{{ page.data.title }}</a></li>
+  {% endfor %}
+</ul>
