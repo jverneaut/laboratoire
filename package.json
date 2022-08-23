@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@nuxt/friendly-errors-webpack-plugin": "^2.5.2",
     "css-loader": "^6.7.1",
     "front-matter": "^4.0.2",
     "gl-mat4": "^1.2.0",
