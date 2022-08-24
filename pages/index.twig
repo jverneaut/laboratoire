@@ -1,5 +1,59 @@
-<ul>
-  {% for page in pages %}
-    <li><a href="/{{ page.slug }}">{{ page.data.title }}</a></li>
-  {% endfor %}
-</ul>
+{% block head %}
+  <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <script defer
+    data-domain="lab.julienverneaut.com"
+    src="https://plausible.io/js/plausible.js"></script>
+{% endblock %}
+
+<main>
+  <div class="container">
+    <h1>
+      Le laboratoire – WebGL and JavaScript Experiments
+    </h1>
+
+    <div class="infos">
+      <div class="infos__profile">
+        <img srccc="profileSrc" alt="" />
+      </div>
+      <div class="infos__content">
+        <div class="infos__name">
+          Julien Verneaut -{' '}
+          <a href="mailto:jverneaut@gmail.com">jverneaut@gmail.com</a>
+        </div>
+        <a href="https://www.julienverneaut.com" class="infos__contact">
+          https://www.julienverneaut.com
+        </a>
+      </div>
+    </div>
+
+    <div class="paragraphs">
+      <p>
+        Ce site rassemble mes expérimentations frontend. Il contient des essais
+        d'animations, des expériences avec WebGL, des essais d'api et bien
+        d'autres choses.
+      </p>
+    </div>
+    <a class="btn" href="https://github.com/jverneaut/laboratoire">
+      Code Source
+    </a>
+
+    <div class="experiments">
+      {% for page in pages %}
+        {% if page.slug != '' %}
+          <a href="/{{ page.slug }}" class="experiment">
+            <div class="experiment__img">
+              <img srcccc="page.screenshot.src" loading="lazy" />
+            </div>
+            <div class="experiment__info">
+              <h2 class="experiment__title">
+                {{ page.data.title }}
+              </h2>
+              <div class="experiment__date"></div>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</main>
