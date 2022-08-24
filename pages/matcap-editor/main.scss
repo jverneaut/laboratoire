@@ -1,0 +1,192 @@
+@import '../reset.scss';
+@import '../../node_modules/xp.css/dist/98.css';
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  height: 100vh;
+  padding: 40px;
+  padding-left: 92px;
+  background: #008080;
+  box-sizing: border-box;
+}
+
+.window-preview,
+.window-editor {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+
+  .window-body {
+    overflow: auto;
+    flex: 1;
+  }
+}
+
+.window-preview {
+  height: 100%;
+  max-height: 900px;
+}
+
+.window-editor {
+  max-width: 860px;
+  margin-left: 16px;
+}
+
+.editor-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 512px;
+  overflow: hidden;
+}
+
+.editor-canvas canvas {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.editor-canvas canvas#drawing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+}
+
+.editor-canvas__guides {
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.editor-canvas__zone {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px dashed black;
+  box-sizing: border-box;
+  border-radius: 50%;
+  opacity: 0.4;
+  z-index: 2;
+}
+
+.editor-canvas__mouse {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.editor {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.editor-canvas {
+  width: 50%;
+}
+
+.editor-matcaps {
+  width: 50%;
+  max-width: 512px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 16px;
+  box-sizing: border-box;
+}
+
+.editor-buttons {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.editor-matcaps button {
+  width: 100%;
+  max-width: 180px;
+  height: 54px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.editor-matcaps img {
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.editor-controls {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.control {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  min-height: 32px;
+  max-width: 512px;
+}
+
+.control label {
+  display: block;
+  white-space: nowrap;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    padding: 0;
+  }
+
+  .editor-matcaps img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .container {
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .window-preview,
+  .window-editor {
+    width: 100%;
+    margin: 0;
+  }
+
+  .window-preview {
+    flex: 1;
+  }
+
+  .window-editor {
+    padding-bottom: 80px;
+  }
+}

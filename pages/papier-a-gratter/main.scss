@@ -1,0 +1,60 @@
+@import '../reset.scss';
+
+body {
+  background: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  cursor: none;
+  perspective: 400px;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  font-size: 0;
+  box-shadow: 0px 40px 60px rgba(0, 0, 0, 0.5);
+}
+
+canvas {
+  width: 3 * 297px;
+  height: 3 * 210px;
+  background: black;
+  border: 1px solid white;
+}
+
+.stick {
+  height: 400px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform-origin: top center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.glow {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    -220deg,
+    transparent 0%,
+    transparent 10%,
+    rgba(255, 255, 255, 1) 20%,
+    rgba(255, 255, 255, 1) 30%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.5) 65%,
+    rgba(255, 255, 255, 0.5) 70%,
+    transparent 75%
+  );
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.1;
+}

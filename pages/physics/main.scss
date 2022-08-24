@@ -1,0 +1,14 @@
+@import '../reset.scss';
+
+body {
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+.world {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}

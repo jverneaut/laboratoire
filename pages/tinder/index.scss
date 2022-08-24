@@ -1,0 +1,72 @@
+@import '../reset.scss';
+
+html {
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(33, 37, 41);
+  min-height: 100vh;
+  font-family: system-ui;
+  width: 100vw;
+  overflow: hidden;
+}
+
+main {
+  width: 280px;
+  height: 400px;
+  position: relative;
+}
+
+$card_border: 8px;
+$card_bottom_height: 54px;
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  user-select: none;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.card img {
+  top: $card_border;
+  left: $card_border;
+  width: calc(100% - #{$card_border * 2});
+  height: calc(100% - #{$card_bottom_height});
+  position: absolute;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.card h2 {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: calc(100% - #{$card_bottom_height});
+  line-height: #{$card_bottom_height};
+  font-size: 16px;
+  color: #f1f3f5;
+}
+
+.logo {
+  user-select: none;
+  position: absolute;
+  width: 80px;
+  right: 0;
+  top: -40px;
+  user-select: none;
+  pointer-events: none;
+}
