@@ -1,5 +1,8 @@
 // All of this is very ugly, please don't judge me
-if (window.location.pathname !== '/') {
+const isHomePage = window.location.pathname === '/';
+const isEmbedded = window.self !== window.top;
+
+if (!isHomePage && !isEmbedded) {
   const iframe = document.createElement('iframe');
   iframe.src = location.origin + '/overlay.html';
 
