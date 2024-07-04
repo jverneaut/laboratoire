@@ -14,9 +14,6 @@ const dimensions = { x: 0.4 * 900, y: 0.4 * 1600 };
 canvas.width = dimensions.x;
 canvas.height = dimensions.y;
 
-canvas.style.width = dimensions.x + 'px';
-canvas.style.height = dimensions.y + 'px';
-
 const init = async () => {
   const video = new Video(videoHTMLElement);
   await video.getStream();
@@ -27,7 +24,7 @@ const init = async () => {
 
   let lastTime = 0;
 
-  const draw = dt => {
+  const draw = (dt) => {
     video.draw(ctx, dimensions);
 
     if (dt - lastTime > FACE_DETECTION_RATE) {
