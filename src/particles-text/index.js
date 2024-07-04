@@ -1,7 +1,7 @@
 import './style.css';
 
 import { fromEvent } from 'rxjs';
-import { map, scan } from 'rxjs/operators';
+import { map, scan, startWith } from 'rxjs/operators';
 
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
@@ -15,7 +15,7 @@ canvas.height = height;
 const input = fromEvent(window.top, 'keydown');
 
 const text = input.pipe(
-  map(e => e.key),
+  map((e) => e.key),
   scan((acc, curr) => {
     if (curr.length === 1) {
       return acc + curr;
@@ -26,10 +26,11 @@ const text = input.pipe(
         return acc;
       }
     }
-  }, '')
+  }),
+  startWith('Type Something')
 );
 
-const drawText = str => {
+const drawText = (str) => {
   context.beginPath();
   context.fillStyle = 'black';
   context.font = 'bold ' + width / 8 + 'px Bebas Neue';
@@ -86,7 +87,7 @@ const createParticles = () => {
   }
 };
 
-text.subscribe(value => {
+text.subscribe((value) => {
   clear();
   drawText(value);
   createParticles();
@@ -95,7 +96,7 @@ text.subscribe(value => {
 const OFFSET = width / 200;
 
 const mouse = [];
-document.addEventListener('mousemove', e => {
+document.addEventListener('mousemove', (e) => {
   mouse[0] = e.clientX * 1.5;
   mouse[1] = e.clientY * 1.5;
 });
@@ -104,7 +105,7 @@ let time = 0;
 const anim = () => {
   clear();
 
-  particles.forEach(particle => {
+  particles.forEach((particle) => {
     const offsetX = Math.sin(
       particle.rotation + 0.02 * time * particle.timeMultiplicator
     );
