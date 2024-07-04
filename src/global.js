@@ -1,13 +1,8 @@
 // All of this is very ugly, please don't judge me
 const isHomePage = window.location.pathname === '/';
 const isEmbedded =
-  !window.location.hostname.includes('lab.julienverneaut.com') &&
-  !window.location.hostname.includes('localhost');
-
-console.log({
-  parent: window.parent.location,
-  referer: document.referrer,
-});
+  !document.referrer.includes('lab.julienverneaut.com') ||
+  !document.referrer.length;
 
 if (!isHomePage && !isEmbedded) {
   const iframe = document.createElement('iframe');
