@@ -4,8 +4,10 @@ const isEmbedded =
   !window.location.hostname.includes('lab.julienverneaut.com') &&
   !window.location.hostname.includes('localhost');
 
-console.log({ isHomePage, isEmbedded });
-console.log({ window: window.location, top: window.top.location });
+console.log({
+  parent: window.parent.location,
+  referer: document.referrer,
+});
 
 if (!isHomePage && !isEmbedded) {
   const iframe = document.createElement('iframe');
