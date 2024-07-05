@@ -10,7 +10,7 @@ const Experiments = ({ pages }) => {
   return (
     <FlipMove className="experiments" duration={350 + pages.length * 5}>
       {pages.map((page) => (
-        <Link to={page.slug + '/'} className="experiment" key={page.slug}>
+        <a href={page.slug + '/'} className="experiment" key={page.slug}>
           <div className="experiment__img">
             {page.screenshot && (
               <img src={page.screenshot.src} loading="lazy" />
@@ -27,7 +27,7 @@ const Experiments = ({ pages }) => {
               )}
             </div>
           </div>
-        </Link>
+        </a>
       ))}
     </FlipMove>
   );

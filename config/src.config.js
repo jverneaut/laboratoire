@@ -75,7 +75,7 @@ module.exports = {
       `;
 
       return new HtmlWebpackPlugin({
-        chunks: [page.slug, 'global'],
+        chunks: [page.slug, 'global', 'embed'],
         filename: page.slug + '/index.html',
         headContent: headContent,
         template: page.html,
@@ -84,7 +84,7 @@ module.exports = {
     }),
     ...pages.map((page) => {
       return new HtmlWebpackPlugin({
-        chunks: [page.slug, 'global'],
+        chunks: [page.slug, 'embed'],
         filename: page.slug + '/index-iframe.html',
         template: page.html,
         alwaysWriteToDisk: true,

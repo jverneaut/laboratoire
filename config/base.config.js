@@ -80,6 +80,7 @@ const pages = pageDirectories
 
 module.exports = {
   entry: {
+    embed: join(__dirname, '../src/embed.js'),
     global: join(__dirname, '../src/global.js'),
   },
   output: {
