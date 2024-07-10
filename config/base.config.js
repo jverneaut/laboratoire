@@ -46,6 +46,7 @@ const getPageDate = (path) => {
       .replace('<meta name="date" content="', '')
       .replace('" />', '')
       .padEnd(13, 0)
+      .slice(0, 10)
   );
 };
 
