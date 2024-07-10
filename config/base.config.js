@@ -114,7 +114,16 @@ module.exports = {
       },
     }),
     new CopyPlugin({
-      patterns: [{ from: 'public/' }],
+      patterns: [
+        { from: 'public/' },
+
+        // TODO: Improve this
+        // Quick and dirty way to have unique thumbnail names
+        ...pages.map((page) => ({
+          from: `src/${page.slug}/screenshot.png`,
+          to: `${page.slug}/${page.slug}-thumbnail.png`,
+        })),
+      ],
     }),
     new GenerateJsonPlugin(
       'api.json',
@@ -127,6 +136,7 @@ module.exports = {
         url: `https://lab.julienverneaut.com/${page.slug}`,
         url_embed: `https://lab.julienverneaut.com/${page.slug}/index-iframe.html`,
         cover: `https://lab.julienverneaut.com/${page.slug}/screenshot.png`,
+        thumbnail: `https://lab.julienverneaut.com/${page.slug}/${page.slug}-thumbnail.png`,
       }))
     ),
   ],
