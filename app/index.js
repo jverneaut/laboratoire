@@ -20,13 +20,13 @@ if (document.querySelector('#root').childElementCount) {
 }
 
 export default ({ pages, categories }) => {
-  const pagesWithScreenshot = pages.map(page =>
+  const pagesWithScreenshot = pages.map((page) =>
     page.screenshot
       ? {
           ...page,
           screenshot: require(`../src/${page.screenshot
             .replace('../src/', '')
-            .replace('/screenshot.png', '')}/screenshot.png?size=400`),
+            .replace('/screenshot.png', '')}/screenshot.png?size=1200`),
         }
       : page
   );
