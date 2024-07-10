@@ -123,7 +123,9 @@ module.exports = {
         dateDisplay: page.dateDisplay,
         name: page.name,
         category: page.category,
+        slug: page.slug,
         url: `https://lab.julienverneaut.com/${page.slug}`,
+        url_embed: `https://lab.julienverneaut.com/${page.slug}/index-iframe.html`,
         cover: `https://lab.julienverneaut.com/${page.slug}/screenshot.png`,
       }))
     ),
