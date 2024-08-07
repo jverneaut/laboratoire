@@ -129,6 +129,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'public/' },
+        { from: '_redirects' },
 
         // TODO: Improve this
         // Quick and dirty way to have unique thumbnail names
