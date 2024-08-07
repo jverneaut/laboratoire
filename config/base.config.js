@@ -63,7 +63,9 @@ const pages = pageDirectories
     const name = getPageTitle(join(pageDirectory, 'index.html'));
     const category = getPageCategory(join(pageDirectory, 'index.html'));
     const screenshot = join(pageDirectory, 'screenshot.png');
-    const date = getPageDate(join(pageDirectory, 'index.html')) || 'TROLOLO';
+    const repository = `https://github.com/jverneaut/laboratoire/tree/master/src/${slug}`;
+
+    const date = getPageDate(join(pageDirectory, 'index.html'));
     const dateDisplay = capitalize(
       formatDistance(new Date(date), Date.now(), {
         addSuffix: true,
@@ -71,7 +73,17 @@ const pages = pageDirectories
       })
     );
 
-    const page = { slug, html, js, name, category, date, dateDisplay };
+    const page = {
+      slug,
+      html,
+      js,
+      name,
+      category,
+      date,
+      dateDisplay,
+      repository,
+    };
+
     if (existsSync(screenshot)) {
       page.screenshot = relative(__dirname, screenshot);
     }
@@ -136,6 +148,7 @@ module.exports = {
         slug: page.slug,
         url: `https://lab.julienverneaut.com/${page.slug}`,
         url_embed: `https://lab.julienverneaut.com/${page.slug}/index-iframe.html`,
+        repository: page.repository,
         cover: `https://lab.julienverneaut.com/${page.slug}/screenshot.png`,
         thumbnail: `https://lab.julienverneaut.com/${page.slug}/${page.slug}-thumbnail.png`,
       }))
