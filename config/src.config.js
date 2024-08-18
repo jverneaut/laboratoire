@@ -72,6 +72,7 @@ module.exports = {
         <meta property="og:image:url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
         <meta property="og:image:secure_url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
         <script defer data-domain="lab.julienverneaut.com" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="canonical" href="https://www.julienverneaut.com/experiences/${page.slug}" />
       `;
 
       return new HtmlWebpackPlugin({
@@ -83,9 +84,24 @@ module.exports = {
       });
     }),
     ...pages.map((page) => {
+      const headContent = `
+        <meta name="twitter:card" content="summary" />
+        <meta property="og:url" content="https://lab.julienverneaut.com/${page.slug}" />
+        <meta property="og:title" content="${page.name}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="Ce site rassemble mes expérimentations frontend. Il contient des essais d'animations, des expériences avec WebGL, des essais d'api et bien d'autres choses." />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
+        <meta property="og:image:url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
+        <meta property="og:image:secure_url" content="https://lab.julienverneaut.com/${page.slug}/screenshot.png" />
+        <script defer data-domain="lab.julienverneaut.com" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="canonical" href="https://www.julienverneaut.com/experiences/${page.slug}" />
+      `;
+
       return new HtmlWebpackPlugin({
         chunks: [page.slug, 'embed'],
         filename: page.slug + '/index-iframe.html',
+        headContent: headContent,
         template: page.html,
         alwaysWriteToDisk: true,
       });
