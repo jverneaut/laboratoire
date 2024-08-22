@@ -42,8 +42,8 @@ const STROKE_WIDTH = 2;
 const CELL_WIDTH = upscale * 6;
 const CELL_HEIGHT = upscale * 6;
 
-const COLUMNS = 60;
-const ROWS = 120;
+const COLUMNS = 50;
+const ROWS = 50;
 
 // const probability = 0.1;
 const probability = 0.05;
