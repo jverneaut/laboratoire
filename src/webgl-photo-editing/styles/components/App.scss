@@ -1,6 +1,10 @@
 main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }
