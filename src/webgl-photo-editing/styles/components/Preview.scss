@@ -1,0 +1,30 @@
+.preview {
+  flex: 1;
+  background: hsl(0, 0, 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview canvas {
+  background: white;
+  width: 100%;
+  height: auto;
+}
+
+.preview-options {
+  position: absolute;
+}
+
+// Options
+.preview.-bg-white {
+  background: white;
+}
+
+.preview.-bg-black {
+  background: black;
+}
+
+.preview.-with-shadow canvas {
+  box-shadow: 0 4px 8px hsla(0, 0, 10%, 0.2), 0 12px 40px hsla(0, 0, 10%, 0.2);
+}

@@ -5,6 +5,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.svelte$/,
+        exclude: '/node_modules/',
+        use: {
+          loader: 'svelte-loader',
+        },
+      },
+      {
         test: /\.obj$/,
         use: {
           loader: 'webpack-obj-loader',
