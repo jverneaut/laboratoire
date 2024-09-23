@@ -4,7 +4,7 @@
   font-family: OT Jubilee;
   src: url('./assets/fonts/OTJubilee-Diamond.woff2') format('woff2'),
     url('./assets/fonts/OTJubilee-Diamond.woff') format('woff');
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -12,7 +12,7 @@
   font-family: PP Neue Montreal;
   src: url('./assets/fonts/PPNeueMontreal-Regular.woff2') format('woff2'),
     url('./assets/fonts/PPNeueMontreal-Regular.woff') format('woff');
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -318,7 +318,6 @@ html {
   }
 
   h2 {
-    font-weight: 600;
     font-size: 18px;
     font-family: OT Jubilee;
   }
@@ -476,4 +475,6 @@ html {
 
 button {
   user-select: none;
+  color: inherit;
+  text-decoration: none;
 }
