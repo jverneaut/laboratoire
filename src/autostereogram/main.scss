@@ -72,14 +72,14 @@ html {
   appearance: none;
   border: none;
   background: none;
-  aspect-ratio: 1/1;
   position: absolute;
   background: white;
-  padding: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 20;
+  width: 46px;
+  height: 46px;
   top: 12px;
   right: 12px;
   border-radius: 8px;
