@@ -1,0 +1,479 @@
+@import '../../src/reset.css';
+
+@font-face {
+  font-family: OT Jubilee;
+  src: url('./assets/fonts/OTJubilee-Diamond.woff2') format('woff2'),
+    url('./assets/fonts/OTJubilee-Diamond.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PP Neue Montreal;
+  src: url('./assets/fonts/PPNeueMontreal-Regular.woff2') format('woff2'),
+    url('./assets/fonts/PPNeueMontreal-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PP Neue Montreal;
+  src: url('./assets/fonts/PPNeueMontreal-Bold.woff2') format('woff2'),
+    url('./assets/fonts/PPNeueMontreal-Bold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+html {
+  font-family: PP Neue Montreal;
+  background: #f3f3f3;
+}
+
+#assets {
+  display: none;
+}
+
+.main {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+
+.stereogram {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+
+  canvas {
+    border-radius: 12px;
+  }
+}
+
+.overlay {
+  display: block;
+  position: absolute;
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.fullscreen-button {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  aspect-ratio: 1/1;
+  position: absolute;
+  background: white;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  top: 12px;
+  right: 12px;
+  border-radius: 8px;
+  box-sizing: content-box;
+
+  transition: 0.16s opacity;
+  border: 1px solid #ccc;
+  box-shadow: 0px 1px 2px rgba(black, 0.06), 0px 4px 12px rgba(black, 0.04);
+
+  cursor: pointer;
+  opacity: 0;
+
+  &:hover {
+    background: #f6f6f6;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+}
+
+.overlay:hover .fullscreen-button {
+  transition: none;
+  opacity: 1;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  perspective: 400px;
+  z-index: 10;
+  flex: 1;
+}
+
+.control__list {
+  max-height: 540px;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 12px 24px rgba(black, 0.24);
+  z-index: 10;
+  position: absolute;
+  bottom: 100%;
+  background: white;
+  margin-bottom: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s all;
+  transform: rotateX(2deg) translateY(8px);
+  transform-origin: bottom;
+  left: -8px;
+  width: calc(100% + 12px);
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+    transform: none;
+  }
+}
+
+.control__category {
+  position: relative;
+}
+
+.control__category-title {
+  padding: 6px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+
+  &::after {
+    display: block;
+    position: absolute;
+    top: -1px;
+    height: 1px;
+    left: 0;
+    width: 100%;
+    background: #ccc;
+    content: '';
+  }
+}
+
+.control__category-list {
+  background: #f3f3f3;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 6px;
+  padding: 8px 6px;
+}
+
+.control__button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: 0.1s all;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &--selected {
+    .control__image {
+      opacity: 0.4;
+    }
+  }
+}
+
+.control__icon {
+  width: 24px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+.control__image {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.control__current-container {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #ccc;
+  box-shadow: 0px 1px 2px rgba(black, 0.06), 0px 4px 12px rgba(black, 0.04);
+  border-radius: 12px;
+  background: white;
+}
+
+.control__current {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  gap: 12px;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+}
+
+.control__randomize {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  position: relative;
+
+  background: #111;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 4px;
+  padding: 0 14px;
+  box-sizing: content-box;
+
+  box-shadow: 0px 1px 0px rgba(white, 0.3) inset;
+  border: 1px solid #111;
+  transition: 0.1s all;
+
+  &:hover {
+    background: #161616;
+  }
+
+  &:active {
+    box-shadow: 0px -1px 0px rgba(white, 0.2) inset;
+    transform: translateY(1px);
+  }
+
+  img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+}
+
+.control__current-image {
+  width: 42px;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.control__current-title {
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  span {
+    opacity: 0.7;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 18px;
+    font-family: OT Jubilee;
+  }
+}
+
+.button {
+  background: #111;
+  color: white;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 14px 24px;
+  border-radius: 12px;
+  line-height: 1;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 18px;
+  transition: 0.1s all;
+
+  box-shadow: 0px 1px 2px rgba(black, 0.08), 0px 1px 0px rgba(white, 0.3) inset;
+  border: 1px solid #111;
+
+  &:hover {
+    background: #161616;
+  }
+
+  &:active {
+    box-shadow: 0px 1px 2px rgba(black, 0.08),
+      0px -1px 0px rgba(white, 0.3) inset;
+    transform: translateY(1px);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+}
+
+.button--white {
+  background: white;
+  color: black;
+  border-color: #ccc;
+
+  &:hover {
+    background: #f6f6f6;
+  }
+}
+
+.gallery {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  box-shadow: 0px 1px 2px rgba(black, 0.06), 0px 4px 12px rgba(black, 0.04);
+  border-radius: 12px;
+  background: white;
+  margin: 0 auto;
+  gap: 24px;
+  padding: 4px;
+}
+
+.gallery__indicator {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-variant-numeric: tabular-nums;
+  padding-left: 12px;
+}
+
+.gallery__current {
+  font-size: 18px;
+  // font-weight: 500;
+}
+
+.gallery__separator {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.gallery__total {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.gallery__title {
+  flex: 1;
+  text-align: center;
+  font-family: OT Jubilee;
+  font-size: 20px;
+
+  // font-weight: 400;
+}
+
+.gallery__buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gallery__button {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  position: relative;
+  box-sizing: border-box;
+
+  height: 44px;
+  background: #111;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0 14px;
+
+  box-shadow: 0px 1px 0px rgba(white, 0.3) inset;
+  border: 1px solid #111;
+  transition: 0.1s all;
+
+  &:hover {
+    background: #161616;
+  }
+
+  &:active {
+    box-shadow: 0px -1px 0px rgba(white, 0.2) inset;
+    transform: translateY(1px);
+  }
+
+  img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+  }
+
+  &--prev {
+    img {
+      transform: scaleX(-1);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.2;
+  }
+}
+
+::selection {
+  background: #161616;
+  color: white;
+}
+
+button {
+  user-select: none;
+}

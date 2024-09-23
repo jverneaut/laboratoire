@@ -1,0 +1,457 @@
+{
+  "backgrounds": {
+    "Architextures": [
+      {
+        "name": "Seamless 1",
+        "slug": "seamless-1",
+        "src": "./assets/backgrounds/seamless-1.jpg"
+      },
+      {
+        "name": "Seamless 2",
+        "slug": "seamless-2",
+        "src": "./assets/backgrounds/seamless-2.jpg"
+      },
+      {
+        "name": "Seamless 3",
+        "slug": "seamless-3",
+        "src": "./assets/backgrounds/seamless-3.jpg"
+      },
+      {
+        "name": "Seamless 4",
+        "slug": "seamless-4",
+        "src": "./assets/backgrounds/seamless-4.jpg"
+      },
+      {
+        "name": "Seamless 6",
+        "slug": "seamless-6",
+        "src": "./assets/backgrounds/seamless-6.jpg"
+      },
+      {
+        "name": "Seamless 7",
+        "slug": "seamless-7",
+        "src": "./assets/backgrounds/seamless-7.jpg"
+      },
+      {
+        "name": "Seamless 8",
+        "slug": "seamless-8",
+        "src": "./assets/backgrounds/seamless-8.jpg"
+      },
+      {
+        "name": "Seamless 10",
+        "slug": "seamless-10",
+        "src": "./assets/backgrounds/seamless-10.jpg"
+      },
+      {
+        "name": "Seamless 14",
+        "slug": "seamless-14",
+        "src": "./assets/backgrounds/seamless-14.jpg"
+      },
+      {
+        "name": "Seamless 16",
+        "slug": "seamless-16",
+        "src": "./assets/backgrounds/seamless-16.jpg"
+      },
+      {
+        "name": "Seamless 17",
+        "slug": "seamless-17",
+        "src": "./assets/backgrounds/seamless-17.jpg"
+      },
+      {
+        "name": "Seamless 18",
+        "slug": "seamless-18",
+        "src": "./assets/backgrounds/seamless-18.jpg"
+      },
+      {
+        "name": "Seamless 19",
+        "slug": "seamless-19",
+        "src": "./assets/backgrounds/seamless-19.jpg"
+      },
+      {
+        "name": "Seamless 21",
+        "slug": "seamless-21",
+        "src": "./assets/backgrounds/seamless-21.jpg"
+      },
+      {
+        "name": "Seamless 24",
+        "slug": "seamless-24",
+        "src": "./assets/backgrounds/seamless-24.jpg"
+      },
+      {
+        "name": "Floral Wallpaper",
+        "slug": "floral-wallpaper",
+        "src": "./assets/backgrounds/floral-wallpaper.jpg"
+      }
+    ],
+    "Memes": [
+      {
+        "name": "This is fine :)",
+        "slug": "this-is-fine",
+        "src": "./assets/backgrounds/this-is-fine.png"
+      },
+      {
+        "name": "Distracted Boyfriend",
+        "slug": "distracted-boyfriend",
+        "src": "./assets/backgrounds/distracted-boyfriend.png"
+      },
+      {
+        "name": "Nicolas Cage",
+        "slug": "cage",
+        "src": "./assets/backgrounds/cage.png"
+      }
+    ],
+    "Music": [
+      {
+        "name": "Pink Floyd",
+        "slug": "pink-floyd",
+        "src": "./assets/backgrounds/pink-floyd.png"
+      },
+      {
+        "name": "Caribou",
+        "slug": "caribou",
+        "src": "./assets/backgrounds/caribou.png"
+      },
+      {
+        "name": "Bonobo",
+        "slug": "bonobo",
+        "src": "./assets/backgrounds/bonobo.png"
+      },
+      {
+        "name": "Ben Böhmer",
+        "slug": "ben-bohmer",
+        "src": "./assets/backgrounds/ben-bohmer.png"
+      },
+      {
+        "name": "Cheat Codes",
+        "slug": "cheat-codes",
+        "src": "./assets/backgrounds/cheat-codes.png"
+      },
+      {
+        "name": "Walter Wanderley",
+        "slug": "walter-wanderley",
+        "src": "./assets/backgrounds/walter-wanderley.png"
+      },
+      {
+        "name": "Love",
+        "slug": "love",
+        "src": "./assets/backgrounds/love.png"
+      },
+      {
+        "name": "Flavien Berger",
+        "slug": "flavien-berger",
+        "src": "./assets/backgrounds/flavien-berger.png"
+      },
+      {
+        "name": "La Femme",
+        "slug": "la-femme",
+        "src": "./assets/backgrounds/la-femme.png"
+      },
+      {
+        "name": "Slayer",
+        "slug": "slayer",
+        "src": "./assets/backgrounds/slayer.png"
+      }
+    ],
+    "Objects": [
+      {
+        "name": "Bicycles",
+        "slug": "bicycles",
+        "src": "./assets/backgrounds/bicycles.jpg"
+      },
+      {
+        "name": "Books",
+        "slug": "books",
+        "src": "./assets/backgrounds/books.jpg"
+      },
+      {
+        "name": "Bouchons",
+        "slug": "bouchons",
+        "src": "./assets/backgrounds/bouchons.jpg"
+      },
+      {
+        "name": "Lego",
+        "slug": "lego",
+        "src": "./assets/backgrounds/lego.jpg"
+      },
+      {
+        "name": "Money",
+        "slug": "money",
+        "src": "./assets/backgrounds/money.jpg"
+      },
+      {
+        "name": "Waste",
+        "slug": "waste",
+        "src": "./assets/backgrounds/waste.jpg"
+      }
+    ],
+    "Organic": [
+      {
+        "name": "Fire",
+        "slug": "fire",
+        "src": "./assets/backgrounds/fire.jpg"
+      },
+      {
+        "name": "Flower",
+        "slug": "flower",
+        "src": "./assets/backgrounds/flower.jpg"
+      },
+      {
+        "name": "Forest",
+        "slug": "forest",
+        "src": "./assets/backgrounds/forest.jpg"
+      },
+      {
+        "name": "Hair",
+        "slug": "hair",
+        "src": "./assets/backgrounds/hair.png"
+      },
+      {
+        "name": "Ice",
+        "slug": "ice",
+        "src": "./assets/backgrounds/ice.jpg"
+      },
+      {
+        "name": "Leaves",
+        "slug": "leaves",
+        "src": "./assets/backgrounds/leaves.jpg"
+      },
+      {
+        "name": "Spider Web",
+        "slug": "spider-web",
+        "src": "./assets/backgrounds/spider-web.jpg"
+      },
+      {
+        "name": "Road in the forest",
+        "slug": "road",
+        "src": "./assets/backgrounds/road.jpg"
+      }
+    ],
+    "Food": [
+      {
+        "name": "Burgers",
+        "slug": "burgers",
+        "src": "./assets/backgrounds/burgers.png"
+      },
+      {
+        "name": "Coffee",
+        "slug": "coffee",
+        "src": "./assets/backgrounds/coffee.jpg"
+      },
+      {
+        "name": "Pop-Corn",
+        "slug": "popcorn",
+        "src": "./assets/backgrounds/popcorn.jpg"
+      }
+    ],
+    "Textures": [
+      {
+        "name": "Fabric",
+        "slug": "fabric",
+        "src": "./assets/backgrounds/fabric.jpg"
+      },
+      {
+        "name": "Posters",
+        "slug": "posters",
+        "src": "./assets/backgrounds/posters.jpg"
+      },
+      {
+        "name": "Canvas",
+        "slug": "canvas",
+        "src": "./assets/backgrounds/canvas.jpg"
+      },
+      {
+        "name": "Swirl",
+        "slug": "swirl",
+        "src": "./assets/backgrounds/swirl.jpg"
+      }
+    ],
+    "Cultural": [
+      {
+        "name": "Gollum",
+        "slug": "gollum",
+        "src": "./assets/backgrounds/gollum.png"
+      },
+
+      {
+        "name": "Minions",
+        "slug": "minions",
+        "src": "./assets/backgrounds/minions.png"
+      }
+    ]
+  },
+
+  "depthmaps": {
+    "Objects": [
+      {
+        "name": "Car",
+        "slug": "car",
+        "src": "./assets/maps/car.png"
+      },
+      {
+        "name": "Pipe",
+        "slug": "pipe",
+        "src": "./assets/maps/pipe.png"
+      },
+      {
+        "name": "Guitar",
+        "slug": "guitar",
+        "src": "./assets/maps/guitar.png"
+      },
+      {
+        "name": "Chessboard",
+        "slug": "chessboard",
+        "src": "./assets/maps/chessboard.png"
+      },
+      {
+        "name": "Cup",
+        "slug": "cup",
+        "src": "./assets/maps/cup.png"
+      }
+    ],
+    "Animals": [
+      {
+        "name": "Fish",
+        "slug": "fish",
+        "src": "./assets/maps/fish.png"
+      },
+      {
+        "name": "Fishes",
+        "slug": "fishes",
+        "src": "./assets/maps/fishes.png"
+      },
+      {
+        "name": "Dinosaur",
+        "slug": "dino",
+        "src": "./assets/maps/dino.png"
+      },
+      {
+        "name": "Dog",
+        "slug": "dog",
+        "src": "./assets/maps/dog.png"
+      },
+      {
+        "name": "Duck",
+        "slug": "duck",
+        "src": "./assets/maps/duck.png"
+      },
+      {
+        "name": "Monkey",
+        "slug": "monkey",
+        "src": "./assets/maps/monkey.png"
+      },
+      {
+        "name": "Penguin",
+        "slug": "penguin",
+        "src": "./assets/maps/penguin.png"
+      },
+      {
+        "name": "Spider",
+        "slug": "spider",
+        "src": "./assets/maps/spider.png"
+      },
+      {
+        "name": "Suzanne",
+        "slug": "suzanne",
+        "src": "./assets/maps/suzanne.png"
+      },
+      {
+        "name": "Horse",
+        "slug": "horse",
+        "src": "./assets/maps/horse.png"
+      },
+      {
+        "name": "Shark",
+        "slug": "shark",
+        "src": "./assets/maps/shark.png"
+      },
+      {
+        "name": "Squirrel",
+        "slug": "squirrel",
+        "src": "./assets/maps/squirrel.png"
+      }
+    ],
+    "Furniture": [
+      {
+        "name": "Couch",
+        "slug": "couch",
+        "src": "./assets/maps/couch.png"
+      },
+      {
+        "name": "Toilet",
+        "slug": "toilet",
+        "src": "./assets/maps/toilet.png"
+      }
+    ],
+    "Basic shapes": [
+      {
+        "name": "Bump",
+        "slug": "bump",
+        "src": "./assets/maps/bump.png"
+      },
+      {
+        "name": "Torus",
+        "slug": "torus",
+        "src": "./assets/maps/torus.png"
+      },
+      {
+        "name": "Cube",
+        "slug": "cube",
+        "src": "./assets/maps/cube.png"
+      },
+      {
+        "name": "Hollow Cube",
+        "slug": "hollow-cube",
+        "src": "./assets/maps/hollow-cube.png"
+      }
+    ],
+    "Food": [
+      {
+        "name": "Fruits",
+        "slug": "fruits",
+        "src": "./assets/maps/fruits.png"
+      }
+    ],
+    "Constructions": [
+      {
+        "name": "Eiffel",
+        "slug": "eiffel",
+        "src": "./assets/maps/eiffel.png"
+      },
+      {
+        "name": "House",
+        "slug": "house",
+        "src": "./assets/maps/house.png"
+      }
+    ],
+    "Plants": [
+      {
+        "name": "Rose",
+        "slug": "rose",
+        "src": "./assets/maps/rose.png"
+      },
+      {
+        "name": "Watering",
+        "slug": "watering",
+        "src": "./assets/maps/watering.png"
+      },
+      {
+        "name": "Flower",
+        "slug": "flower",
+        "src": "./assets/maps/flower.png"
+      }
+    ],
+    "Space": [
+      {
+        "name": "Saturn",
+        "slug": "saturn",
+        "src": "./assets/maps/saturn.png"
+      }
+    ],
+    "Human": [
+      {
+        "name": "Hand",
+        "slug": "hand",
+        "src": "./assets/maps/doigts.png"
+      }
+    ]
+  }
+}
