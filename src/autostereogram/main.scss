@@ -51,6 +51,8 @@ html {
   position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
 
   canvas {
     border-radius: 12px;
