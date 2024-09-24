@@ -68,5 +68,10 @@
     "title": "Keep it cool",
     "background": "fire",
     "depth": "fire-extinguisher"
+  },
+  {
+    "title": "Lost in the rainforest",
+    "background": "walter-wanderley",
+    "depth": "shark"
   }
 ]
