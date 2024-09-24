@@ -48,5 +48,25 @@
     "title": "You lost.",
     "background": "swirl",
     "depth": "hand"
+  },
+  {
+    "title": "The Piper at the Gates of Dawn",
+    "background": "pink-floyd",
+    "depth": "pipe"
+  },
+  {
+    "title": "Forever Changes",
+    "background": "love",
+    "depth": "guitar"
+  },
+  {
+    "title": "Sur la planche",
+    "background": "la-femme",
+    "depth": "surfer"
+  },
+  {
+    "title": "Keep it cool",
+    "background": "fire",
+    "depth": "fire-extinguisher"
   }
 ]

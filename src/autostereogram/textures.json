@@ -310,6 +310,11 @@
         "name": "Hot Air Balloons",
         "slug": "hot-air-balloons",
         "src": "./assets/maps/hot-air-balloons.png"
+      },
+      {
+        "name": "Fire Extinguisher",
+        "slug": "fire-extinguisher",
+        "src": "./assets/maps/fire-extinguisher.png"
       }
     ],
     "Creatures": [
@@ -471,6 +476,11 @@
         "name": "Hand",
         "slug": "hand",
         "src": "./assets/maps/hand.png"
+      },
+      {
+        "name": "Surfer",
+        "slug": "surfer",
+        "src": "./assets/maps/surfer.png"
       }
     ]
   }
