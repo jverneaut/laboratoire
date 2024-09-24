@@ -6,6 +6,8 @@ import downloadIcon from '../assets/icons/download.svg';
 
 import gallery from '../gallery.json';
 
+import { ReImg } from 'reimg';
+
 const TexturesSelector = ({
   seamlessImages,
   depthMapImages,
@@ -54,6 +56,12 @@ const TexturesSelector = ({
     setDepthMapImage(flatDepthMaps[depthMapSlug]);
   }, [depthMapSlug]);
 
+  const downloadImage = () => {
+    ReImg.fromCanvas(document.querySelector('canvas')).downloadPng(
+      'autostereogram'
+    );
+  };
+
   return (
     <div className="controls">
       <ImageSelect
@@ -74,7 +82,7 @@ const TexturesSelector = ({
         title="Depth map"
       />
 
-      <div
+      <button
         className="button"
         onClick={() => {
           setBackgroundSlug(getRandomSlug(flatBackgrounds));
@@ -83,12 +91,12 @@ const TexturesSelector = ({
       >
         <span>Randomize all</span>
         <img src={randomizeIcon} alt="" />
-      </div>
+      </button>
 
-      <div className="button button--white">
+      <button className="button button--white" onClick={downloadImage}>
         <span>Download image</span>
         <img src={downloadIcon} alt="" />
-      </div>
+      </button>
     </div>
   );
 };

@@ -74,6 +74,7 @@ const Stereogram = ({
           aspectRatio: '16/9',
           margin: '0 auto',
         }}
+        gl={{ preserveDrawingBuffer: true }}
         ref={canvasRef}
       >
         <Suspense fallback={null}>

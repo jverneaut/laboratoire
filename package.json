@@ -63,6 +63,7 @@
     "react-router-dom": "^5.2.0",
     "react-spring": "^8.0.27",
     "regl": "^1.6.1",
+    "reimg": "^1.0.0",
     "responsive-loader": "^2.3.0",
     "rxjs": "^6.5.5",
     "sass-loader": "^8.0.2",

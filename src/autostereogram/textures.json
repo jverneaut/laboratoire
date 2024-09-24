@@ -312,7 +312,7 @@
         "src": "./assets/maps/hot-air-balloons.png"
       }
     ],
-    "Animals": [
+    "Creatures": [
       {
         "name": "Fish",
         "slug": "fish",
@@ -337,11 +337,6 @@
         "name": "Duck",
         "slug": "duck",
         "src": "./assets/maps/duck.png"
-      },
-      {
-        "name": "Monkey",
-        "slug": "monkey",
-        "src": "./assets/maps/monkey.png"
       },
       {
         "name": "Penguin",
@@ -372,6 +367,11 @@
         "name": "Squirrel",
         "slug": "squirrel",
         "src": "./assets/maps/squirrel.png"
+      },
+      {
+        "name": "Minion",
+        "slug": "minion",
+        "src": "./assets/maps/minion.png"
       }
     ],
     "Furniture": [
@@ -420,16 +420,6 @@
         "src": "./assets/maps/burger.png"
       },
       {
-        "name": "Tie Fighter",
-        "slug": "tie-fighter",
-        "src": "./assets/maps/tie-fighter.png"
-      },
-      {
-        "name": "Minion",
-        "slug": "minion",
-        "src": "./assets/maps/minion.png"
-      },
-      {
         "name": "Bananas",
         "slug": "bananas",
         "src": "./assets/maps/bananas.png"
@@ -469,6 +459,11 @@
         "name": "Saturn",
         "slug": "saturn",
         "src": "./assets/maps/saturn.png"
+      },
+      {
+        "name": "Tie Fighter",
+        "slug": "tie-fighter",
+        "src": "./assets/maps/tie-fighter.png"
       }
     ],
     "Human": [
