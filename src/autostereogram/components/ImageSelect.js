@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
 import checkIcon from '../assets/icons/circle-check.svg';
@@ -17,8 +17,27 @@ const ImageSelect = ({
 
   const selected = selectedImage || flatImages[selectedSlug];
 
+  // Kind of ugly but it works for now
+  const [zIndex, setZIndex] = useState('');
+  useEffect(() => {
+    let timeout = null;
+    clearTimeout(timeout);
+
+    if (open) {
+      setZIndex('50');
+    } else {
+      timeout = setTimeout(() => {
+        setZIndex('');
+      }, 200);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [open]);
+
   return (
-    <div className="control">
+    <div className="control" style={{ zIndex }}>
       <div className="control__current-container">
         <div className="control__current-toggle" ref={ref}>
           <button className="control__current" onClick={() => setOpen(!open)}>
