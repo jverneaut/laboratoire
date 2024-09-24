@@ -335,6 +335,10 @@ html {
   flex-direction: column;
   gap: 2px;
 
+  @media screen and (max-width: 880px) {
+    gap: 4px;
+  }
+
   span {
     opacity: 0.7;
   }
@@ -342,6 +346,10 @@ html {
   h2 {
     font-size: 18px;
     font-family: OT Jubilee;
+
+    @media screen and (max-width: 880px) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -439,7 +447,7 @@ html {
   line-height: 1;
 
   @media screen and (max-width: 880px) {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
