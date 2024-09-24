@@ -18,9 +18,13 @@ const ImageSelect = ({
   const selected = selectedImage || flatImages[selectedSlug];
 
   return (
-    <div className="control" ref={ref}>
+    <div className="control">
       <div className="control__current-container">
-        <button className="control__current" onClick={() => setOpen(!open)}>
+        <button
+          ref={ref}
+          className="control__current"
+          onClick={() => setOpen(!open)}
+        >
           <img
             className="control__current-image"
             src={selected.previewSrc}

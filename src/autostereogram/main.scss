@@ -156,7 +156,7 @@ html {
   transition: 0.2s all;
   transform: rotateX(2deg) translateY(8px);
   transform-origin: bottom;
-  left: -8px;
+  left: -6px;
   width: calc(100% + 12px);
 
   &--open {
@@ -387,6 +387,7 @@ html {
 }
 
 .gallery {
+  position: relative;
   width: 100%;
   max-width: 600px;
   display: flex;
@@ -398,6 +399,8 @@ html {
   margin: 0 auto;
   gap: 24px;
   padding: 4px;
+  perspective: 400px;
+  z-index: 20;
 }
 
 .gallery__indicator {
@@ -428,8 +431,19 @@ html {
   text-align: center;
   font-family: OT Jubilee;
   font-size: 20px;
+}
 
-  // font-weight: 400;
+.gallery__toggle {
+  height: 44px;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  cursor: pointer;
 }
 
 .gallery__buttons {
@@ -483,6 +497,7 @@ html {
 
   &--disabled {
     opacity: 0.2;
+    cursor: not-allowed;
   }
 }
 
@@ -499,4 +514,65 @@ button {
 
 * {
   box-sizing: border-box;
+}
+
+.gallery__list {
+  max-height: 540px;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 12px 24px rgba(black, 0.24);
+  z-index: 10;
+  position: absolute;
+  top: 100%;
+  background: white;
+  margin-top: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s all;
+  transform: rotateX(-2deg) translateY(8px);
+  transform-origin: top;
+  left: 6px;
+  width: calc(100% - 12px);
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+    transform: none;
+  }
+
+  @media screen and (max-width: 880px) {
+    max-height: 260px;
+  }
+}
+
+.gallery__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  transition: 0.1s all;
+
+  &:hover {
+    background: #f3f3f3;
+  }
+
+  &--selected {
+    background: #f3f3f3;
+  }
+}
+
+.gallery__thumbnail {
+  width: 42px;
+  border-radius: 8px;
+  display: block;
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
 }
