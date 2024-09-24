@@ -74,21 +74,49 @@ const Gallery = ({
 
   return (
     <div className="gallery">
-      <button
-        ref={ref}
-        className="gallery__toggle"
-        onClick={() => setOpen(!open)}
-      >
-        <div className="gallery__indicator">
-          <div className="gallery__current">
-            {(index + 1).toString().padStart(2, '0')}
+      <div className="gallery__toggle-container" ref={ref}>
+        <button className="gallery__toggle" onClick={() => setOpen(!open)}>
+          <div className="gallery__indicator">
+            <div className="gallery__current">
+              {(index + 1).toString().padStart(2, '0')}
+            </div>
+            <div className="gallery__separator">/</div>
+            <div className="gallery__total">{gallery.length}</div>
           </div>
-          <div className="gallery__separator">/</div>
-          <div className="gallery__total">{gallery.length}</div>
-        </div>
 
-        <div className="gallery__title">{gallery[index].title}</div>
-      </button>
+          <div className="gallery__title">{gallery[index].title}</div>
+        </button>
+        <div
+          className={[
+            'gallery__list',
+            open ? 'gallery__list--open' : null,
+          ].join(' ')}
+        >
+          {gallery.map((item, i) => (
+            <div
+              key={i}
+              className={[
+                'gallery__item',
+                i === index ? 'gallery__item--selected' : null,
+              ].join(' ')}
+              onClick={() => {
+                setIndex(i);
+                setOpen(false);
+              }}
+            >
+              <div
+                className="gallery__thumbnail"
+                style={{
+                  backgroundImage: `url(${
+                    flatBackgrounds[item.background].previewSrc
+                  })`,
+                }}
+              ></div>
+              <div className="gallery__item-title">{item.title}</div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="gallery__buttons">
         <button
@@ -112,36 +140,6 @@ const Gallery = ({
         >
           <img src={chevronRight} alt="Next" />
         </button>
-      </div>
-
-      <div
-        className={['gallery__list', open ? 'gallery__list--open' : null].join(
-          ' '
-        )}
-      >
-        {gallery.map((item, i) => (
-          <div
-            key={i}
-            className={[
-              'gallery__item',
-              i === index ? 'gallery__item--selected' : null,
-            ].join(' ')}
-            onClick={() => {
-              setIndex(i);
-              setOpen(false);
-            }}
-          >
-            <div
-              className="gallery__thumbnail"
-              style={{
-                backgroundImage: `url(${
-                  flatBackgrounds[item.background].previewSrc
-                })`,
-              }}
-            ></div>
-            <div className="gallery__item-title">{item.title}</div>
-          </div>
-        ))}
       </div>
     </div>
   );

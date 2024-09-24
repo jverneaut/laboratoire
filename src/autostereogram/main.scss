@@ -252,6 +252,10 @@ html {
   aspect-ratio: 1/1;
 }
 
+.control__current-toggle {
+  flex: 1;
+}
+
 .control__current-container {
   width: 100%;
   display: flex;
@@ -409,6 +413,7 @@ html {
   gap: 2px;
   font-variant-numeric: tabular-nums;
   padding-left: 12px;
+  letter-spacing: -0.1rem;
 }
 
 .gallery__current {
@@ -431,6 +436,11 @@ html {
   text-align: center;
   font-family: OT Jubilee;
   font-size: 20px;
+}
+
+.gallery__toggle-container {
+  flex: 1;
+  display: flex;
 }
 
 .gallery__toggle {
@@ -510,6 +520,7 @@ button {
   user-select: none;
   color: inherit;
   text-decoration: none;
+  font-family: inherit;
 }
 
 * {
@@ -575,4 +586,8 @@ button {
   aspect-ratio: 1/1;
   background-size: cover;
   background-position: center;
+}
+
+.gallery__item-title {
+  font-size: 16px;
 }

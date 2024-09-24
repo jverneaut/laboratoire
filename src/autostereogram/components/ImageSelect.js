@@ -20,22 +20,56 @@ const ImageSelect = ({
   return (
     <div className="control">
       <div className="control__current-container">
-        <button
-          ref={ref}
-          className="control__current"
-          onClick={() => setOpen(!open)}
-        >
-          <img
-            className="control__current-image"
-            src={selected.previewSrc}
-            alt=""
-          />
+        <div className="control__current-toggle" ref={ref}>
+          <button className="control__current" onClick={() => setOpen(!open)}>
+            <img
+              className="control__current-image"
+              src={selected.previewSrc}
+              alt=""
+            />
 
-          <div className="control__current-title">
-            <span>{title}</span>
-            <h2>{selected.name}</h2>
+            <div className="control__current-title">
+              <span>{title}</span>
+              <h2>{selected.name}</h2>
+            </div>
+          </button>
+
+          <div
+            className={[
+              'control__list',
+              open ? 'control__list--open' : null,
+            ].join(' ')}
+          >
+            {Object.keys(images).map((category, index) => (
+              <div className="control__category" key={index}>
+                <div className="control__category-title">{category}</div>
+                <div className="control__category-list">
+                  {images[category].map((image, index) => (
+                    <button
+                      className={[
+                        'control__button',
+                        image.slug === selected.slug
+                          ? 'control__button--selected'
+                          : null,
+                      ].join(' ')}
+                      key={index}
+                      onClick={() => setSelectedSlug(image.slug)}
+                    >
+                      <img
+                        className="control__image"
+                        src={image.previewSrc}
+                        alt=""
+                      />
+                      {image.slug === selected.slug && (
+                        <img className="control__icon" src={checkIcon} />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        </button>
+        </div>
 
         <button
           className="control__randomize"
@@ -51,41 +85,6 @@ const ImageSelect = ({
         >
           <img src={randomizeIcon} alt="" />
         </button>
-      </div>
-
-      <div
-        className={['control__list', open ? 'control__list--open' : null].join(
-          ' '
-        )}
-      >
-        {Object.keys(images).map((category, index) => (
-          <div className="control__category" key={index}>
-            <div className="control__category-title">{category}</div>
-            <div className="control__category-list">
-              {images[category].map((image, index) => (
-                <button
-                  className={[
-                    'control__button',
-                    image.slug === selected.slug
-                      ? 'control__button--selected'
-                      : null,
-                  ].join(' ')}
-                  key={index}
-                  onClick={() => setSelectedSlug(image.slug)}
-                >
-                  <img
-                    className="control__image"
-                    src={image.previewSrc}
-                    alt=""
-                  />
-                  {image.slug === selected.slug && (
-                    <img className="control__icon" src={checkIcon} />
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );
