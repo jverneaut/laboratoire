@@ -11,6 +11,9 @@ uniform int uSlices;
 uniform int uDepth;
 uniform float uZoom;
 
+uniform bool uShowDisplacement;
+uniform bool uShowDepthMap;
+
 vec4 depthMapAtCoordinates(vec2 coordinates) {
   float x = coordinates.x - 0.5 / float(uSlices);
   float y = coordinates.y;
@@ -40,15 +43,26 @@ vec4 depthMapAtCoordinates(vec2 coordinates) {
 void main() {
   vec2 uv = vUv;
 
+  float depthAccumulator = 0.0;
   for (int i = 0; i < uSlices; i++) {
     float x = uv.x - float(i) * 1.0 / float(uSlices);
     float depth = depthMapAtCoordinates(vec2(x, uv.y)).r;
+    depthAccumulator += depth;
 
     uv.x += depth * 0.001 * float(uDepth);
   }
 
-  float x = uv.x * float(uSlices);
-  float y = uv.y * float(uSlices) * uResolution.y / uResolution.x * uBackgroundAspectRatio;
+  if (uShowDisplacement) {
+    float x = uv.x;
+    float y = uv.y * uResolution.y / uResolution.x * uBackgroundAspectRatio;
 
-  gl_FragColor = texture2D(tBackground, vec2(x, y));
+    gl_FragColor = vec4(vec3(depthAccumulator) / float(uSlices), 1.0);
+  } else if (uShowDepthMap) {
+    gl_FragColor = depthMapAtCoordinates(vUv + vec2(0.5 / float(uSlices), 0.0));
+  } else {
+    float x = uv.x * float(uSlices);
+    float y = uv.y * float(uSlices) * uResolution.y / uResolution.x * uBackgroundAspectRatio;
+
+    gl_FragColor = texture2D(tBackground, vec2(x, y));
+  }
 }

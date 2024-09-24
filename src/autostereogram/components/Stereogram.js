@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react';
+import React, { Suspense, useState, useRef } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import { ShaderMaterial, RepeatWrapping, NearestFilter } from 'three';
@@ -14,6 +14,8 @@ const StereogramScene = ({
   slices,
   depth,
   zoom,
+  showDisplacement,
+  showDepthMap,
 }) => {
   const backgroundTexture = useTexture(backgroundImage.src);
   backgroundTexture.wrapS = RepeatWrapping;
@@ -42,6 +44,8 @@ const StereogramScene = ({
       },
       uDepth: { value: depth },
       uZoom: { value: zoom },
+      uShowDisplacement: { value: showDisplacement },
+      uShowDepthMap: { value: showDepthMap },
     },
     vertexShader: vertexShaderSource,
     fragmentShader: fragmentShaderSource,
@@ -62,6 +66,9 @@ const Stereogram = ({
   zoom,
 }) => {
   const canvasRef = useRef();
+
+  const [showDisplacement, setShowDisplacement] = useState(false);
+  const [showDepthMap, setShowDepthMap] = useState(false);
 
   return (
     <div className="stereogram">
@@ -84,6 +91,8 @@ const Stereogram = ({
             slices={slices}
             depth={depth}
             zoom={zoom}
+            showDisplacement={showDisplacement}
+            showDepthMap={showDepthMap}
           />
         </Suspense>
       </Canvas>
@@ -95,6 +104,53 @@ const Stereogram = ({
           className="fullscreen-button"
         >
           <img src={fullScreenIcon} alt="" />
+        </div>
+
+        <div className="render-mode">
+          <div className="render-mode__list">
+            <button
+              onClick={() => {
+                setShowDepthMap(false);
+                setShowDisplacement(false);
+              }}
+              className={[
+                'render-mode__item',
+                !showDepthMap && !showDisplacement
+                  ? 'render-mode__item--active'
+                  : null,
+              ].join(' ')}
+            >
+              Autostereogram
+            </button>
+            <button
+              onClick={() => {
+                setShowDepthMap(true);
+                setShowDisplacement(false);
+              }}
+              className={[
+                'render-mode__item',
+                showDepthMap && !showDisplacement
+                  ? 'render-mode__item--active'
+                  : null,
+              ].join(' ')}
+            >
+              Depth map
+            </button>
+            <button
+              onClick={() => {
+                setShowDepthMap(false);
+                setShowDisplacement(true);
+              }}
+              className={[
+                'render-mode__item',
+                !showDepthMap && showDisplacement
+                  ? 'render-mode__item--active'
+                  : null,
+              ].join(' ')}
+            >
+              Displacement
+            </button>
+          </div>
         </div>
       </div>
     </div>
