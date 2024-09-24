@@ -1,38 +1,23 @@
 [
   {
-    "title": "Junk food",
-    "background": "waste",
-    "depth": "cup"
+    "title": "Cappadocia",
+    "background": "ben-bohmer",
+    "depth": "hot-air-balloons"
   },
   {
-    "title": "Fast food",
-    "background": "burgers",
-    "depth": "car"
+    "title": "Minions",
+    "background": "minions",
+    "depth": "bananas"
   },
   {
-    "title": "My favorite band",
-    "background": "pink-floyd",
-    "depth": "guitar"
-  },
-  {
-    "title": "Not what you'd expect",
-    "background": "spider-web",
-    "depth": "penguin"
-  },
-  {
-    "title": "Raaaaawr",
+    "title": "Raaaaawr!",
     "background": "seamless-18",
     "depth": "dino"
   },
   {
-    "title": "Don't spill the bucket",
+    "title": "Movie time",
     "background": "popcorn",
     "depth": "couch"
-  },
-  {
-    "title": "This is fine :)",
-    "background": "this-is-fine",
-    "depth": "cup"
   },
   {
     "title": "Very precious indeed",
@@ -40,9 +25,9 @@
     "depth": "torus"
   },
   {
-    "title": "A little sweetness",
-    "background": "slayer",
-    "depth": "duck"
+    "title": "This is fine :)",
+    "background": "this-is-fine",
+    "depth": "cup"
   },
   {
     "title": "It's a spider. You've been warned.",
@@ -50,8 +35,8 @@
     "depth": "spider"
   },
   {
-    "title": "Cappadocia",
-    "background": "ben-bohmer",
-    "depth": "cup"
+    "title": "Something cute",
+    "background": "slayer",
+    "depth": "duck"
   }
 ]

@@ -305,6 +305,11 @@
         "name": "Cup",
         "slug": "cup",
         "src": "./assets/maps/cup.png"
+      },
+      {
+        "name": "Hot Air Balloons",
+        "slug": "hot-air-balloons",
+        "src": "./assets/maps/hot-air-balloons.png"
       }
     ],
     "Animals": [
@@ -408,6 +413,26 @@
         "name": "Fruits",
         "slug": "fruits",
         "src": "./assets/maps/fruits.png"
+      },
+      {
+        "name": "Burger",
+        "slug": "burger",
+        "src": "./assets/maps/burger.png"
+      },
+      {
+        "name": "Tie Fighter",
+        "slug": "tie-fighter",
+        "src": "./assets/maps/tie-fighter.png"
+      },
+      {
+        "name": "Minion",
+        "slug": "minion",
+        "src": "./assets/maps/minion.png"
+      },
+      {
+        "name": "Bananas",
+        "slug": "bananas",
+        "src": "./assets/maps/bananas.png"
       }
     ],
     "Constructions": [
