@@ -436,6 +436,11 @@ html {
   text-align: center;
   font-family: OT Jubilee;
   font-size: 20px;
+  line-height: 1;
+
+  @media screen and (max-width: 880px) {
+    font-size: 16px;
+  }
 }
 
 .gallery__toggle-container {
