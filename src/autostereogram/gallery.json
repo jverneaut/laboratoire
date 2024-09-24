@@ -38,5 +38,15 @@
     "title": "Something cute",
     "background": "slayer",
     "depth": "duck"
+  },
+  {
+    "title": "Tie hair",
+    "background": "hair",
+    "depth": "tie-fighter"
+  },
+  {
+    "title": "You lost.",
+    "background": "swirl",
+    "depth": "hand"
   }
 ]

@@ -470,7 +470,7 @@
       {
         "name": "Hand",
         "slug": "hand",
-        "src": "./assets/maps/doigts.png"
+        "src": "./assets/maps/hand.png"
       }
     ]
   }
