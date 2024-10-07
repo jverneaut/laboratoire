@@ -5,9 +5,20 @@ const interpolated = { x: 0, y: 0 };
 
 const distance = { x: 0, y: 0 };
 
-window.addEventListener('mousemove', (e) => {
-  mousePos.x = e.clientX;
-  mousePos.y = e.clientY;
+['touchstart', 'touchmove', 'mousemove'].forEach((event) => {
+  window.addEventListener(event, (e) => {
+    const x =
+      event === 'touchstart' || event === 'touchmove'
+        ? e.touches[0].clientX
+        : e.clientX;
+    const y =
+      event === 'touchstart' || event === 'touchmove'
+        ? e.touches[0].clientY
+        : e.clientY;
+
+    mousePos.x = x;
+    mousePos.y = y;
+  });
 });
 
 const mouse = document.createElement('div');
@@ -139,33 +150,37 @@ const interpolate = () => {
   requestAnimationFrame(interpolate);
 };
 
-document.addEventListener('mousedown', () => {
-  if (!isPlaying) {
-    oscillators.forEach((osc) => {
-      if (!osc.started) {
-        osc.osc.start();
-        osc.started = true;
-      }
+['touchstart', 'mousedown'].forEach((event) => {
+  document.addEventListener(event, () => {
+    if (!isPlaying) {
+      oscillators.forEach((osc) => {
+        if (!osc.started) {
+          osc.osc.start();
+          osc.started = true;
+        }
 
-      osc.osc.connect(lp);
-      osc.connected = true;
-    });
+        osc.osc.connect(lp);
+        osc.connected = true;
+      });
 
-    isPlaying = true;
-  }
+      isPlaying = true;
+    }
+  });
 });
 
-document.addEventListener('mouseup', () => {
-  if (isPlaying) {
-    oscillators.forEach((osc) => {
-      if (osc.connected) {
-        osc.osc.disconnect(lp);
-        osc.connected = false;
-      }
-    });
+['touchend', 'mouseup'].forEach((event) => {
+  document.addEventListener(event, () => {
+    if (isPlaying) {
+      oscillators.forEach((osc) => {
+        if (osc.connected) {
+          osc.osc.disconnect(lp);
+          osc.connected = false;
+        }
+      });
 
-    isPlaying = false;
-  }
+      isPlaying = false;
+    }
+  });
 });
 
 requestAnimationFrame(interpolate);

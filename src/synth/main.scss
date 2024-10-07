@@ -19,6 +19,11 @@ html {
 
   height: 100%;
   background-size: calc(100% / 24);
+
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .info {
@@ -45,4 +50,8 @@ html {
     font-size: 9px;
     gap: 6px;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
