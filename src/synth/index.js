@@ -52,7 +52,7 @@ document.documentElement.style.backgroundSize = `calc(100% / ${range})`;
 
 const audioContext = new AudioContext();
 
-const chord = [-24, 3, 7 - 12, 10, 14 - 12];
+const chord = [-24, 4, 7 - 12, 11, 14 - 12];
 
 const oscillators = chord.map((note) => ({
   note,
