@@ -1,0 +1,205 @@
+@import '../../src/reset.css';
+
+// This CSS was put together in like 10 minutes, please don't judge me too harshly for it 😅
+@font-face {
+  font-family: OT Jubilee;
+  src: url('./assets/fonts/OTJubilee-Diamond.woff2') format('woff2'),
+    url('./assets/fonts/OTJubilee-Diamond.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PP Neue Montreal;
+  src: url('./assets/fonts/PPNeueMontreal-Regular.woff2') format('woff2'),
+    url('./assets/fonts/PPNeueMontreal-Regular.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PP Neue Montreal;
+  src: url('./assets/fonts/PPNeueMontreal-Bold.woff2') format('woff2'),
+    url('./assets/fonts/PPNeueMontreal-Bold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+html {
+  font-family: PP Neue Montreal;
+  background: #f3f3f3;
+}
+
+body {
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #7b000a, #140101);
+}
+
+section {
+  height: 100vh;
+  position: relative;
+  color: white;
+  font-size: 40px;
+  pointer-events: none;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+
+  svg {
+    max-height: 24px;
+  }
+}
+
+.section--double-text {
+  position: relative;
+
+  h1 {
+    font-family: OT Jubilee;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translate(0, -50%);
+    padding: 0 12vw;
+
+    span {
+      max-width: 33vw;
+      text-align: center;
+    }
+  }
+}
+
+.section--1 {
+  h1 {
+    span {
+      max-width: 24vw;
+      font-size: 4vw;
+    }
+  }
+}
+
+.section--2 {
+  h1 {
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 12vw;
+    transform: none;
+    font-family: PP Neue Montreal;
+    text-transform: uppercase;
+    font-size: 3vw;
+
+    span:first-of-type {
+      text-align: left;
+    }
+
+    span:nth-of-type(2) {
+      text-align: right;
+      margin-top: auto;
+    }
+  }
+}
+
+.section--single-text {
+  position: relative;
+
+  h1 {
+    position: absolute;
+    font-family: PP Neue Montreal;
+    font-size: 8vw;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 4vw;
+  }
+}
+
+.section--left-text {
+  position: relative;
+
+  h1 {
+    position: absolute;
+    bottom: 4vw;
+    left: 4vw;
+    font-size: 6vw;
+    max-width: 33vw;
+  }
+}
+
+.section--right-text {
+  position: relative;
+
+  h1 {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 50%;
+    font-size: 4vw;
+    max-width: 33vw;
+  }
+}
+
+footer {
+  color: white;
+  position: absolute;
+  left: 50%;
+  bottom: 2vw;
+  font-size: 0.75vw;
+  transform: translate(-50%, 0);
+}
