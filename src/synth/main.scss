@@ -1,0 +1,48 @@
+@import '../../src/reset.css';
+
+html {
+  $bg: rgb(32, 35, 37);
+  $mid: rgb(56, 58, 58);
+  $fg: rgb(145, 181, 201);
+
+  background: repeating-linear-gradient(
+    to right,
+    $bg 0%,
+    $bg calc(50% - 1px),
+    $mid calc(50% - 1px),
+    $mid calc(50%),
+    $bg calc(50%),
+    $bg calc(100% - 2px),
+    $fg calc(100% - 2px),
+    $fg 100%
+  );
+
+  height: 100%;
+  background-size: calc(100% / 24);
+}
+
+.info {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  width: 400px;
+  max-width: 100%;
+  background: black;
+  color: white;
+  padding: 16px;
+  transform: translate(-50%, 0);
+  font-size: 12px;
+  font-family: system-ui;
+  line-height: 1.25;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+
+  @media screen and (max-width: 600px) {
+    font-size: 9px;
+    gap: 6px;
+  }
+}
