@@ -184,3 +184,23 @@ const interpolate = () => {
 });
 
 requestAnimationFrame(interpolate);
+
+const unlockAudioContext = (audioContext) => {
+  if (audioContext.state === 'suspended') {
+    const events = ['touchstart', 'touchend', 'mousedown', 'keydown'];
+
+    const unlock = () => {
+      events.forEach(function (event) {
+        document.body.removeEventListener(event, unlock);
+      });
+
+      audioContext.resume();
+    };
+
+    events.forEach(function (event) {
+      document.body.addEventListener(event, unlock, false);
+    });
+  }
+};
+
+unlockAudioContext(audioContext);
