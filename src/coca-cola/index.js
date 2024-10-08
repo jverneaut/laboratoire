@@ -1,3 +1,6 @@
+// Once again, this is mostly super messy/unoptimized code
+// This is more of a proof of concept than anything else
+
 import './main.scss';
 
 import React, { Suspense } from 'react';
