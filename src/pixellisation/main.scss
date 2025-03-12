@@ -1,0 +1,137 @@
+@import '../reset.css';
+
+@font-face {
+  font-family: OT Jubilee;
+  src: url('./assets/fonts/OTJubilee-Diamond.woff2') format('woff2'),
+    url('./assets/fonts/OTJubilee-Diamond.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PP Neue Montreal;
+  src: url('./assets/fonts/PPNeueMontreal-Regular.woff2') format('woff2'),
+    url('./assets/fonts/PPNeueMontreal-Regular.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PP Neue Montreal;
+  src: url('./assets/fonts/PPNeueMontreal-Bold.woff2') format('woff2'),
+    url('./assets/fonts/PPNeueMontreal-Bold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+html {
+  font-family: PP Neue Montreal;
+
+  background: #911e03;
+  color: #ffc081;
+  filter: contrast(0.8) saturate(1.2);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-family: OT Jubilee;
+  position: fixed;
+  font-size: 20vw;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  z-index: 100;
+}
+
+.image-container img {
+  display: none;
+}
+
+.image-container canvas {
+  width: 100%;
+}
+
+.image-container:nth-of-type(1) {
+  width: 50vw;
+  margin-left: 25vw;
+  margin-top: 12.5vw;
+  margin-bottom: 12.5vw;
+}
+
+.image-container h2 {
+  letter-spacing: 0.02em;
+  font-size: 3.2vw;
+  text-align: justify;
+  text-transform: uppercase;
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+}
+
+.image-container:nth-of-type(2) {
+  width: 50vw;
+  margin-top: 12.5vw;
+  margin-bottom: 12.5vw;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.row .image-container:nth-of-type(1) {
+  position: sticky;
+  top: 0;
+  height: fit-content;
+
+  grid-column-start: 1;
+  grid-column-end: 4;
+  width: 100%;
+  margin-left: 0;
+  margin-top: 0vw;
+
+  h2 {
+    font-size: 2vw;
+  }
+}
+
+.row .image-container:nth-of-type(2) {
+  grid-column-start: 5;
+  grid-column-end: 7;
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 20vw;
+
+  h2 {
+    font-size: 1.2vw;
+  }
+}
+
+.row:nth-of-type(3) .image-container:nth-of-type(2) {
+  position: sticky;
+  top: 0;
+  height: fit-content;
+  margin-top: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .row {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .image-container {
+    position: relative !important;
+    width: 80vw !important;
+    margin: 10vw !important;
+
+    h2 {
+      font-size: 4vw !important;
+    }
+  }
+}
