@@ -27,9 +27,9 @@
 html {
   font-family: PP Neue Montreal;
 
-  background: #911e03;
+  background: #73200d;
   color: #ffc081;
-  filter: contrast(0.8) saturate(1.2);
+  filter: contrast(0.82) saturate(1.2) hue-rotate(-4deg);
 }
 
 * {
@@ -38,15 +38,139 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  font-family: OT Jubilee;
+.title {
   position: fixed;
-  font-size: 20vw;
+  font-size: 12vw;
+  text-transform: uppercase;
   left: 50%;
-  top: 50%;
+  top: calc(50% - 3vw);
   transform: translate(-50%, -50%);
   mix-blend-mode: difference;
   z-index: 100;
+  filter: blur(0.5px);
+  mix-blend-mode: difference;
+  z-index: 100;
+}
+
+h1 {
+  font-family: OT Jubilee;
+  font-size: 13vw;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+.title p {
+  font-size: 0.7vw;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.images-loader {
+  filter: blur(0.5px);
+  position: relative;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+    top: calc(50% - 6.25vw);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 100%;
+    height: calc(100% + 12.5vw);
+    z-index: 10;
+    opacity: 0.3;
+    background: linear-gradient(
+      to right,
+      transparent,
+      transparent calc(25% - 12px),
+      #ffc081 calc(25% - 12px),
+      #ffc081 calc(25% - 11px),
+      transparent calc(25% - 11px),
+      transparent calc(50%),
+      #ffc081 calc(50%),
+      #ffc081 calc(50% + 1px),
+      transparent calc(50% + 1px),
+      transparent calc(66.6% - 12px),
+      #ffc081 calc(66.6% - 12px),
+      #ffc081 calc(66.6% - 11px),
+      transparent calc(66.6% - 11px),
+      transparent calc(75% + 11px),
+      #ffc081 calc(75% + 11px),
+      #ffc081 calc(75% + 12px),
+      transparent calc(75% + 12px)
+    );
+  }
+}
+
+.row .image-container:nth-of-type(1) {
+  &::before {
+    left: 0;
+    transform: translate(0, -50%);
+  }
+}
+
+.row .image-container:nth-of-type(2) {
+  &::before {
+    right: 0;
+    transform: translate(0, -50%);
+  }
+}
+
+.image-container:nth-of-type(1) {
+  z-index: 10;
+  &::before {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.image-container:nth-of-type(2) {
+  z-index: 9;
+}
+
+.image-container:nth-of-type(3) {
+  z-index: 8;
+  &::before {
+    right: 0;
+  }
+}
+
+.image-container:nth-of-type(4) {
+  z-index: 7;
+}
+
+.image-container:nth-of-type(5) {
+  z-index: 6;
+}
+
+.image-container:nth-of-type(6) {
+  z-index: 5;
+}
+
+.image-container {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    display: block;
+    content: '';
+    top: 50%;
+    width: 100vw;
+    height: calc(100% + 2vw);
+    z-index: -1;
+    opacity: 0.3;
+    background: linear-gradient(
+      to bottom,
+      #ffc081,
+      #ffc081 1px,
+      transparent 1px,
+      transparent calc(100% - 1px),
+      #ffc081 calc(100% - 1px),
+      #ffc081 100%
+    );
+  }
 }
 
 .image-container img {
@@ -55,6 +179,11 @@ h1 {
 
 .image-container canvas {
   width: 100%;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+.image-container canvas:first-of-type {
+  filter: brightness(0.8) contrast(0.95);
 }
 
 .image-container:nth-of-type(1) {
@@ -134,4 +263,41 @@ h1 {
       font-size: 4vw !important;
     }
   }
+}
+
+@keyframes noise {
+  0% {
+    transform: translate(calc(-50% + 30px), calc(-50% - 40px));
+  }
+  25% {
+    transform: translate(calc(-50% + 24px), calc(-50% - 15px));
+  }
+  50% {
+    transform: translate(calc(-50% - 15px), calc(-50% + 5px));
+  }
+  75% {
+    transform: translate(calc(-50% + 25px), calc(-50% - 1px));
+  }
+  100% {
+    transform: translate(calc(-50% - 50px), calc(-50% + 20px));
+  }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  display: block;
+  background-image: url('./assets/noise.jpeg');
+  top: 50%;
+  left: 50%;
+  height: 120%;
+  width: 120%;
+  transform: translate(-50%, -50%);
+  animation: noise 0.26s infinite;
+  animation-timing-function: steps(1, end);
+  mix-blend-mode: difference;
+  opacity: 0.04;
+  z-index: 10;
+  user-select: none;
+  pointer-events: none;
 }

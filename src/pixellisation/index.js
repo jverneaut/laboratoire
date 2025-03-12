@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const h1 = document.querySelector('h1');
+const h1 = document.querySelector('.title');
 
 gsap.to(h1, {
   scrollTrigger: {
@@ -16,7 +16,7 @@ gsap.to(h1, {
     scrub: true,
   },
   scale: 0.125,
-  top: '5vw',
+  top: '2vw',
 });
 
 const lenis = new Lenis({
