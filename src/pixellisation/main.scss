@@ -71,6 +71,7 @@ h1 {
   position: relative;
 
   &::after {
+    pointer-events: none;
     position: absolute;
     display: block;
     content: '';
@@ -153,6 +154,7 @@ h1 {
   position: relative;
 
   &::before {
+    pointer-events: none;
     position: absolute;
     display: block;
     content: '';
@@ -183,7 +185,7 @@ h1 {
 }
 
 .image-container canvas:first-of-type {
-  filter: brightness(0.8) contrast(0.95);
+  filter: brightness(0.8) contrast(1.1) saturate(0.8);
 }
 
 .image-container:nth-of-type(1) {
