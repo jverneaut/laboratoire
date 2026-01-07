@@ -1,0 +1,105 @@
+@import '../../src/reset.css';
+
+html {
+  background: #04050a;
+  color: #e7eef7;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+}
+
+.page {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.stage {
+  position: fixed;
+  inset: 0;
+  background: #04050a;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.viz {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #04050a;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hudOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.42);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+  z-index: 10;
+}
+
+.hud {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  z-index: 11;
+}
+
+.hudBtn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 160ms ease, background 160ms ease,
+    border-color 160ms ease, opacity 160ms ease;
+  touch-action: manipulation;
+}
+
+.hudBtn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.hudBtn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.hudBtn:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.hudBtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.stage[data-running='0'] .hudBtn {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 22px rgba(160, 210, 255, 0.08);
+}
+
+.stage[data-controls='1'] .hudOverlay {
+  opacity: 1;
+  pointer-events: auto;
+}
