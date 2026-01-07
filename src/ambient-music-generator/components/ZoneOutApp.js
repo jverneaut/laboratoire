@@ -171,7 +171,10 @@ export const ZoneOutApp = () => {
       setAnalyser(engine.getAnalyserNode());
       setIsRunning(true);
       setControlsVisible(false);
-    } catch {
+    } catch (error) {
+      // Helpful when debugging iOS Safari via remote inspector.
+      // eslint-disable-next-line no-console
+      console.error('[ambient-music-generator] Failed to start audio engine', error);
       setControlsVisible(true);
       setIsRunning(false);
     }
@@ -307,8 +310,9 @@ export const ZoneOutApp = () => {
       ref={stageRef}
       data-running={isRunning ? '1' : '0'}
       data-controls={controlsVisible ? '1' : '0'}
-      onPointerDown={onStageGesture}
-      onTouchStart={onStageGesture}
+      // On iOS Safari, starting audio on `touchstart` can fail to unlock audio output
+      // (especially when an HTMLMediaElement unlock is needed). Prefer `click`.
+      onPointerDown={hoverCapable ? onStageGesture : undefined}
       onClick={onStageGesture}
     >
       <Visualizer analyser={analyser} className="viz" />
@@ -319,12 +323,7 @@ export const ZoneOutApp = () => {
             type="button"
             className="hudBtn"
             onPointerDown={(e) => {
-              e.stopPropagation();
-              if (!shouldAcceptGesture()) return;
-              if (!isRunning) void start();
-              else void reseed();
-            }}
-            onTouchStart={(e) => {
+              if (!hoverCapable) return;
               e.stopPropagation();
               if (!shouldAcceptGesture()) return;
               if (!isRunning) void start();
@@ -345,12 +344,7 @@ export const ZoneOutApp = () => {
             type="button"
             className="hudBtn"
             onPointerDown={(e) => {
-              e.stopPropagation();
-              if (!shouldAcceptGesture()) return;
-              void toggleFullscreen();
-              if (!isRunning) void start();
-            }}
-            onTouchStart={(e) => {
+              if (!hoverCapable) return;
               e.stopPropagation();
               if (!shouldAcceptGesture()) return;
               void toggleFullscreen();
@@ -371,12 +365,7 @@ export const ZoneOutApp = () => {
             type="button"
             className="hudBtn"
             onPointerDown={(e) => {
-              e.stopPropagation();
-              if (!shouldAcceptGesture()) return;
-              if (isRunning) void stop();
-              else void start();
-            }}
-            onTouchStart={(e) => {
+              if (!hoverCapable) return;
               e.stopPropagation();
               if (!shouldAcceptGesture()) return;
               if (isRunning) void stop();
